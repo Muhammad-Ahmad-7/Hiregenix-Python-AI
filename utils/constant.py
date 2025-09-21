@@ -1,0 +1,1 @@
+RESUME_ANALYSIS_QUEUE = "resume_analysis"
