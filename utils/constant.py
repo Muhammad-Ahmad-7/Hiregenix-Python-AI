@@ -1,1 +1,2 @@
 RESUME_ANALYSIS_QUEUE = "resume_analysis"
+CANDIDATE_PROFILE_EMBEDDINGS_QUEUE="candidate_profile_embeddings"

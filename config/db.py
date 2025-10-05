@@ -8,3 +8,5 @@ db = client["hiregenix"]
 
 task_collection = db["tasks"]
 resume_collection = db["resumes"]
+candidate_collection = db["candidates"]
+user_collection = db["users"]

@@ -47,7 +47,7 @@ def callback(ch, method, properties, body):
 
     ch.basic_ack(delivery_tag=method.delivery_tag)
 
-channel.basic_consume(queue=RESUME_ANALYSIS_QUEUE, on_message_callback=callback, auto_ack=False) # auto_ack=True to auto acknowledge when worker is done processing the message
+channel.basic_consume(queue=RESUME_ANALYSIS_QUEUE, on_message_callback=callback, auto_ack=True) # auto_ack=True to auto acknowledge when worker is done processing the message
 
 print(' [*] Waiting for messages. To exit press CTRL+C')
 channel.start_consuming()

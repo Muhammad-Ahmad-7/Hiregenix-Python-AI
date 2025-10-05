@@ -27,3 +27,11 @@ uvicorn
 python-multipart
 pypdf
 faiss-cpu
+
+
+qdrant-client
+
+
+
+sentence-transformers
+langchain-huggingface
