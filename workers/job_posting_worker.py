@@ -2,12 +2,12 @@ import os
 import json
 import pika
 import traceback
-from utils.constant import CANDIDATE_PROFILE_EMBEDDINGS_QUEUE
-from ai_modules.candidate import generate_candidate_profile_ai_description
-from config.db import candidate_collection, task_collection
+from utils.constant import JOB_DESCRIPTION_EMBEDDINGS_QUEUE
+from config.db import task_collection
 from bson import ObjectId
 from dotenv import load_dotenv
 from qdrant_client import QdrantClient
+from ai_modules.company import generate_job_post_ai_description
 
 load_dotenv()
 
@@ -17,7 +17,7 @@ RABBITMQ_URL = os.getenv("RABBITMQ_URL")
 params = pika.ConnectionParameters(host=RABBITMQ_URL)
 connection = pika.BlockingConnection(params)
 channel = connection.channel()
-channel.queue_declare(queue=CANDIDATE_PROFILE_EMBEDDINGS_QUEUE, durable=True)
+channel.queue_declare(queue=JOB_DESCRIPTION_EMBEDDINGS_QUEUE, durable=True)
 
 # --- Main Callback ---
 def callback(ch, method, properties, body):
@@ -38,22 +38,10 @@ def callback(ch, method, properties, body):
         )
         print(f"⏳ Task {task_id} status updated to processing")
 
-        candidate_id = task["payload"]["candidateId"]
-        candidate = candidate_collection.find_one({"_id": ObjectId(candidate_id)})
-
-        if not candidate:
-            print("❌ Candidate not found in DB")
-            ch.basic_ack(delivery_tag=method.delivery_tag)
-            return
-
-        print(f" 🔍 Fetched Candidate {candidate_id} from DB: {candidate}")
-
-        skills = candidate.get("skills", [])
-        bio = candidate.get("bio", "")
-
-        # --- Generate Description ---
-        generate_candidate_profile_ai_description(candidate_id=candidate_id, skills=skills, bio=bio)
-
+        # TODO: job ai description + embedding generator
+        
+        generate_job_post_ai_description(job_id=task["payload"]["jobId"])
+        
         # --- Mark Task as Completed ---
         task_collection.update_one(
             {"_id": ObjectId(task_id)},
@@ -80,12 +68,12 @@ def callback(ch, method, properties, body):
 
 # --- Start Consumer (Manual Ack Mode) ---
 channel.basic_consume(
-    queue=CANDIDATE_PROFILE_EMBEDDINGS_QUEUE,
+    queue=JOB_DESCRIPTION_EMBEDDINGS_QUEUE,
     on_message_callback=callback,
     auto_ack=False  # Manual ack ensures reliability
 )
 
-print("🚀 Worker started and waiting for candidate profile embedding jobs...")
+print("🚀 Worker started and waiting for job posting description embedding jobs...")
 try:
     channel.start_consuming()
 except KeyboardInterrupt:

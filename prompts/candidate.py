@@ -1,4 +1,4 @@
-PROFILE_DESCRIPTION = '''
+PROFILE_DESCRIPTION_PROMPT = '''
 
 You are an expert description writer. You job is to write a profile description of a candidate profile based on the skills and bio.
 
@@ -13,7 +13,9 @@ Input:
 
 Output:
 
-    A highly skilled Full Stack Developer with hands-on experience in SaaS product development and AI-driven integrations. Proficient in modern web technologies including React, Next.js, Node.js, MongoDB, and TypeScript, delivering end-to-end scalable solutions. Known for writing clean, maintainable code and collaborating across teams to transform complex ideas into high-performance applications.
+    {{
+        "aiDescription": "A highly skilled Full Stack Developer with hands-on experience in SaaS product development and AI-driven integrations. Proficient in modern web technologies including React, Next.js, Node.js, MongoDB, and TypeScript, delivering end-to-end scalable solutions. Known for writing clean, maintainable code and collaborating across teams to transform complex ideas into high-performance applications."
+    }}
     
 
 RULE:

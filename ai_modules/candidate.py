@@ -2,7 +2,7 @@ from typing import List
 from langchain.chat_models.base import init_chat_model
 from config.env import OPENAI_API_KEY
 from langchain.prompts import ChatPromptTemplate
-from prompts.candidate import PROFILE_DESCRIPTION
+from prompts.candidate import PROFILE_DESCRIPTION_PROMPT
 from langchain.output_parsers import PydanticOutputParser
 from pydantic import BaseModel
 from config.db import candidate_collection
@@ -24,7 +24,7 @@ class ParsedDescription(BaseModel):
 parser = PydanticOutputParser(pydantic_object=ParsedDescription)
 
 
-def generate_ai_description(candidate_id: str, skills: List[str], bio: str):
+def generate_candidate_profile_ai_description(candidate_id: str, skills: List[str], bio: str):
     print("Generating AI Description")
     model = init_chat_model(
         model_provider='google_genai',
@@ -35,7 +35,7 @@ def generate_ai_description(candidate_id: str, skills: List[str], bio: str):
 
     # Create the prompt template
     prompt_template = ChatPromptTemplate.from_messages([
-        ("system", PROFILE_DESCRIPTION),
+        ("system", PROFILE_DESCRIPTION_PROMPT),
         ("human", "Please write a brief description based on skills: {skills} and bio: {bio}")
     ])
 
@@ -106,7 +106,7 @@ def generate_embeddings(candidate):
     
     updated_candidate = candidate_collection.find_one_and_update(
         {"_id": ObjectId(candidate.get('_id'))},
-        {"$set": {"embeddingSync": True}, "$set": {"qdrantId": qdrant_id}},
+        {"$set": {"embeddingSync": True, "qdrantId": qdrant_id}},
         return_document=ReturnDocument.AFTER,  # ✅ ensures you get the updated doc
         upsert=True
     )
