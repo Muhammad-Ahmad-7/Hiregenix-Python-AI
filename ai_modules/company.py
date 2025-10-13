@@ -98,7 +98,7 @@ def generate_job_post_ai_description(job_id):
     
     # Generate Embeddings for the candidate
     generate_embeddings(job=updated_job);
-    pass
+    return;
 
 
 

@@ -87,6 +87,7 @@ def generate_embeddings(candidate):
     
     # embeddings = get_gemini_embedding(description)
     embeddings = get_huggingface_embedding(description)
+    print(type(embeddings), len(embeddings))
     
     qdrant_id = str(uuid.uuid4())
     
