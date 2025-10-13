@@ -63,25 +63,25 @@ def run_recommendation_pipeline(candidate_id):
     print(f"Recommended Jobs:{recommended_jobs}")
     
     doc = RecommendedJobs(
-        candidateId=str(candidate_id),
+        candidateId=ObjectId(candidate_id),
         recommendedJobs=recommended_jobs,
         createdAt=datetime.utcnow(),
         updatedAt=datetime.utcnow()
     )
     
     doc_dict = doc.model_dump(by_alias=True)
-    doc_dict.pop("_id", None)  # remove any existing _id
+    doc_dict.pop("_id", None)
+    doc_dict.pop("createdAt", None)  # avoid conflict
 
     recommended_jobs_collection.update_one(
         {"candidateId": ObjectId(candidate_id)},
         {
-            "$set": doc_dict,
-            "$setOnInsert": {
-                "createdAt": datetime.utcnow()
-            },
+            "$set": {**doc_dict, "updatedAt": datetime.utcnow()},
+            "$setOnInsert": {"createdAt": datetime.utcnow()},
         },
         upsert=True
     )
+
 
     
     print("✅ Recommendation pipeline completed successfully")

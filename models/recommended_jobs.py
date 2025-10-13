@@ -10,10 +10,10 @@ class PyObjectId(ObjectId):
     @classmethod
     def __get_pydantic_core_schema__(cls, _source_type, _handler):
         from pydantic_core import core_schema
-        return core_schema.no_info_after_validator_function(
-            cls.validate,
-            core_schema.str_schema()
-        )
+        return core_schema.union_schema([
+            core_schema.is_instance_schema(ObjectId),  # ✅ allow ObjectId directly
+            core_schema.no_info_after_validator_function(cls.validate, core_schema.str_schema())
+        ])
 
     @classmethod
     def validate(cls, v, _info=None):
@@ -23,12 +23,6 @@ class PyObjectId(ObjectId):
             return ObjectId(v)
         except Exception:
             raise ValueError(f"Invalid ObjectId: {v}")
-
-    @classmethod
-    def __get_pydantic_json_schema__(cls, schema, _handler):
-        schema.update(type="string")
-        return schema
-
 
 
 # ---- Submodel for each recommended job ----
@@ -47,7 +41,7 @@ class RecommendedJobItem(BaseModel):
 # ---- Main model for Recommended Jobs ----
 class RecommendedJobs(BaseModel):
     id: Optional[PyObjectId] = Field(default=None, alias="_id")
-    candidateId: str
+    candidateId: PyObjectId = Field(..., description="Candidate ObjectId reference")
     recommendedJobs: List[RecommendedJobItem] = Field(default_factory=list, description="List of recommended job entries")
     createdAt: Optional[datetime] = Field(default_factory=datetime.utcnow, description="Document creation timestamp")
     updatedAt: Optional[datetime] = Field(default_factory=datetime.utcnow, description="Document update timestamp")
