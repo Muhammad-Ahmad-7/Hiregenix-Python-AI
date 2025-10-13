@@ -14,9 +14,6 @@ from qdrant_client.models import PointStruct
 
 import uuid
 
-
-
-
 class ParsedDescription(BaseModel):
     aiDescription: str
 
@@ -73,6 +70,8 @@ def generate_candidate_profile_ai_description(candidate_id: str, skills: List[st
     
     # Generate Embeddings for the candidate
     generate_embeddings(candidate=updated_candidate);
+    
+    
     return description
 
 

@@ -2,7 +2,7 @@ import os
 import json
 import pika
 import traceback
-from utils.constant import CANDIDATE_PROFILE_EMBEDDINGS_QUEUE
+from utils.constant import CANDIDATE_PROFILE_EMBEDDINGS_QUEUE, JOB_RECOMMENDATION_QUEUE
 from ai_modules.candidate import generate_candidate_profile_ai_description
 from config.db import candidate_collection, task_collection
 from bson import ObjectId
@@ -18,6 +18,36 @@ params = pika.ConnectionParameters(host=RABBITMQ_URL)
 connection = pika.BlockingConnection(params)
 channel = connection.channel()
 channel.queue_declare(queue=CANDIDATE_PROFILE_EMBEDDINGS_QUEUE, durable=True)
+channel.queue_declare(queue=JOB_RECOMMENDATION_QUEUE, durable=True);
+
+
+def create_recommendation_task(candidate_id: str) -> ObjectId:
+    """Create a new recommendation task document and return its _id."""
+    doc = {
+        "userId": candidate_id,
+        "type": "job_recommendation",
+        "status": "pending",
+        "payload": {
+            "candidateId": candidate_id,
+        },
+    }
+    result = task_collection.insert_one(doc)
+    return result.inserted_id
+
+
+
+def publish_recommendation_task(task_id: ObjectId):
+    """Publish the recommendation task id to JOB_RECOMMENDATION_QUEUE with persistence."""
+    body = str(task_id).encode()
+    channel.basic_publish(
+        exchange='',
+        routing_key=JOB_RECOMMENDATION_QUEUE,
+        body=body,
+        properties=pika.BasicProperties(
+            delivery_mode=pika.DeliveryMode.Persistent,
+        ),
+        mandatory=True  # raise on unroutable
+    )
 
 # --- Main Callback ---
 def callback(ch, method, properties, body):
@@ -60,9 +90,14 @@ def callback(ch, method, properties, body):
             {"$set": {"status": "completed", "error": None}},
         )
         print(f"✅ Task {task_id} completed successfully")
+        
+        rec_task_id = create_recommendation_task(candidate_id=candidate_id)
+        publish_recommendation_task(rec_task_id)
+        print(f"📤 Enqueued recommendation task {rec_task_id} for candidate {candidate_id}")
 
         # Acknowledge successful message
         ch.basic_ack(delivery_tag=method.delivery_tag)
+        
 
     except Exception as e:
         print(f"❌ Error processing task {task_id}: {e}")

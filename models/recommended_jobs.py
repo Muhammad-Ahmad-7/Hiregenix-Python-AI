@@ -47,7 +47,7 @@ class RecommendedJobItem(BaseModel):
 # ---- Main model for Recommended Jobs ----
 class RecommendedJobs(BaseModel):
     id: Optional[PyObjectId] = Field(default=None, alias="_id")
-    candidateId: PyObjectId = Field(..., description="Candidate ObjectId reference")
+    candidateId: str
     recommendedJobs: List[RecommendedJobItem] = Field(default_factory=list, description="List of recommended job entries")
     createdAt: Optional[datetime] = Field(default_factory=datetime.utcnow, description="Document creation timestamp")
     updatedAt: Optional[datetime] = Field(default_factory=datetime.utcnow, description="Document update timestamp")

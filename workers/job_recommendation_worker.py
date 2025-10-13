@@ -2,7 +2,7 @@ import os
 import json
 import pika
 import traceback
-from utils.constant import JOB_DESCRIPTION_EMBEDDINGS_QUEUE
+from utils.constant import JOB_RECOMMENDATION_QUEUE
 from config.db import task_collection
 from bson import ObjectId
 from dotenv import load_dotenv
@@ -17,7 +17,7 @@ RABBITMQ_URL = os.getenv("RABBITMQ_URL")
 params = pika.ConnectionParameters(host=RABBITMQ_URL)
 connection = pika.BlockingConnection(params)
 channel = connection.channel()
-channel.queue_declare(queue=JOB_DESCRIPTION_EMBEDDINGS_QUEUE, durable=True)
+channel.queue_declare(queue=JOB_RECOMMENDATION_QUEUE, durable=True)
 
 # --- Main Callback ---
 def callback(ch, method, properties, body):
@@ -66,7 +66,7 @@ def callback(ch, method, properties, body):
 
 # --- Start Consumer (Manual Ack Mode) ---
 channel.basic_consume(
-    queue=JOB_DESCRIPTION_EMBEDDINGS_QUEUE,
+    queue=JOB_RECOMMENDATION_QUEUE,
     on_message_callback=callback,
     auto_ack=False  # Manual ack ensures reliability
 )
