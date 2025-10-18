@@ -15,7 +15,7 @@ from ai_modules.resume_parser import get_resume_parsing_graph
 RABBITMQ_URL = os.getenv("RABBITMQ_URL")
 
 
-params = pika.ConnectionParameters(host=RABBITMQ_URL)
+params = pika.URLParameters(RABBITMQ_URL)
 connection = pika.BlockingConnection(params)
 channel = connection.channel()
 

@@ -14,7 +14,7 @@ load_dotenv()
 RABBITMQ_URL = os.getenv("RABBITMQ_URL")
 
 # --- Setup RabbitMQ Connection ---
-params = pika.ConnectionParameters(host=RABBITMQ_URL)
+params = pika.URLParameters(RABBITMQ_URL)
 connection = pika.BlockingConnection(params)
 channel = connection.channel()
 channel.queue_declare(queue=CANDIDATE_PROFILE_EMBEDDINGS_QUEUE, durable=True)
