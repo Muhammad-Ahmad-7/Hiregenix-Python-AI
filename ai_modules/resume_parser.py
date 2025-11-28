@@ -121,7 +121,7 @@ def store_parsed_data(state: StateSchema) -> StateSchema:
     print("RESUME DATA:", resumeData)
     
     # Convert to dict, ensuring datetime values are preserved
-    resume_dict = resumeData.model_dump(by_alias=True, exclude_unset=False)
+    resume_dict = resumeData.model_dump(by_alias=True, exclude_unset=False, exclude_none=True)
     
     # Double-check datetime fields are set properly
     resume_dict['createdAt'] = current_time

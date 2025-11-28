@@ -98,7 +98,7 @@ class ResumeModel(BaseModel):
         }
     }
     
-    id: Optional[PyObjectId] = Field(default=None, alias="_id")
+    # id: Optional[PyObjectId] = Field(default=None, alias="_id")
     candidateId: PyObjectId
     fileUrl: Optional[str] = None
     parsedData: ParsedDataModel = Field(default_factory=ParsedDataModel)
