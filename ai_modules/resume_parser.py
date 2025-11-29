@@ -7,7 +7,7 @@ from langchain.output_parsers import PydanticOutputParser
 from langchain.prompts import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate
 from config.env import OPENAI_API_KEY
 from prompts.resume_parser import RESUME_PROMPT
-from config.db import resume_collection
+from config.db import resume_collection, candidate_collection
 from models.resume import ResumeModel, ParsedDataModel, ExperienceModel, EducationModel, ProjectModel, CertificationModel
 from datetime import datetime
 from bson import ObjectId
@@ -131,6 +131,9 @@ def store_parsed_data(state: StateSchema) -> StateSchema:
     
     result = resume_collection.insert_one(resume_dict)
     print(f"STORING PARSED DATA COMPLETED - Inserted ID: {result.inserted_id}")
+    
+    candidate_collection.update_one({"_id": ObjectId(state['candidate_id'])}, {"$set": {"resumeId": result.inserted_id}})
+    print(f"UPDATED CANDIDATE {state['candidate_id']} WITH RESUME ID {result.inserted_id}")
     
     return state
 
