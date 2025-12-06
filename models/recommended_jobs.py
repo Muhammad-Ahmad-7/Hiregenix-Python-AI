@@ -26,16 +26,39 @@ class PyObjectId(ObjectId):
 
 
 # ---- Submodel for each recommended job ----
+class JobLocation(BaseModel):
+    city: Optional[str] = Field(None, description="City of the job location")
+    country: Optional[str] = Field(None, description="Country of the job location")
+
+
+class SalaryRange(BaseModel):
+    min: Optional[int] = Field(None, description="Minimum salary")
+    max: Optional[int] = Field(None, description="Maximum salary")
+    currency: Optional[str] = Field(None, description="Currency of salary")
+
+
 class RecommendedJobItem(BaseModel):
     jobId: str = Field(..., description="Unique identifier for the job")
     title: str = Field(..., description="Job title")
     role: str = Field(..., description="Job role or specialization")
-    companyName: str = Field(..., description="Name of the company offering the job")
-    companyLogo: str = Field(..., description="URL to the company's logo image")
-    workMode: str = Field(..., description="Work mode of the job (e.g., remote, onsite)")
-    aiSummary: Optional[str] = Field(default="", description="AI-generated job summary")
-    createdAt: Optional[datetime] = Field(default_factory=datetime.utcnow, description="Job recommendation creation timestamp")
-    updatedAt: Optional[datetime] = Field(default_factory=datetime.utcnow, description="Job recommendation update timestamp")
+
+    companyName: str = Field(..., description="Company name")
+    companyLogo: str = Field(..., description="Company logo URL")
+
+    workMode: str = Field(..., description="full-time | part-time | remote")
+
+    requiredSkills: Optional[List[str]] = Field(None)
+    requirements: Optional[List[str]] = Field(None)
+    description: Optional[str] = Field(None)
+
+    location: Optional[JobLocation] = Field(None, description="Job location object")
+
+    salaryRange: Optional[SalaryRange] = Field(None, description="Salary range")
+
+    aiSummary: Optional[str] = Field("", description="AI-generated job summary")
+
+    createdAt: Optional[datetime] = Field(default_factory=datetime.utcnow)
+    updatedAt: Optional[datetime] = Field(default_factory=datetime.utcnow)
 
 
 # ---- Main model for Recommended Jobs ----

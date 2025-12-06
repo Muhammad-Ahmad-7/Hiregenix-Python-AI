@@ -54,9 +54,14 @@ def run_recommendation_pipeline(candidate_id):
             "companyLogo": company.get("logoUrl"),
             "role": job.get("role"),
             "workMode": job.get("workMode"),
+            "requiredSkills": job.get("requiredSkills"),
+            "salaryRange": job.get("salaryRange"),
+            "description": job.get("description"),
+            "requirements": job.get("requirements"),
+            "location": job.get("location"),
+            "aiSummary": job.get("aiSummary"),
             "createdAt": job.get("createdAt"),
-            "updatedAt": job.get("updatedAt"),
-            "aiSummary": job.get("aiSummary")
+            "updatedAt": job.get("updatedAt")
         }
         recommended_jobs.append(job_object)
     
