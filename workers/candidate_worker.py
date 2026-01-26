@@ -92,6 +92,14 @@ def callback(ch, method, properties, body):
         print(f"✅ Task {task_id} completed successfully")
         
         rec_task_id = create_recommendation_task(candidate_id=candidate_id)
+        
+        if not rec_task_id:
+            # TODO: Need to handle if recommendation is not created the worker must continue it from here not do the previous thing again.
+            
+            print("❌ Recommendation task not created in DB")
+            ch.basic_ack(delivery_tag=method.delivery_tag)
+            return
+        
         publish_recommendation_task(rec_task_id)
         print(f"📤 Enqueued recommendation task {rec_task_id} for candidate {candidate_id}")
 
