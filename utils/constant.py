@@ -2,4 +2,7 @@ RESUME_ANALYSIS_QUEUE = "resume_analysis"
 CANDIDATE_PROFILE_EMBEDDINGS_QUEUE="candidate_profile_embeddings"
 JOB_DESCRIPTION_EMBEDDINGS_QUEUE="job_description_embeddings"
 JOB_RECOMMENDATION_QUEUE="job_recommendation"
-
+SPEECH_TO_TEXT_QUEUE = "speech_to_text"
+AUDIO_ANALYSIS_QUEUE = "audio_analysis"
+VIDEO_ANALYSIS_QUEUE = "video_analysis"
+LLM_EVALUATION_QUEUE = "llm_evaluation"

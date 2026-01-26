@@ -17,7 +17,7 @@ class PyObjectId(ObjectId):
 class TaskModel(BaseModel):
     id: Optional[PyObjectId] = Field(alias="_id")
     userId: PyObjectId
-    type: Literal["resume_parsing", "profile_enhancement", "resume_feedback", "interview_prep"]
+    type: Literal["resume_parsing", "profile_enhancement", "resume_feedback", "interview_prep", "candidate_profile_embeddings", "job_description_embeddings", "job_recommendation", "speech_to_text", "audio_analysis", "video_analysis", "llm_evaluation"]
     payload: Dict[str, Any]
     status: Literal["pending", "processing", "completed", "failed"] = "pending"
     result: Optional[Dict[str, Any]] = None
