@@ -2,10 +2,14 @@ import os
 import json
 import pika
 import traceback
-from utils.constant import AUDIO_ANALYSIS_QUEUE
+from utils.constant import AUDIO_ANALYSIS_QUEUE, LLM_EVALUATION_QUEUE
 from config.db import task_collection, question_result_collection
 from bson import ObjectId
 from dotenv import load_dotenv
+from ai_modules.audio_analysis import audio_analysis_pipeline
+from datetime import datetime
+from pymongo import ReturnDocument
+
 
 load_dotenv()
 
@@ -16,7 +20,41 @@ params = pika.URLParameters(RABBITMQ_URL)
 connection = pika.BlockingConnection(params)
 channel = connection.channel()
 channel.queue_declare(queue=AUDIO_ANALYSIS_QUEUE, durable=True)
+channel.queue_declare(queue=LLM_EVALUATION_QUEUE, durable=True)
 channel.confirm_delivery()
+
+
+def create_and_push_llm_evaluation_task_to_queue(question_result_id: str, candidate_id: str) -> ObjectId:
+    """Create a new audio analysis task document and push it to the audio analysis queue."""
+    try:
+        doc = {
+            "userId": candidate_id,
+            "type": "llm_evaluation",
+            "status": "pending",
+            "payload": {
+                "questionResultId": question_result_id,
+            },
+        }
+        result = task_collection.insert_one(doc)
+        if not result.acknowledged or not result.inserted_id:
+            print("❌ Task creation failed")
+            return False
+        print(f"✅ Task created successfully with ID: {result.inserted_id}")
+        body = str(result.inserted_id).encode()
+        channel.basic_publish(
+            exchange='',
+            routing_key=LLM_EVALUATION_QUEUE,
+            body=body,
+            properties=pika.BasicProperties(
+                delivery_mode=pika.DeliveryMode.Persistent,
+            ),
+            mandatory=True  # raise on unroutable
+        )
+        print(f"📤 Enqueued llm evaluation task {result.inserted_id} for question result {question_result_id}")
+        return True
+    except Exception as e:
+        print(f"❌ Error creating and pushing llm evaluation task: {e}")
+        return False
 
 
 def callback(ch, method, properties, body):
@@ -34,12 +72,46 @@ def callback(ch, method, properties, body):
         task_collection.update_one(
             {"_id": ObjectId(task_id)}, {"$set": {"status": "processing"}}
         )
-        candidate_id=task['userId'];
+        candidate_id=task['userId']
         print(f"⏳ Task {task_id} status updated to processing")
     
         # fetching the question result id for fetching the question result document
         question_result_id = task["payload"]["questionResultId"]
-
+        
+        result = audio_analysis_pipeline(question_result_id)
+        if not result:
+            print("Acknowledge the task because question does not exist")
+            ch.basic_ack(delivery_tag=method.delivery_tag)
+        
+        print(f"✅ Task {task_id} audio analysis processing completed successfully")
+        
+        #TODO: Now push to the llm queue
+        
+        doc = question_result_collection.find_one({"_id": ObjectId(question_result_id)})
+        print(doc)
+        
+        result = question_result_collection.find_one_and_update(
+            {
+                "_id": ObjectId(question_result_id),
+                "status": "PROCESSING",
+                "stages.audioAnalyzed": True,
+                "stages.videoAnalyzed": True,
+                "llmEnqueued": False,
+            },
+            {
+                "$set": {
+                    "llmEnqueued": True,
+                    "llmStartedAt": datetime.utcnow(),
+                }
+            },
+            return_document=ReturnDocument.AFTER
+        )
+        
+        if result:
+            # create a task and push it in the llm queue
+            create_and_push_llm_evaluation_task_to_queue(question_result_id, candidate_id)
+        else:
+            print("Skipping LLM enqueue - conditions not met")
         
         # --- Mark Task as Completed ---
         task_collection.update_one(
@@ -48,8 +120,7 @@ def callback(ch, method, properties, body):
         )
         print(f"✅ Task {task_id} completed successfully")
         # Acknowledge successful message
-        # ch.basic_ack(delivery_tag=method.delivery_tag)
-    
+        ch.basic_ack(delivery_tag=method.delivery_tag)
     except Exception as e:
         print(f"❌ Error processing task {task_id}: {e}")
         traceback.print_exc()

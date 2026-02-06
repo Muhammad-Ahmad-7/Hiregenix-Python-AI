@@ -118,7 +118,8 @@ def callback(ch, method, properties, body):
         # speech to text  processing logic goes here
         result = speech_to_text_pipeline(question_result_id)
         if not result:
-            raise Exception("Speech to text processing failed")
+            print("Acknowledge the task because question does not exist")
+            ch.basic_ack(delivery_tag=method.delivery_tag)
         
         print(f"✅ Task {task_id} speech to text processing completed successfully")
         
@@ -126,7 +127,6 @@ def callback(ch, method, properties, body):
         
         audio_analysis_queue_result = create_and_push_audio_analysis_task_to_queue(question_result_id, candidate_id)
         
-        print(f"Result {audio_analysis_queue_result}")
         
         if not audio_analysis_queue_result:
             raise Exception("Audio analysis task not created in DB")

@@ -7,8 +7,13 @@ from concurrent.futures import ThreadPoolExecutor
 from utils.upload_file import upload_to_cloudinary
 import tempfile
 import os
+from typing import List, Dict
+import numpy as np
+from datetime import datetime
 
 def speech_to_text_pipeline(question_result_id: str) -> bool:
+    video_path=None
+    audio_path=None
     try:
         question_result = question_result_collection.find_one({"_id": ObjectId(question_result_id)})
         print(f" 🔍 Fetched Question Result {question_result_id} from DB: {question_result}")
@@ -16,7 +21,7 @@ def speech_to_text_pipeline(question_result_id: str) -> bool:
         if not question_result:
             print("❌ Question Result not found in DB")
             return False
-        
+        print("✅ Question Result found in DB")
         # Extract audio from the video and update the question result document
         video_url = question_result['videoUrl']
         
@@ -46,21 +51,20 @@ def speech_to_text_pipeline(question_result_id: str) -> bool:
             stt_future = executor.submit(extract_stt, audio_path)
             
             audio_url = cloud_future.result()
-            transcribed_text = stt_future.result()
+            sttData = stt_future.result()
             
-        print(f"✅ Transcribed Text: {transcribed_text}")
+        print(f"✅ Transcribed Text: {sttData}")
         print(f"✅ Audio URL: {audio_url}")
         
         # DB question result document updated with transcribed text and audio url
         question_result_collection.update_one(
             {"_id": ObjectId(question_result_id)},
             {"$set": {
-                "transcriptText": transcribed_text,
+                "sttData": sttData,
                 "audioUrl": audio_url,
-                "stages": {
-                    "sttDone": True,
-                    "audioExtracted": True
-                }
+                "stages.sttDone": True,
+                "stages.audioExtracted": True,
+                "updatedAt": datetime.now(),
             }},
             upsert=True
         )
@@ -72,9 +76,9 @@ def speech_to_text_pipeline(question_result_id: str) -> bool:
         return False
     
     finally:
-        if os.path.exists(video_path):
+        if video_path and os.path.exists(video_path):
             os.remove(video_path)
-        if os.path.exists(audio_path):
+        if audio_path and os.path.exists(audio_path):
             os.remove(audio_path)
 
 
@@ -96,9 +100,68 @@ def extract_audio_from_video(video_url: str, output_audio_path: str) -> bool:
 
 model = whisper.load_model("small")
 def extract_stt(audio_path: str) -> str:
-    result = model.transcribe(audio_path)
-    return result["text"]
+    result = model.transcribe(audio_path, word_timestamps=True)
+    result = clean_whisper_output(result)
+    return result
 
+
+def convert_float(value):
+    if isinstance(value, np.floating):
+        return float(value)
+    return value
+
+def clean_whisper_output(raw_whisper: Dict) -> Dict:
+    """
+    Cleans Whisper output so it is fully JSON-serializable and structured for MongoDB.
+    Converts all numpy floats to regular floats and strips unnecessary spaces.
+    
+    Args:
+        raw_whisper (Dict): Raw Whisper output.
+    
+    Returns:
+        Dict: Cleaned structure with 'text', 'segments', and 'words'.
+    """
+    def convert_float(value):
+        if isinstance(value, np.floating):
+            return float(value)
+        return value
+
+    transcript = raw_whisper.get("text", "").strip()
+
+    cleaned_segments: List[Dict] = []
+
+    for seg in raw_whisper.get("segments", []):
+        seg_text = seg.get("text", "").strip()
+        start = convert_float(seg.get("start", 0.0))
+        end = convert_float(seg.get("end", 0.0))
+
+        cleaned_words = []
+        for w in seg.get("words", []):
+            word_text = w.get("word", "").strip()
+            if not word_text:
+                continue
+            word_obj = {
+                "word": word_text,
+                "start": convert_float(w.get("start")),
+                "end": convert_float(w.get("end")),
+            }
+            cleaned_words.append(word_obj)
+
+        cleaned_segments.append({
+            "text": seg_text,
+            "start": start,
+            "end": end,
+            "words": cleaned_words
+        })
+
+    return {
+        "transcript": transcript,
+        "segments": cleaned_segments,
+    }
+
+# def stt(url: str):
+#     res = model.transcribe(url, word_timestamps=True)
+#     print(clean_whisper_output(res))
 
 import requests
 from pathlib import Path
