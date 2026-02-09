@@ -67,9 +67,9 @@ class QuestionResult(BaseModel):
     audioUrl: Optional[str] = None
     videoAnalysis: Optional[dict] = None
     audioAnalysis: Optional[dict] = None
+    lLMAnalysis: Optional[dict] = None
     
     scores: Optional[Scores] = None
-    lLMAnalysis: Optional[LLMAnalysis] = None
     
     status: QuestionResultStatus = QuestionResultStatus.PROCESSING
     stages: Stages = Field(default_factory=Stages, description="Stages of processing")
