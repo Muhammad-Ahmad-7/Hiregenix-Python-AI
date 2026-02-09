@@ -1,5 +1,5 @@
 
-from config.db import question_result_collection
+from config.db import question_result_collection, interview_collection
 from bson import ObjectId
 import numpy as np
 from datetime import datetime
@@ -11,6 +11,7 @@ from prompts.llm_eval import INTERVIEW_EVALUATION_PROMPT
 from langchain.chat_models.base import init_chat_model
 from config.env import OPENAI_API_KEY
 from enum import Enum
+from pymongo import ReturnDocument
 
 
 class AnswerQualityEnum(str, Enum):
@@ -125,13 +126,29 @@ def llm_eval_pipeline(question_result_id: str):
             {"$set": {
                 "lLMAnalysis": final_result,
                 "stages.llmEvaluated": True,
+                "stages.done": True,
                 "updatedAt": datetime.now(),
             }},
-            upsert=True
         )
         print(f"✅ Question Result {question_result_id} updated with llm analysis")
         
         #TODO: increment the completed question field in the interview document and check if completeQuestion === totalQuestions then enqueue it in the final worker
+
+        final_doc = interview_collection.find_one_and_update(
+            {
+                "_id": question_result['interviewId'],
+            },
+            {
+                "$inc": {"completedQuestions": 1}
+            },
+            return_document=ReturnDocument.AFTER
+        )
+        
+        print("FINAL DOCUMENT FOUND", final_doc)
+        
+        if (final_doc['completedQuestions'] == final_doc['totalQuestions']):
+            # All questions processing done now enqueue the interviewId in the final worker
+            pass
         return True
 
     except Exception as e:
