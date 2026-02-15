@@ -2,13 +2,11 @@ import os
 import json
 import pika
 import traceback
-from utils.constant import LLM_EVALUATION_QUEUE, FINAL_INTERVIEW_EVAL_QUEUE
-from config.db import task_collection, question_result_collection, interview_collection
+from utils.constant import FINAL_INTERVIEW_EVAL_QUEUE, REPORT_GENERATION_PDF_QUEUE
+from config.db import task_collection
+from ai_modules.final_eval import final_interview_pipeline
 from bson import ObjectId
 from dotenv import load_dotenv
-from ai_modules.llm_eval import llm_eval_pipeline
-from datetime import datetime
-from pymongo import ReturnDocument
 
 
 load_dotenv()
@@ -19,20 +17,20 @@ RABBITMQ_URL = os.getenv("RABBITMQ_URL")
 params = pika.URLParameters(RABBITMQ_URL)
 connection = pika.BlockingConnection(params)
 channel = connection.channel()
-channel.queue_declare(queue=LLM_EVALUATION_QUEUE, durable=True)
 channel.queue_declare(queue=FINAL_INTERVIEW_EVAL_QUEUE, durable=True)
+channel.queue_declare(queue=REPORT_GENERATION_PDF_QUEUE, durable=True)
 channel.confirm_delivery()
 
 
-def create_and_push_final_interview_evaluation_task_to_queue(interview_id: str, candidate_id: str) -> ObjectId:
+def create_and_push_report_generation_pdf_task_to_queue(report_id: str, candidate_id: str) -> ObjectId:
     """Create a new audio analysis task document and push it to the audio analysis queue."""
     try:
         doc = {
             "userId": candidate_id,
-            "type": "final_interview_evaluation",
+            "type": "report_generation_pdf",
             "status": "pending",
             "payload": {
-                "interview_id": interview_id,
+                "interview_id": report_id,
             },
         }
         result = task_collection.insert_one(doc)
@@ -43,7 +41,7 @@ def create_and_push_final_interview_evaluation_task_to_queue(interview_id: str, 
         body = str(result.inserted_id).encode()
         delivered = channel.basic_publish(
             exchange='',
-            routing_key=FINAL_INTERVIEW_EVAL_QUEUE,
+            routing_key=REPORT_GENERATION_PDF_QUEUE,
             body=body,
             properties=pika.BasicProperties(
                 delivery_mode=pika.DeliveryMode.Persistent,
@@ -52,7 +50,7 @@ def create_and_push_final_interview_evaluation_task_to_queue(interview_id: str, 
         )
         
         print("Delivered", delivered)
-        print(f"📤 Enqueued final interview evaluation task {result.inserted_id} for question result {interview_id}")
+        print(f"📤 Enqueued report generation pdf evaluation task {result.inserted_id} for question result {report_id}")
         return True
     except pika.exceptions.AMQPChannelError as e:
         print(f"Error: {e}")
@@ -81,37 +79,19 @@ def callback(ch, method, properties, body):
         candidate_id=task['userId'];
         print(f"⏳ Task {task_id} status updated to processing")
         
-        # fetching the question result id for fetching the question result document
-        question_result_id = task["payload"]["questionResultId"]
+        interview_id = task["payload"]["interview_id"]
         
-        # speech to text  processing logic goes here
-        result = llm_eval_pipeline(question_result_id)
+        result = final_interview_pipeline(interview_id=interview_id)
+        
         if not result:
-            print("Acknowledge the task because question does not exist")
-            # ch.basic_ack(delivery_tag=method.delivery_tag)
+            print("Acknowledge the task because interview does not exist")
+            # ch.basic_nack(delivery_tag=method.delivery_tag)
         
-        print(f"✅ Task {task_id} speech to text processing completed successfully")
+        report_id = result
         
-        #TODO: increment the completed question field in the interview document and check if completeQuestion === totalQuestions then enqueue it in the final worker
+        res = create_and_push_report_generation_pdf_task_to_queue(report_id=report_id, candidate_id=candidate_id)
         
-        question_result = question_result_collection.find_one({"_id": ObjectId(question_result_id)})
-
-        final_doc = interview_collection.find_one_and_update(
-            {
-                "_id": question_result['interviewId'],
-            },
-            {
-                "$inc": {"completedQuestions": 1}
-            },
-            return_document=ReturnDocument.AFTER
-        )
-        
-        print("FINAL DOCUMENT FOUND", final_doc)
-        
-        if (final_doc['completedQuestions'] == final_doc['totalQuestions']):
-            # All questions processing done now enqueue the interviewId in the final worker
-            create_and_push_final_interview_evaluation_task_to_queue(str(final_doc['_id']), candidate_id)
-            pass
+        print(f"✅ Task {task_id} final interview evaluation processing completed successfully")
         
         # --- Mark Task as Completed ---
         task_collection.update_one(
@@ -136,12 +116,12 @@ def callback(ch, method, properties, body):
 # --- Start Consuming Messages ---
 channel.basic_qos(prefetch_count=1)  # Fair dispatch
 channel.basic_consume(
-    queue=LLM_EVALUATION_QUEUE,
+    queue=FINAL_INTERVIEW_EVAL_QUEUE,
     on_message_callback=callback,
     auto_ack=False  # Manual ack ensures reliability
 )
 
-print("🚀 Worker started and waiting for llm evaluation jobs...")
+print("🚀 Worker started and waiting for final interview evaluation jobs...")
 try:
     channel.start_consuming()
 except KeyboardInterrupt:

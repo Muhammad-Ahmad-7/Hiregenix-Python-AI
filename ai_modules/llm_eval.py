@@ -131,24 +131,6 @@ def llm_eval_pipeline(question_result_id: str):
             }},
         )
         print(f"✅ Question Result {question_result_id} updated with llm analysis")
-        
-        #TODO: increment the completed question field in the interview document and check if completeQuestion === totalQuestions then enqueue it in the final worker
-
-        final_doc = interview_collection.find_one_and_update(
-            {
-                "_id": question_result['interviewId'],
-            },
-            {
-                "$inc": {"completedQuestions": 1}
-            },
-            return_document=ReturnDocument.AFTER
-        )
-        
-        print("FINAL DOCUMENT FOUND", final_doc)
-        
-        if (final_doc['completedQuestions'] == final_doc['totalQuestions']):
-            # All questions processing done now enqueue the interviewId in the final worker
-            pass
         return True
 
     except Exception as e:
