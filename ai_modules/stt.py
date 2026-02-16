@@ -22,6 +22,11 @@ def speech_to_text_pipeline(question_result_id: str) -> bool:
             print("❌ Question Result not found in DB")
             return False
         print("✅ Question Result found in DB")
+        
+        if question_result["stages"]["sttDone"] and question_result['stages']['audioExtracted']:
+            print(f"✅ Question Result {question_result_id} already processed")
+            return False
+        
         # Extract audio from the video and update the question result document
         video_url = question_result['videoUrl']
         

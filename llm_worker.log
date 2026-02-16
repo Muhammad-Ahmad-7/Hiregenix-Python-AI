@@ -1,0 +1,1263 @@
+2026-02-16 17:07:26,455 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 17:07:26,524 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1280, family=2, type=1, proto=6, laddr=('192.168.100.7', 52871), raddr=('15.206.140.228', 5671)>
+2026-02-16 17:07:26,597 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1280, family=2, type=1, proto=0, laddr=('192.168.100.7', 52871), raddr=('15.206.140.228', 5671)>
+2026-02-16 17:07:26,599 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001BB8BA18EC0>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001BB8BA18EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 17:07:26,801 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001BB8BA18EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 17:07:26,803 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001BB8BA18EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 17:07:26,804 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001BB8BA18EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 17:07:26,806 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 17:07:28,788 | INFO | workers.llm_eval_worker | Worker started and waiting for llm evaluation jobs...
+2026-02-16 17:34:36,853 | INFO | workers.llm_eval_worker | Worker stopped manually
+2026-02-16 17:41:56,621 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 17:41:56,688 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1192, family=2, type=1, proto=6, laddr=('192.168.100.7', 54244), raddr=('15.206.140.228', 5671)>
+2026-02-16 17:41:56,761 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1192, family=2, type=1, proto=0, laddr=('192.168.100.7', 54244), raddr=('15.206.140.228', 5671)>
+2026-02-16 17:41:56,764 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000190C873D010>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000190C873D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 17:41:56,975 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000190C873D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 17:41:56,976 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000190C873D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 17:41:56,978 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000190C873D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 17:41:56,979 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 17:41:59,221 | INFO | workers.llm_eval_worker | Worker started and waiting for llm evaluation jobs...
+2026-02-16 17:41:59,222 | INFO | workers.llm_eval_worker | Task received | task_id=6993106b42701780c5f4e4b9
+2026-02-16 17:42:14,804 | INFO | workers.llm_eval_worker | Task 6993106b42701780c5f4e4b9 llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 17:42:15,270 | INFO | workers.llm_eval_worker | Skipping final interview enqueue - conditions not met
+2026-02-16 17:42:15,391 | INFO | workers.llm_eval_worker | Task completed | task_id=6993106b42701780c5f4e4b9
+2026-02-16 17:43:42,047 | INFO | workers.llm_eval_worker | Worker stopped manually
+2026-02-16 17:43:42,117 | INFO | pika.adapters.blocking_connection | Closing connection (200): Normal shutdown
+2026-02-16 17:43:42,118 | INFO | pika.channel | Closing channel (200): 'Normal shutdown' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000190C873D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 18:14:20,368 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 18:14:20,435 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1248, family=2, type=1, proto=6, laddr=('192.168.100.7', 51667), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:14:20,511 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1248, family=2, type=1, proto=0, laddr=('192.168.100.7', 51667), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:14:20,514 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001FBCE51CEC0>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001FBCE51CEC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 18:14:20,722 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001FBCE51CEC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:14:20,723 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001FBCE51CEC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:14:20,725 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001FBCE51CEC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:14:20,726 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 18:14:22,749 | INFO | workers.llm_eval_worker | Worker started and waiting for llm evaluation jobs...
+2026-02-16 18:14:22,750 | INFO | workers.llm_eval_worker | Task received | task_id=699317d4daf54b812b403217
+2026-02-16 18:14:39,440 | INFO | workers.llm_eval_worker | Task 699317d4daf54b812b403217 llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 18:14:39,958 | INFO | workers.llm_eval_worker | Task created successfully with ID: 6993183f4f03f3eb903952fc
+2026-02-16 18:14:40,064 | INFO | workers.llm_eval_worker | Enqueued final interview evaluation task 6993183f4f03f3eb903952fc for interview id 6992d267993565eae9549644
+2026-02-16 18:14:40,186 | INFO | workers.llm_eval_worker | Task completed | task_id=699317d4daf54b812b403217
+2026-02-16 18:15:05,211 | INFO | workers.llm_eval_worker | Worker stopped manually
+2026-02-16 18:15:35,279 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 18:15:35,392 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1156, family=2, type=1, proto=6, laddr=('192.168.100.7', 51669), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:15:35,537 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1156, family=2, type=1, proto=0, laddr=('192.168.100.7', 51669), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:15:35,540 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000017A9E030EC0>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000017A9E030EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 18:15:35,850 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000017A9E030EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:15:35,851 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000017A9E030EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:15:35,852 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000017A9E030EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:15:35,854 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 18:15:39,188 | INFO | workers.llm_eval_worker | Worker started and waiting for llm evaluation jobs...
+2026-02-16 18:15:39,190 | INFO | workers.llm_eval_worker | Task received | task_id=699317d4daf54b812b403217
+2026-02-16 18:15:39,191 | ERROR | workers.llm_eval_worker | Task crashed | task_id=699317d4daf54b812b403217
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\llm_eval_worker.py", line 74, in callback
+    raise Exception("Test")
+Exception: Test
+2026-02-16 18:15:40,276 | INFO | workers.llm_eval_worker | Moving to Waiting Room (10s delay) | retry=1
+2026-02-16 18:15:50,344 | INFO | workers.llm_eval_worker | Task received | task_id=699317d4daf54b812b403217
+2026-02-16 18:15:50,345 | ERROR | workers.llm_eval_worker | Task crashed | task_id=699317d4daf54b812b403217
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\llm_eval_worker.py", line 74, in callback
+    raise Exception("Test")
+Exception: Test
+2026-02-16 18:15:50,464 | INFO | workers.llm_eval_worker | Moving to Waiting Room (10s delay) | retry=2
+2026-02-16 18:16:00,552 | INFO | workers.llm_eval_worker | Task received | task_id=699317d4daf54b812b403217
+2026-02-16 18:16:00,553 | ERROR | workers.llm_eval_worker | Task crashed | task_id=699317d4daf54b812b403217
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\llm_eval_worker.py", line 74, in callback
+    raise Exception("Test")
+Exception: Test
+2026-02-16 18:16:00,693 | ERROR | workers.llm_eval_worker | Max retries exceeded. Moving to DLQ | task_id=699317d4daf54b812b403217
+2026-02-16 18:16:50,880 | INFO | workers.llm_eval_worker | Worker stopped manually
+2026-02-16 18:16:50,954 | INFO | pika.adapters.blocking_connection | Closing connection (200): Normal shutdown
+2026-02-16 18:16:50,955 | INFO | pika.channel | Closing channel (200): 'Normal shutdown' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000017A9E030EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 18:20:27,830 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 18:20:27,898 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1128, family=2, type=1, proto=6, laddr=('192.168.100.7', 61507), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:20:27,969 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1128, family=2, type=1, proto=0, laddr=('192.168.100.7', 61507), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:20:27,969 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000210F5200EC0>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000210F5200EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 18:20:28,191 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000210F5200EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:20:28,191 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000210F5200EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:20:28,192 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000210F5200EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:20:28,192 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 18:20:31,148 | INFO | workers.llm_eval_worker | Worker started and waiting for llm evaluation jobs...
+2026-02-16 18:28:49,407 | INFO | workers.llm_eval_worker | Task received | task_id=69931b913f5cf2794ca30476
+2026-02-16 18:29:04,159 | INFO | workers.llm_eval_worker | Task 69931b913f5cf2794ca30476 llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 18:29:05,368 | INFO | workers.llm_eval_worker | Skipping final interview enqueue - conditions not met
+2026-02-16 18:29:05,495 | INFO | workers.llm_eval_worker | Task completed | task_id=69931b913f5cf2794ca30476
+2026-02-16 18:30:06,034 | INFO | workers.llm_eval_worker | Task received | task_id=69931bdd3f5cf2794ca30477
+2026-02-16 18:30:21,356 | INFO | workers.llm_eval_worker | Task 69931bdd3f5cf2794ca30477 llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 18:30:21,622 | INFO | workers.llm_eval_worker | Skipping final interview enqueue - conditions not met
+2026-02-16 18:30:21,739 | INFO | workers.llm_eval_worker | Task completed | task_id=69931bdd3f5cf2794ca30477
+2026-02-16 18:31:04,632 | INFO | workers.llm_eval_worker | Task received | task_id=69931c183f5cf2794ca30478
+2026-02-16 18:31:20,447 | INFO | workers.llm_eval_worker | Task 69931c183f5cf2794ca30478 llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 18:31:20,719 | INFO | workers.llm_eval_worker | Skipping final interview enqueue - conditions not met
+2026-02-16 18:31:20,853 | INFO | workers.llm_eval_worker | Task completed | task_id=69931c183f5cf2794ca30478
+2026-02-16 18:33:38,249 | INFO | workers.llm_eval_worker | Task received | task_id=69931cb23f5cf2794ca30479
+2026-02-16 18:33:51,289 | INFO | workers.llm_eval_worker | Task 69931cb23f5cf2794ca30479 llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 18:33:51,684 | INFO | workers.llm_eval_worker | Skipping final interview enqueue - conditions not met
+2026-02-16 18:33:51,818 | INFO | workers.llm_eval_worker | Task completed | task_id=69931cb23f5cf2794ca30479
+2026-02-16 18:34:48,556 | INFO | workers.llm_eval_worker | Task received | task_id=69931cf83f5cf2794ca3047a
+2026-02-16 18:35:03,041 | INFO | workers.llm_eval_worker | Task 69931cf83f5cf2794ca3047a llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 18:35:03,276 | INFO | workers.llm_eval_worker | Skipping final interview enqueue - conditions not met
+2026-02-16 18:35:03,399 | INFO | workers.llm_eval_worker | Task completed | task_id=69931cf83f5cf2794ca3047a
+2026-02-16 18:37:07,584 | INFO | workers.llm_eval_worker | Task received | task_id=69931d833f5cf2794ca3047b
+2026-02-16 18:37:24,809 | INFO | workers.llm_eval_worker | Task 69931d833f5cf2794ca3047b llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 18:37:25,185 | INFO | workers.llm_eval_worker | Skipping final interview enqueue - conditions not met
+2026-02-16 18:37:25,317 | INFO | workers.llm_eval_worker | Task completed | task_id=69931d833f5cf2794ca3047b
+2026-02-16 18:40:03,360 | INFO | workers.llm_eval_worker | Task received | task_id=69931e333f5cf2794ca3047c
+2026-02-16 18:40:21,452 | INFO | workers.llm_eval_worker | Task 69931e333f5cf2794ca3047c llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 18:40:21,800 | INFO | workers.llm_eval_worker | Skipping final interview enqueue - conditions not met
+2026-02-16 18:40:21,928 | INFO | workers.llm_eval_worker | Task completed | task_id=69931e333f5cf2794ca3047c
+2026-02-16 18:41:09,455 | INFO | workers.llm_eval_worker | Task received | task_id=69931e753f5cf2794ca3047d
+2026-02-16 18:41:26,006 | INFO | workers.llm_eval_worker | Task 69931e753f5cf2794ca3047d llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 18:41:26,238 | INFO | workers.llm_eval_worker | Skipping final interview enqueue - conditions not met
+2026-02-16 18:41:26,360 | INFO | workers.llm_eval_worker | Task completed | task_id=69931e753f5cf2794ca3047d
+2026-02-16 18:41:28,307 | INFO | workers.llm_eval_worker | Task received | task_id=69931e883f5cf2794ca3047e
+2026-02-16 18:41:44,723 | INFO | workers.llm_eval_worker | Task 69931e883f5cf2794ca3047e llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 18:41:44,962 | INFO | workers.llm_eval_worker | Skipping final interview enqueue - conditions not met
+2026-02-16 18:41:45,079 | INFO | workers.llm_eval_worker | Task completed | task_id=69931e883f5cf2794ca3047e
+2026-02-16 18:42:15,968 | INFO | workers.llm_eval_worker | Task received | task_id=69931eb73f5cf2794ca3047f
+2026-02-16 18:42:30,398 | INFO | workers.llm_eval_worker | Task 69931eb73f5cf2794ca3047f llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 18:42:30,637 | INFO | workers.llm_eval_worker | Skipping final interview enqueue - conditions not met
+2026-02-16 18:42:30,760 | INFO | workers.llm_eval_worker | Task completed | task_id=69931eb73f5cf2794ca3047f
+2026-02-16 18:42:44,884 | INFO | workers.llm_eval_worker | Task received | task_id=69931ed43f5cf2794ca30480
+2026-02-16 18:43:00,708 | INFO | workers.llm_eval_worker | Task 69931ed43f5cf2794ca30480 llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 18:43:01,132 | INFO | workers.llm_eval_worker | Task created successfully with ID: 69931ee4acc3b1a88b6ab173
+2026-02-16 18:43:01,198 | INFO | workers.llm_eval_worker | Enqueued final interview evaluation task 69931ee4acc3b1a88b6ab173 for interview id 6992d267993565eae9549644
+2026-02-16 18:43:01,378 | INFO | workers.llm_eval_worker | Task completed | task_id=69931ed43f5cf2794ca30480
+2026-02-16 18:44:22,257 | INFO | workers.llm_eval_worker | Task received | task_id=69931f363f5cf2794ca30481
+2026-02-16 18:44:38,745 | INFO | workers.llm_eval_worker | Task 69931f363f5cf2794ca30481 llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 18:44:39,099 | INFO | workers.llm_eval_worker | Skipping final interview enqueue - conditions not met
+2026-02-16 18:44:39,218 | INFO | workers.llm_eval_worker | Task completed | task_id=69931f363f5cf2794ca30481
+2026-02-16 18:53:40,321 | INFO | workers.llm_eval_worker | Task received | task_id=699321643f5cf2794ca30482
+2026-02-16 18:53:55,456 | INFO | workers.llm_eval_worker | Task 699321643f5cf2794ca30482 llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 18:53:55,694 | INFO | workers.llm_eval_worker | Skipping final interview enqueue - conditions not met
+2026-02-16 18:53:55,816 | INFO | workers.llm_eval_worker | Task completed | task_id=699321643f5cf2794ca30482
+2026-02-16 18:54:30,783 | INFO | workers.llm_eval_worker | Task received | task_id=699321963f5cf2794ca30483
+2026-02-16 18:54:45,001 | INFO | workers.llm_eval_worker | Task 699321963f5cf2794ca30483 llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 18:54:45,248 | INFO | workers.llm_eval_worker | Skipping final interview enqueue - conditions not met
+2026-02-16 18:54:45,456 | INFO | workers.llm_eval_worker | Task completed | task_id=699321963f5cf2794ca30483
+2026-02-16 18:56:24,654 | INFO | workers.llm_eval_worker | Task received | task_id=699322083f5cf2794ca30484
+2026-02-16 18:56:36,485 | INFO | workers.llm_eval_worker | Acknowledge the task because question does not exist
+2026-02-16 18:56:36,485 | INFO | workers.llm_eval_worker | Task 699322083f5cf2794ca30484 llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 18:56:36,720 | INFO | workers.llm_eval_worker | Skipping final interview enqueue - conditions not met
+2026-02-16 18:56:36,840 | INFO | workers.llm_eval_worker | Task completed | task_id=699322083f5cf2794ca30484
+2026-02-16 18:56:36,907 | WARNING | pika.channel | Received remote Channel.Close (406): 'PRECONDITION_FAILED - unknown delivery tag 15' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000210F5200EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 18:58:17,049 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 18:58:17,121 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1308, family=2, type=1, proto=6, laddr=('192.168.100.7', 51824), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:58:17,195 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1308, family=2, type=1, proto=0, laddr=('192.168.100.7', 51824), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:58:17,196 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000248BFE99010>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000248BFE99010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 18:58:17,415 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000248BFE99010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:58:17,416 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000248BFE99010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:58:17,417 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000248BFE99010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:58:17,418 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 18:58:19,495 | INFO | workers.llm_eval_worker | Worker started and waiting for llm evaluation jobs...
+2026-02-16 18:58:38,582 | INFO | workers.llm_eval_worker | Task received | task_id=6993228e3f5cf2794ca30485
+2026-02-16 18:58:51,655 | INFO | workers.llm_eval_worker | Acknowledge the task because question does not exist
+2026-02-16 18:58:51,656 | INFO | workers.llm_eval_worker | Task 6993228e3f5cf2794ca30485 llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 18:58:51,915 | INFO | workers.llm_eval_worker | Skipping final interview enqueue - conditions not met
+2026-02-16 18:58:52,039 | INFO | workers.llm_eval_worker | Task completed | task_id=6993228e3f5cf2794ca30485
+2026-02-16 18:58:52,110 | WARNING | pika.channel | Received remote Channel.Close (406): 'PRECONDITION_FAILED - unknown delivery tag 1' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000248BFE99010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 19:00:20,221 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 19:00:20,290 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1268, family=2, type=1, proto=6, laddr=('192.168.100.7', 52039), raddr=('15.206.140.228', 5671)>
+2026-02-16 19:00:20,364 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1268, family=2, type=1, proto=0, laddr=('192.168.100.7', 52039), raddr=('15.206.140.228', 5671)>
+2026-02-16 19:00:20,365 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000196D033D010>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000196D033D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 19:00:20,575 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000196D033D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 19:00:20,577 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000196D033D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 19:00:20,578 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000196D033D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 19:00:20,579 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 19:00:24,182 | INFO | workers.llm_eval_worker | Worker started and waiting for llm evaluation jobs...
+2026-02-16 19:00:24,183 | INFO | workers.llm_eval_worker | Task received | task_id=699322bd3f5cf2794ca30486
+2026-02-16 19:00:26,933 | WARNING | langchain_google_genai.chat_models | Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 2.0 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 37.410001925s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 37
+}
+].
+2026-02-16 19:00:29,176 | WARNING | langchain_google_genai.chat_models | Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 4.0 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 35.159477575s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 35
+}
+].
+2026-02-16 19:00:33,426 | WARNING | langchain_google_genai.chat_models | Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 8.0 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 30.915572194s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 30
+}
+].
+2026-02-16 19:00:41,668 | WARNING | langchain_google_genai.chat_models | Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 16.0 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 22.663365032s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 22
+}
+].
+2026-02-16 19:00:57,908 | WARNING | langchain_google_genai.chat_models | Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 32.0 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 6.418854975s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 6
+}
+].
+2026-02-16 19:01:30,168 | INFO | workers.llm_eval_worker | Acknowledge the task because question does not exist
+2026-02-16 19:01:30,169 | INFO | workers.llm_eval_worker | Task 699322bd3f5cf2794ca30486 llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 19:01:30,408 | INFO | workers.llm_eval_worker | Skipping final interview enqueue - conditions not met
+2026-02-16 19:01:30,526 | INFO | workers.llm_eval_worker | Task completed | task_id=699322bd3f5cf2794ca30486
+2026-02-16 19:01:30,527 | INFO | workers.llm_eval_worker | Task received | task_id=6993232d3f5cf2794ca30487
+2026-02-16 19:01:31,048 | WARNING | langchain_google_genai.chat_models | Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 2.0 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 33.287257068s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 33
+}
+].
+2026-02-16 19:01:33,292 | WARNING | langchain_google_genai.chat_models | Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 4.0 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 31.040356541s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 31
+}
+].
+2026-02-16 19:01:37,548 | WARNING | langchain_google_genai.chat_models | Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 8.0 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 26.788809272s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 26
+}
+].
+2026-02-16 19:01:45,793 | WARNING | langchain_google_genai.chat_models | Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 16.0 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 18.543390182s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 18
+}
+].
+2026-02-16 19:02:02,035 | WARNING | langchain_google_genai.chat_models | Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 32.0 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 2.294386479s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 2
+}
+].
+2026-02-16 19:02:34,278 | INFO | workers.llm_eval_worker | Acknowledge the task because question does not exist
+2026-02-16 19:02:34,279 | WARNING | pika.channel | Received remote Channel.Close (406): 'PRECONDITION_FAILED - unknown delivery tag 1' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000196D033D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 19:02:34,282 | ERROR | workers.llm_eval_worker | Task crashed | task_id=6993232d3f5cf2794ca30487
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\llm_eval_worker.py", line 100, in callback
+    ch.basic_ack(delivery_tag=method.delivery_tag)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\blocking_connection.py", line 2130, in basic_ack
+    self._flush_output()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\blocking_connection.py", line 1357, in _flush_output
+    raise self._closing_reason  # pylint: disable=E0702
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+pika.exceptions.ChannelClosedByBroker: (406, 'PRECONDITION_FAILED - unknown delivery tag 1')
+2026-02-16 19:02:34,408 | INFO | workers.llm_eval_worker | Moving to Waiting Room (10s delay) | retry=1
+2026-02-16 19:02:34,409 | ERROR | workers.llm_eval_worker | Failed to move to delay queue: Channel is closed.
+2026-02-16 19:09:51,258 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 19:09:51,325 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1308, family=2, type=1, proto=6, laddr=('192.168.100.7', 56740), raddr=('15.206.140.228', 5671)>
+2026-02-16 19:09:51,406 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1308, family=2, type=1, proto=0, laddr=('192.168.100.7', 56740), raddr=('15.206.140.228', 5671)>
+2026-02-16 19:09:51,408 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002097AD0D010>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002097AD0D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 19:09:51,615 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002097AD0D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 19:09:51,617 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002097AD0D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 19:09:51,618 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002097AD0D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 19:09:51,619 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 19:09:54,271 | INFO | workers.llm_eval_worker | Worker started and waiting for llm evaluation jobs...
+2026-02-16 19:09:54,271 | INFO | workers.llm_eval_worker | Task received | task_id=6993232d3f5cf2794ca30487
+2026-02-16 19:09:55,191 | WARNING | workers.llm_eval_worker | Task skip: Current status is failed
+2026-02-16 19:13:31,666 | INFO | workers.llm_eval_worker | Worker stopped manually
+2026-02-16 19:13:31,741 | INFO | pika.adapters.blocking_connection | Closing connection (200): Normal shutdown
+2026-02-16 19:13:31,742 | INFO | pika.channel | Closing channel (200): 'Normal shutdown' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002097AD0D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 19:15:05,177 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 19:15:05,263 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1328, family=2, type=1, proto=6, laddr=('192.168.100.7', 54659), raddr=('15.206.140.228', 5671)>
+2026-02-16 19:15:05,353 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1328, family=2, type=1, proto=0, laddr=('192.168.100.7', 54659), raddr=('15.206.140.228', 5671)>
+2026-02-16 19:15:05,355 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000027B7682D010>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000027B7682D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 19:15:05,603 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000027B7682D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 19:15:05,604 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000027B7682D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 19:15:05,605 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000027B7682D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 19:15:05,606 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 19:15:08,179 | INFO | workers.llm_eval_worker | Worker started and waiting for llm evaluation jobs...
+2026-02-16 19:15:37,677 | INFO | workers.llm_eval_worker | Task received | task_id=699326893f5cf2794ca30488
+2026-02-16 19:15:39,639 | WARNING | langchain_google_genai.chat_models | Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 2.0 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 24.69046008s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 24
+}
+].
+2026-02-16 19:15:41,905 | WARNING | langchain_google_genai.chat_models | Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 4.0 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 22.433716535s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 22
+}
+].
+2026-02-16 19:15:46,156 | WARNING | langchain_google_genai.chat_models | Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 8.0 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 18.171171048s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 18
+}
+].
+2026-02-16 19:15:54,473 | WARNING | langchain_google_genai.chat_models | Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 16.0 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 9.908975066s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 9
+}
+].
+2026-02-16 19:16:21,082 | INFO | workers.llm_eval_worker | Worker stopped manually
+2026-02-16 19:16:21,152 | INFO | pika.adapters.blocking_connection | Closing connection (200): Normal shutdown
+2026-02-16 19:16:21,153 | INFO | pika.channel | Closing channel (200): 'Normal shutdown' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000027B7682D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 19:16:21,221 | INFO | pika.channel | Received <Channel.CloseOk> on <Channel number=1 CLOSING conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000027B7682D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 19:16:21,622 | ERROR | pika.adapters.utils.io_services_utils | Wrapped func exited with exception. Caller's stack:
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\llm_eval_worker.py", line 176, in <module>
+    channel.start_consuming()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\blocking_connection.py", line 1883, in start_consuming
+    self._process_data_events(time_limit=None)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\blocking_connection.py", line 2044, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\blocking_connection.py", line 851, in process_data_events
+    self._dispatch_channel_events()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\blocking_connection.py", line 567, in _dispatch_channel_events
+    impl_channel._get_cookie()._dispatch_events()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\blocking_connection.py", line 1510, in _dispatch_events
+    consumer_info.on_message_callback(self, evt.method,
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                                      evt.properties, evt.body)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\llm_eval_worker.py", line 97, in callback
+    result = llm_eval_pipeline(question_result_id)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\ai_modules\llm_eval.py", line 119, in llm_eval_pipeline
+    result = model.invoke(prompt)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 1676, in invoke
+    return super().invoke(input, config, stop=stop, **kwargs)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 395, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1023, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 840, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1089, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 1790, in _generate
+    response: GenerateContentResponse = _chat_with_retry(
+                                        ~~~~~~~~~~~~~~~~^
+        request=request,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        metadata=self.default_metadata,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 238, in _chat_with_retry
+    return _chat_with_retry(**params)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\tenacity\__init__.py", line 338, in wrapped_f
+    return copy(f, *args, **kw)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\tenacity\__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\tenacity\__init__.py", line 378, in iter
+    result = action(retry_state)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\tenacity\__init__.py", line 400, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\tenacity\__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 208, in _chat_with_retry
+    return generation_method(**kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 869, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\google\api_core\grpc_helpers.py", line 76, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\grpc\_interceptor.py", line 277, in __call__
+    response, ignored_call = self._with_call(
+                             ~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<4 lines>...
+        compression=compression,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\grpc\_interceptor.py", line 329, in _with_call
+    call = self._interceptor.intercept_unary_unary(
+        continuation, client_call_details, request
+    )
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\transports\grpc.py", line 78, in intercept_unary_unary
+    response = continuation(client_call_details, request)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\grpc\_interceptor.py", line 315, in continuation
+    response, call = self._thunk(new_method).with_call(
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<4 lines>...
+        compression=new_compression,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\grpc\_channel.py", line 1192, in with_call
+    state, call = self._blocking(
+                  ~~~~~~~~~~~~~~^
+        request, timeout, metadata, credentials, wait_for_ready, compression
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\grpc\_channel.py", line 1165, in _blocking
+    event = call.next_event()
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 388, in grpc._cython.cygrpc.SegregatedCall.next_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 211, in grpc._cython.cygrpc._next_call_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 205, in grpc._cython.cygrpc._next_call_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/completion_queue.pyx.pxi", line 97, in grpc._cython.cygrpc._latent_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/completion_queue.pyx.pxi", line 80, in grpc._cython.cygrpc._internal_latent_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/completion_queue.pyx.pxi", line 61, in grpc._cython.cygrpc._next
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\callback.py", line 233, in process
+    callback(*args, **keywords)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\channel.py", line 1135, in _on_closeok
+    self._transition_to_closed()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\channel.py", line 1071, in _transition_to_closed
+    self._cleanup()
+    ~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\channel.py", line 977, in _cleanup
+    self.callbacks.process(self.channel_number,
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+                           self._ON_CHANNEL_CLEANUP_CB_KEY, self, self)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\callback.py", line 60, in wrapper
+    return function(*tuple(args), **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\callback.py", line 92, in wrapper
+    return function(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\callback.py", line 227, in process
+    self._use_one_shot_callback(prefix, key, callback_dict)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\callback.py", line 392, in _use_one_shot_callback
+    def _use_one_shot_callback(self, prefix, key, callback_dict):
+    
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\diagnostic_utils.py", line 53, in log_exception_func_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 1235, in _consume
+    super(_AsyncSSLTransport, self)._consume()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 801, in _consume
+    self._protocol.data_received(data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\base_connection.py", line 465, in _proto_data_received
+    self._on_data_available(data)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\connection.py", line 1973, in _on_data_available
+    self._process_frame(frame_value)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\connection.py", line 2126, in _process_frame
+    if self._process_callbacks(frame_value):
+       ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\connection.py", line 2103, in _process_callbacks
+    self.callbacks.process(
+    ~~~~~~~~~~~~~~~~~~~~~~^
+        frame_value.channel_number,  # Prefix
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        frame_value.method,  # Key
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self,  # Caller
+        ^^^^^^^^^^^^^^^
+        frame_value)  # Args
+        ^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\callback.py", line 60, in wrapper
+    return function(*tuple(args), **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\callback.py", line 92, in wrapper
+    return function(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\callback.py", line 235, in process
+    LOGGER.exception('Calling %s for "%s:%s" failed', callback,
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     prefix, key)
+                     ^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1554, in exception
+    self.error(msg, *args, exc_info=exc_info, **kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1548, in error
+    self._log(ERROR, msg, args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1664, in _log
+    self.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1680, in handle
+    self.callHandlers(record)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1736, in callHandlers
+    hdlr.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1026, in handle
+    self.emit(record)
+    ~~~~~~~~~^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1150, in emit
+    msg = self.format(record)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 998, in format
+    return fmt.format(record)
+           ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 719, in format
+    record.exc_text = self.formatException(record.exc_info)
+                      ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 669, in formatException
+    traceback.print_exception(ei[0], ei[1], tb, limit=None, file=sio)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 129, in print_exception
+    te = TracebackException(type(value), value, tb, limit=limit, compact=True)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 1134, in __init__
+    context = TracebackException(
+        type(e.__context__),
+    ...<6 lines>...
+        max_group_depth=max_group_depth,
+        _seen=_seen)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 1044, in __init__
+    self.stack = StackSummary._extract_from_extended_frame_gen(
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        _walk_tb_with_full_positions(exc_traceback),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        limit=limit, lookup_lines=lookup_lines,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        capture_locals=capture_locals)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 492, in _extract_from_extended_frame_gen
+    f.line
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 369, in line
+    self._set_lines()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 350, in _set_lines
+    lines.append(linecache.getline(self.filename, lineno).rstrip())
+                 ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\linecache.py", line 25, in getline
+    lines = getlines(filename, module_globals)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\linecache.py", line 41, in getlines
+    return updatecache(filename, module_globals)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\linecache.py", line 145, in updatecache
+    with tokenize.open(fullname) as fp:
+         ~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\tokenize.py", line 447, in open
+    buffer = _builtin_open(filename, 'rb')
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\diagnostic_utils.py", line 53, in log_exception_func_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 1189, in _on_socket_readable
+    self._ssl_readable_action()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\diagnostic_utils.py", line 57, in log_exception_func_wrap
+    ''.join(traceback.format_exception(*sys.exc_info())))
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 154, in format_exception
+    te = TracebackException(type(value), value, tb, limit=limit, compact=True)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 1134, in __init__
+    context = TracebackException(
+        type(e.__context__),
+    ...<6 lines>...
+        max_group_depth=max_group_depth,
+        _seen=_seen)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 1044, in __init__
+    self.stack = StackSummary._extract_from_extended_frame_gen(
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        _walk_tb_with_full_positions(exc_traceback),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        limit=limit, lookup_lines=lookup_lines,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        capture_locals=capture_locals)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 492, in _extract_from_extended_frame_gen
+    f.line
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 369, in line
+    self._set_lines()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 350, in _set_lines
+    lines.append(linecache.getline(self.filename, lineno).rstrip())
+                 ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\linecache.py", line 25, in getline
+    lines = getlines(filename, module_globals)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\linecache.py", line 41, in getlines
+    return updatecache(filename, module_globals)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\linecache.py", line 145, in updatecache
+    with tokenize.open(fullname) as fp:
+         ~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\tokenize.py", line 447, in open
+    buffer = _builtin_open(filename, 'rb')
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\llm_eval_worker.py", line 176, in <module>
+    channel.start_consuming()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\blocking_connection.py", line 1883, in start_consuming
+    self._process_data_events(time_limit=None)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\blocking_connection.py", line 2044, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\blocking_connection.py", line 851, in process_data_events
+    self._dispatch_channel_events()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\blocking_connection.py", line 567, in _dispatch_channel_events
+    impl_channel._get_cookie()._dispatch_events()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\blocking_connection.py", line 1510, in _dispatch_events
+    consumer_info.on_message_callback(self, evt.method,
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                                      evt.properties, evt.body)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\llm_eval_worker.py", line 97, in callback
+    result = llm_eval_pipeline(question_result_id)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\ai_modules\llm_eval.py", line 119, in llm_eval_pipeline
+    result = model.invoke(prompt)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 1676, in invoke
+    return super().invoke(input, config, stop=stop, **kwargs)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 395, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1023, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 840, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1089, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 1790, in _generate
+    response: GenerateContentResponse = _chat_with_retry(
+                                        ~~~~~~~~~~~~~~~~^
+        request=request,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        metadata=self.default_metadata,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 238, in _chat_with_retry
+    return _chat_with_retry(**params)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\tenacity\__init__.py", line 338, in wrapped_f
+    return copy(f, *args, **kw)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\tenacity\__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\tenacity\__init__.py", line 378, in iter
+    result = action(retry_state)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\tenacity\__init__.py", line 400, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\tenacity\__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 208, in _chat_with_retry
+    return generation_method(**kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 869, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\google\api_core\grpc_helpers.py", line 76, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\grpc\_interceptor.py", line 277, in __call__
+    response, ignored_call = self._with_call(
+                             ~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<4 lines>...
+        compression=compression,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\grpc\_interceptor.py", line 329, in _with_call
+    call = self._interceptor.intercept_unary_unary(
+        continuation, client_call_details, request
+    )
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\transports\grpc.py", line 78, in intercept_unary_unary
+    response = continuation(client_call_details, request)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\grpc\_interceptor.py", line 315, in continuation
+    response, call = self._thunk(new_method).with_call(
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<4 lines>...
+        compression=new_compression,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\grpc\_channel.py", line 1192, in with_call
+    state, call = self._blocking(
+                  ~~~~~~~~~~~~~~^
+        request, timeout, metadata, credentials, wait_for_ready, compression
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\grpc\_channel.py", line 1165, in _blocking
+    event = call.next_event()
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 388, in grpc._cython.cygrpc.SegregatedCall.next_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 211, in grpc._cython.cygrpc._next_call_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 205, in grpc._cython.cygrpc._next_call_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/completion_queue.pyx.pxi", line 97, in grpc._cython.cygrpc._latent_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/completion_queue.pyx.pxi", line 80, in grpc._cython.cygrpc._internal_latent_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/completion_queue.pyx.pxi", line 61, in grpc._cython.cygrpc._next
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\callback.py", line 233, in process
+    callback(*args, **keywords)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\channel.py", line 1135, in _on_closeok
+    self._transition_to_closed()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\channel.py", line 1071, in _transition_to_closed
+    self._cleanup()
+    ~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\channel.py", line 977, in _cleanup
+    self.callbacks.process(self.channel_number,
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+                           self._ON_CHANNEL_CLEANUP_CB_KEY, self, self)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\callback.py", line 60, in wrapper
+    return function(*tuple(args), **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\callback.py", line 92, in wrapper
+    return function(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\callback.py", line 227, in process
+    self._use_one_shot_callback(prefix, key, callback_dict)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\callback.py", line 392, in _use_one_shot_callback
+    def _use_one_shot_callback(self, prefix, key, callback_dict):
+    
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\diagnostic_utils.py", line 53, in log_exception_func_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 1235, in _consume
+    super(_AsyncSSLTransport, self)._consume()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 801, in _consume
+    self._protocol.data_received(data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\base_connection.py", line 465, in _proto_data_received
+    self._on_data_available(data)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\connection.py", line 1973, in _on_data_available
+    self._process_frame(frame_value)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\connection.py", line 2126, in _process_frame
+    if self._process_callbacks(frame_value):
+       ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\connection.py", line 2103, in _process_callbacks
+    self.callbacks.process(
+    ~~~~~~~~~~~~~~~~~~~~~~^
+        frame_value.channel_number,  # Prefix
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        frame_value.method,  # Key
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self,  # Caller
+        ^^^^^^^^^^^^^^^
+        frame_value)  # Args
+        ^^^^^^^^^^^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\callback.py", line 60, in wrapper
+    return function(*tuple(args), **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\callback.py", line 92, in wrapper
+    return function(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\callback.py", line 235, in process
+    LOGGER.exception('Calling %s for "%s:%s" failed', callback,
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     prefix, key)
+                     ^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1554, in exception
+    self.error(msg, *args, exc_info=exc_info, **kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1548, in error
+    self._log(ERROR, msg, args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1664, in _log
+    self.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1680, in handle
+    self.callHandlers(record)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1736, in callHandlers
+    hdlr.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1026, in handle
+    self.emit(record)
+    ~~~~~~~~~^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1150, in emit
+    msg = self.format(record)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 998, in format
+    return fmt.format(record)
+           ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 719, in format
+    record.exc_text = self.formatException(record.exc_info)
+                      ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 669, in formatException
+    traceback.print_exception(ei[0], ei[1], tb, limit=None, file=sio)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 129, in print_exception
+    te = TracebackException(type(value), value, tb, limit=limit, compact=True)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 1134, in __init__
+    context = TracebackException(
+        type(e.__context__),
+    ...<6 lines>...
+        max_group_depth=max_group_depth,
+        _seen=_seen)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 1044, in __init__
+    self.stack = StackSummary._extract_from_extended_frame_gen(
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        _walk_tb_with_full_positions(exc_traceback),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        limit=limit, lookup_lines=lookup_lines,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        capture_locals=capture_locals)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 492, in _extract_from_extended_frame_gen
+    f.line
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 369, in line
+    self._set_lines()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 350, in _set_lines
+    lines.append(linecache.getline(self.filename, lineno).rstrip())
+                 ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\linecache.py", line 25, in getline
+    lines = getlines(filename, module_globals)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\linecache.py", line 41, in getlines
+    return updatecache(filename, module_globals)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\linecache.py", line 145, in updatecache
+    with tokenize.open(fullname) as fp:
+         ~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\tokenize.py", line 447, in open
+    buffer = _builtin_open(filename, 'rb')
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\diagnostic_utils.py", line 53, in log_exception_func_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 1189, in _on_socket_readable
+    self._ssl_readable_action()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\diagnostic_utils.py", line 57, in log_exception_func_wrap
+    ''.join(traceback.format_exception(*sys.exc_info())))
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 154, in format_exception
+    te = TracebackException(type(value), value, tb, limit=limit, compact=True)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 1134, in __init__
+    context = TracebackException(
+        type(e.__context__),
+    ...<6 lines>...
+        max_group_depth=max_group_depth,
+        _seen=_seen)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 1044, in __init__
+    self.stack = StackSummary._extract_from_extended_frame_gen(
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        _walk_tb_with_full_positions(exc_traceback),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        limit=limit, lookup_lines=lookup_lines,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        capture_locals=capture_locals)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 492, in _extract_from_extended_frame_gen
+    f.line
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 369, in line
+    self._set_lines()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\traceback.py", line 350, in _set_lines
+    lines.append(linecache.getline(self.filename, lineno).rstrip())
+                 ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\linecache.py", line 25, in getline
+    lines = getlines(filename, module_globals)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\linecache.py", line 41, in getlines
+    return updatecache(filename, module_globals)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\linecache.py", line 145, in updatecache
+    with tokenize.open(fullname) as fp:
+         ~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\tokenize.py", line 447, in open
+    buffer = _builtin_open(filename, 'rb')
+KeyboardInterrupt
+2026-02-16 19:19:15,399 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 19:19:15,466 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1240, family=2, type=1, proto=6, laddr=('192.168.100.7', 49955), raddr=('15.206.140.228', 5671)>
+2026-02-16 19:19:15,541 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1240, family=2, type=1, proto=0, laddr=('192.168.100.7', 49955), raddr=('15.206.140.228', 5671)>
+2026-02-16 19:19:15,543 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000205A722D010>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000205A722D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 19:19:15,753 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000205A722D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 19:19:15,755 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000205A722D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 19:19:15,756 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000205A722D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 19:19:15,757 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 19:19:17,793 | INFO | workers.llm_eval_worker | Worker started and waiting for llm evaluation jobs...
+2026-02-16 19:19:17,794 | INFO | workers.llm_eval_worker | Task received | task_id=699326893f5cf2794ca30488
+2026-02-16 19:19:19,243 | WARNING | workers.llm_eval_worker | Task skip: Current status is processing
+2026-02-16 19:19:19,312 | INFO | workers.llm_eval_worker | Task received | task_id=6993269a3f5cf2794ca30489
+2026-02-16 19:19:20,286 | WARNING | langchain_google_genai.chat_models | Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 2.0 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 44.03826554s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 44
+}
+].
+2026-02-16 19:19:22,187 | INFO | workers.llm_eval_worker | Worker stopped manually
+2026-02-16 19:19:22,260 | INFO | pika.adapters.blocking_connection | Closing connection (200): Normal shutdown
+2026-02-16 19:19:22,261 | INFO | pika.channel | Closing channel (200): 'Normal shutdown' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000205A722D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 19:19:22,332 | INFO | pika.channel | Received <Channel.CloseOk> on <Channel number=1 CLOSING conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000205A722D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 19:19:22,333 | INFO | pika.connection | Closing connection (200): 'Normal shutdown'
+2026-02-16 19:19:22,403 | INFO | pika.adapters.utils.io_services_utils | Aborting transport connection: state=1; <ssl.SSLSocket fd=1240, family=2, type=1, proto=0, laddr=('192.168.100.7', 49955), raddr=('15.206.140.228', 5671)>
+2026-02-16 19:19:22,404 | INFO | pika.adapters.utils.io_services_utils | _AsyncTransportBase._initate_abort(): Initiating abrupt asynchronous transport shutdown: state=1; error=None; <ssl.SSLSocket fd=1240, family=2, type=1, proto=0, laddr=('192.168.100.7', 49955), raddr=('15.206.140.228', 5671)>
+2026-02-16 19:19:22,406 | INFO | pika.adapters.utils.io_services_utils | Deactivating transport: state=1; <ssl.SSLSocket fd=1240, family=2, type=1, proto=0, laddr=('192.168.100.7', 49955), raddr=('15.206.140.228', 5671)>
+2026-02-16 19:19:22,408 | INFO | pika.connection | AMQP stack terminated, failed to connect, or aborted: opened=True, error-arg=None; pending-error=ConnectionClosedByClient: (200) 'Normal shutdown'
+2026-02-16 19:19:22,410 | INFO | pika.connection | Stack terminated due to ConnectionClosedByClient: (200) 'Normal shutdown'
+2026-02-16 19:19:22,412 | INFO | pika.adapters.utils.io_services_utils | Closing transport socket and unlinking: state=3; <ssl.SSLSocket fd=1240, family=2, type=1, proto=0, laddr=('192.168.100.7', 49955), raddr=('15.206.140.228', 5671)>
+2026-02-16 19:19:22,413 | INFO | pika.adapters.blocking_connection | User-initiated close: result=BlockingConnection__OnClosedArgs(connection=<SelectConnection CLOSED transport=None params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>, error=ConnectionClosedByClient: (200) 'Normal shutdown')
+2026-02-16 19:22:27,386 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 19:22:27,463 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1292, family=2, type=1, proto=6, laddr=('192.168.100.7', 52218), raddr=('15.206.140.228', 5671)>
+2026-02-16 19:22:27,536 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1292, family=2, type=1, proto=0, laddr=('192.168.100.7', 52218), raddr=('15.206.140.228', 5671)>
+2026-02-16 19:22:27,539 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000012B6A48D010>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000012B6A48D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 19:22:27,772 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000012B6A48D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 19:22:27,773 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000012B6A48D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 19:22:27,774 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000012B6A48D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 19:22:27,776 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 19:22:29,866 | INFO | workers.llm_eval_worker | Worker started and waiting for llm evaluation jobs...
+2026-02-16 19:22:29,867 | INFO | workers.llm_eval_worker | Task received | task_id=6993269a3f5cf2794ca30489
+2026-02-16 19:22:30,894 | WARNING | workers.llm_eval_worker | Task skip: Current status is processing
+2026-02-16 19:22:31,009 | INFO | workers.llm_eval_worker | Task received | task_id=6993274d3f5cf2794ca3048a
+2026-02-16 19:22:35,344 | INFO | workers.llm_eval_worker | Acknowledge the task because question does not exist
+2026-02-16 19:22:35,344 | INFO | workers.llm_eval_worker | Task 6993274d3f5cf2794ca3048a llm evaluation completed successfully now pushing to final interview evaluation queue
+2026-02-16 19:22:35,585 | INFO | workers.llm_eval_worker | Skipping final interview enqueue - conditions not met
+2026-02-16 19:22:35,705 | INFO | workers.llm_eval_worker | Task completed | task_id=6993274d3f5cf2794ca3048a
+2026-02-16 19:22:35,775 | WARNING | pika.channel | Received remote Channel.Close (406): 'PRECONDITION_FAILED - unknown delivery tag 2' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000012B6A48D010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>

@@ -1,3 +1,5 @@
+# QUEUES
+
 RESUME_ANALYSIS_QUEUE = "resume_analysis"
 CANDIDATE_PROFILE_EMBEDDINGS_QUEUE="candidate_profile_embeddings"
 JOB_DESCRIPTION_EMBEDDINGS_QUEUE="job_description_embeddings"
@@ -8,3 +10,24 @@ VIDEO_ANALYSIS_QUEUE = "video_analysis"
 LLM_EVALUATION_QUEUE = "llm_evaluation"
 FINAL_INTERVIEW_EVAL_QUEUE = "final_interview_eval"
 REPORT_GENERATION_PDF_QUEUE="report_generation_pdf"
+
+# Delay Queues
+SPEECH_TO_TEXT_DELAY_QUEUE="stt_delay_queue"
+AUDIO_ANALYSIS_DELAY_QUEUE="audio_analysis_delay_queue"
+VIDEO_ANALYSIS_DELAY_QUEUE="video_analysis_delay_queue"
+LLM_EVALUATION_DELAY_QUEUE="llm_evaluation_delay_queue"
+FINAL_INTERVIEW_EVAL_DELAY_QUEUE="final_interview_eval_delay_queue"
+REPORT_GENERATION_PDF_DELAY_QUEUE="report_generation_pdf_delay_queue"
+
+
+# Dead letter queues
+FAILED_STT_TASK_QUEUE="stt_dead_letter_queue"
+FAILED_AUDIO_ANALYSIS_TASK_QUEUE="audio_analysis_dead_letter_queue"
+FAILED_VIDEO_ANALYSIS_TASK_QUEUE="video_analysis_dead_letter_queue"
+FAILED_LLM_EVALUATION_TASK_QUEUE="llm_evaluation_dead_letter_queue"
+FAILED_FINAL_INTERVIEW_EVAL_TASK_QUEUE="final_interview_eval_dead_letter_queue"
+FAILED_REPORT_GENERATION_PDF_TASK_QUEUE="report_generation_pdf_dead_letter_queue"
+
+
+# Exchange
+DLX_EXCHANGE = "worker_failure_exchange"

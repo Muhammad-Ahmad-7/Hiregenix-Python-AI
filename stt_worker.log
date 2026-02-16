@@ -1,0 +1,582 @@
+2026-02-16 12:16:34,057 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 12:16:34,129 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1340, family=2, type=1, proto=6, laddr=('192.168.100.7', 53879), raddr=('15.206.140.228', 5671)>
+2026-02-16 12:16:34,204 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1340, family=2, type=1, proto=0, laddr=('192.168.100.7', 53879), raddr=('15.206.140.228', 5671)>
+2026-02-16 12:16:34,205 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000146420E3230>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000146420E3230> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 12:16:34,451 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000146420E3230> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 12:16:34,452 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000146420E3230> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 12:16:34,452 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000146420E3230> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 12:16:34,452 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 12:16:35,042 | INFO | workers.stt_worker | Worker started and waiting for speech to text jobs...
+2026-02-16 12:16:35,043 | INFO | workers.stt_worker | Task received | task_id=6983025ccd5ff5820ed1a6d7
+2026-02-16 12:16:36,049 | WARNING | workers.stt_worker | Task skip: Current status is completed
+2026-02-16 12:16:36,123 | INFO | workers.stt_worker | Task received | task_id=69830294cd5ff5820ed1a6f0
+2026-02-16 12:16:36,367 | WARNING | workers.stt_worker | Task skip: Current status is completed
+2026-02-16 12:16:54,082 | INFO | workers.stt_worker | Worker stopped manually
+2026-02-16 12:47:06,005 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 12:47:06,076 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1116, family=2, type=1, proto=6, laddr=('192.168.100.7', 59542), raddr=('15.206.140.228', 5671)>
+2026-02-16 12:47:06,155 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1116, family=2, type=1, proto=0, laddr=('192.168.100.7', 59542), raddr=('15.206.140.228', 5671)>
+2026-02-16 12:47:06,157 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000025EABF73380>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000025EABF73380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 12:47:06,385 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000025EABF73380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 12:47:06,386 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000025EABF73380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 12:47:06,387 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000025EABF73380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 12:47:06,389 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 12:47:07,225 | INFO | workers.stt_worker | Worker started and waiting for speech to text jobs...
+2026-02-16 13:19:30,458 | INFO | workers.stt_worker | Task received | task_id=6992d312993565eae9549675
+2026-02-16 13:19:32,916 | INFO | workers.stt_worker | New Task 6992d312993565eae9549675 audio analysis task created successfully
+2026-02-16 13:19:33,254 | INFO | workers.stt_worker | New Task 6992d312993565eae9549675 video analysis task created successfully
+2026-02-16 13:19:33,376 | INFO | workers.stt_worker | Task completed | task_id=6992d312993565eae9549675
+2026-02-16 13:19:33,446 | WARNING | pika.channel | Received remote Channel.Close (406): 'PRECONDITION_FAILED - unknown delivery tag 1' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000025EABF73380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 13:28:01,375 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 13:28:01,443 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1204, family=2, type=1, proto=6, laddr=('192.168.100.7', 49916), raddr=('15.206.140.228', 5671)>
+2026-02-16 13:28:01,513 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1204, family=2, type=1, proto=0, laddr=('192.168.100.7', 49916), raddr=('15.206.140.228', 5671)>
+2026-02-16 13:28:01,514 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002083D083380>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002083D083380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 13:28:01,718 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002083D083380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 13:28:01,719 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002083D083380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 13:28:01,719 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002083D083380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 13:28:01,720 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 13:28:02,468 | INFO | workers.stt_worker | Worker started and waiting for speech to text jobs...
+2026-02-16 13:30:32,464 | INFO | workers.stt_worker | Task received | task_id=6992d5a8993565eae95496fa
+2026-02-16 13:30:34,493 | INFO | workers.stt_worker | New Task 6992d5a8993565eae95496fa audio analysis task created successfully
+2026-02-16 13:30:34,917 | INFO | workers.stt_worker | New Task 6992d5a8993565eae95496fa video analysis task created successfully
+2026-02-16 13:30:35,037 | INFO | workers.stt_worker | Task completed | task_id=6992d5a8993565eae95496fa
+2026-02-16 13:30:35,106 | WARNING | pika.channel | Received remote Channel.Close (406): 'PRECONDITION_FAILED - unknown delivery tag 1' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002083D083380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 13:44:19,948 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 13:44:20,013 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1400, family=2, type=1, proto=6, laddr=('192.168.100.7', 61550), raddr=('15.206.140.228', 5671)>
+2026-02-16 13:44:20,090 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1400, family=2, type=1, proto=0, laddr=('192.168.100.7', 61550), raddr=('15.206.140.228', 5671)>
+2026-02-16 13:44:20,091 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001EBD86E3230>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001EBD86E3230> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 13:44:20,296 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001EBD86E3230> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 13:44:20,298 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001EBD86E3230> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 13:44:20,300 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001EBD86E3230> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 13:44:20,302 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 13:44:21,018 | INFO | workers.stt_worker | Worker started and waiting for speech to text jobs...
+2026-02-16 13:48:16,572 | INFO | workers.stt_worker | Task received | task_id=6992d9d0993565eae9549732
+2026-02-16 13:49:16,877 | INFO | workers.stt_worker | New Task 6992d9d0993565eae9549732 audio analysis task created successfully
+2026-02-16 13:49:17,322 | INFO | workers.stt_worker | New Task 6992d9d0993565eae9549732 video analysis task created successfully
+2026-02-16 13:49:17,444 | INFO | workers.stt_worker | Task completed | task_id=6992d9d0993565eae9549732
+2026-02-16 13:49:20,881 | INFO | workers.stt_worker | Task received | task_id=6992da10993565eae954973d
+2026-02-16 13:49:37,535 | INFO | workers.stt_worker | New Task 6992da10993565eae954973d audio analysis task created successfully
+2026-02-16 13:49:37,903 | INFO | workers.stt_worker | New Task 6992da10993565eae954973d video analysis task created successfully
+2026-02-16 13:49:38,032 | INFO | workers.stt_worker | Task completed | task_id=6992da10993565eae954973d
+2026-02-16 13:53:02,672 | INFO | workers.stt_worker | Task received | task_id=6992daee993565eae9549748
+2026-02-16 13:53:41,122 | INFO | workers.stt_worker | New Task 6992daee993565eae9549748 audio analysis task created successfully
+2026-02-16 13:53:41,500 | INFO | workers.stt_worker | New Task 6992daee993565eae9549748 video analysis task created successfully
+2026-02-16 13:53:41,628 | INFO | workers.stt_worker | Task completed | task_id=6992daee993565eae9549748
+2026-02-16 13:54:26,680 | INFO | workers.stt_worker | Worker stopped manually
+2026-02-16 13:54:26,748 | INFO | pika.adapters.blocking_connection | Closing connection (200): Normal shutdown
+2026-02-16 13:54:26,749 | INFO | pika.channel | Closing channel (200): 'Normal shutdown' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001EBD86E3230> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 13:55:14,189 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 13:55:14,260 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1444, family=2, type=1, proto=6, laddr=('192.168.100.7', 54401), raddr=('15.206.140.228', 5671)>
+2026-02-16 13:55:14,352 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1444, family=2, type=1, proto=0, laddr=('192.168.100.7', 54401), raddr=('15.206.140.228', 5671)>
+2026-02-16 13:55:14,355 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000209614B3380>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000209614B3380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 13:55:14,581 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000209614B3380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 13:55:14,581 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000209614B3380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 13:55:14,582 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000209614B3380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 13:55:14,582 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 13:55:15,334 | INFO | workers.stt_worker | Worker started and waiting for speech to text jobs...
+2026-02-16 14:01:55,060 | INFO | workers.stt_worker | Task received | task_id=6992dd02993565eae9549785
+2026-02-16 14:02:27,096 | INFO | workers.stt_worker | Task 6992dd02993565eae9549785 speech to text processing completed successfully
+2026-02-16 14:02:27,440 | INFO | workers.stt_worker | Task created successfully with ID: 6992dd23d8100b19db97e70f
+2026-02-16 14:02:27,508 | INFO | workers.stt_worker | Enqueued audio analysis task 6992dd23d8100b19db97e70f for question result 6992dd02993565eae9549783
+2026-02-16 14:02:27,509 | INFO | workers.stt_worker | New Task 6992dd02993565eae9549785 audio analysis task created successfully
+2026-02-16 14:02:27,850 | INFO | workers.stt_worker | Task created successfully with ID: 6992dd23d8100b19db97e710
+2026-02-16 14:02:27,918 | INFO | workers.stt_worker | Enqueued audio analysis task 6992dd23d8100b19db97e710 for question result 6992dd02993565eae9549783
+2026-02-16 14:02:27,919 | INFO | workers.stt_worker | New Task 6992dd02993565eae9549785 video analysis task created successfully
+2026-02-16 14:02:28,043 | INFO | workers.stt_worker | Task completed | task_id=6992dd02993565eae9549785
+2026-02-16 14:18:47,600 | INFO | workers.stt_worker | Worker stopped manually
+2026-02-16 14:18:47,668 | INFO | pika.adapters.blocking_connection | Closing connection (200): Normal shutdown
+2026-02-16 14:18:47,669 | INFO | pika.channel | Closing channel (200): 'Normal shutdown' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000209614B3380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 14:18:47,736 | INFO | pika.channel | Received <Channel.CloseOk> on <Channel number=1 CLOSING conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000209614B3380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 14:18:47,738 | INFO | pika.connection | Closing connection (200): 'Normal shutdown'
+2026-02-16 14:18:47,806 | INFO | pika.adapters.utils.io_services_utils | Aborting transport connection: state=1; <ssl.SSLSocket fd=1444, family=2, type=1, proto=0, laddr=('192.168.100.7', 54401), raddr=('15.206.140.228', 5671)>
+2026-02-16 14:18:47,807 | INFO | pika.adapters.utils.io_services_utils | _AsyncTransportBase._initate_abort(): Initiating abrupt asynchronous transport shutdown: state=1; error=None; <ssl.SSLSocket fd=1444, family=2, type=1, proto=0, laddr=('192.168.100.7', 54401), raddr=('15.206.140.228', 5671)>
+2026-02-16 14:18:47,809 | INFO | pika.adapters.utils.io_services_utils | Deactivating transport: state=1; <ssl.SSLSocket fd=1444, family=2, type=1, proto=0, laddr=('192.168.100.7', 54401), raddr=('15.206.140.228', 5671)>
+2026-02-16 14:18:47,811 | INFO | pika.connection | AMQP stack terminated, failed to connect, or aborted: opened=True, error-arg=None; pending-error=ConnectionClosedByClient: (200) 'Normal shutdown'
+2026-02-16 14:18:47,813 | INFO | pika.connection | Stack terminated due to ConnectionClosedByClient: (200) 'Normal shutdown'
+2026-02-16 14:18:47,815 | INFO | pika.adapters.utils.io_services_utils | Closing transport socket and unlinking: state=3; <ssl.SSLSocket fd=1444, family=2, type=1, proto=0, laddr=('192.168.100.7', 54401), raddr=('15.206.140.228', 5671)>
+2026-02-16 14:18:47,817 | INFO | pika.adapters.blocking_connection | User-initiated close: result=BlockingConnection__OnClosedArgs(connection=<SelectConnection CLOSED transport=None params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>, error=ConnectionClosedByClient: (200) 'Normal shutdown')
+2026-02-16 14:19:42,307 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 14:19:42,376 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1372, family=2, type=1, proto=6, laddr=('192.168.100.7', 55999), raddr=('15.206.140.228', 5671)>
+2026-02-16 14:19:42,450 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1372, family=2, type=1, proto=0, laddr=('192.168.100.7', 55999), raddr=('15.206.140.228', 5671)>
+2026-02-16 14:19:42,452 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000192472A3380>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000192472A3380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 14:19:42,662 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000192472A3380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 14:19:42,664 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000192472A3380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 14:19:42,665 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000192472A3380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 14:19:42,667 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 14:19:43,419 | INFO | workers.stt_worker | Worker started and waiting for speech to text jobs...
+2026-02-16 14:19:43,420 | INFO | workers.stt_worker | Task received | task_id=6992dd02993565eae9549785
+2026-02-16 14:19:43,421 | ERROR | workers.stt_worker | Task crashed | task_id=6992dd02993565eae9549785
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\stt_worker.py", line 147, in callback
+    raise Exception("Audio analysis task not created in DB")
+Exception: Audio analysis task not created in DB
+2026-02-16 14:19:44,317 | INFO | workers.stt_worker | Moving to Waiting Room (10s delay) | retry=1
+2026-02-16 14:19:44,388 | INFO | workers.stt_worker | Task requeued for retry
+2026-02-16 14:19:44,455 | INFO | workers.stt_worker | Task received | task_id=6992dd55993565eae9549790
+2026-02-16 14:19:44,456 | ERROR | workers.stt_worker | Task crashed | task_id=6992dd55993565eae9549790
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\stt_worker.py", line 147, in callback
+    raise Exception("Audio analysis task not created in DB")
+Exception: Audio analysis task not created in DB
+2026-02-16 14:19:44,578 | INFO | workers.stt_worker | Moving to Waiting Room (10s delay) | retry=1
+2026-02-16 14:19:44,648 | INFO | workers.stt_worker | Task requeued for retry
+2026-02-16 14:19:54,387 | INFO | workers.stt_worker | Task received | task_id=6992dd02993565eae9549785
+2026-02-16 14:19:54,388 | ERROR | workers.stt_worker | Task crashed | task_id=6992dd02993565eae9549785
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\stt_worker.py", line 147, in callback
+    raise Exception("Audio analysis task not created in DB")
+Exception: Audio analysis task not created in DB
+2026-02-16 14:19:54,510 | INFO | workers.stt_worker | Moving to Waiting Room (10s delay) | retry=2
+2026-02-16 14:19:54,579 | INFO | workers.stt_worker | Task requeued for retry
+2026-02-16 14:19:54,649 | INFO | workers.stt_worker | Task received | task_id=6992dd55993565eae9549790
+2026-02-16 14:19:54,649 | ERROR | workers.stt_worker | Task crashed | task_id=6992dd55993565eae9549790
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\stt_worker.py", line 147, in callback
+    raise Exception("Audio analysis task not created in DB")
+Exception: Audio analysis task not created in DB
+2026-02-16 14:19:54,768 | INFO | workers.stt_worker | Moving to Waiting Room (10s delay) | retry=2
+2026-02-16 14:19:54,837 | INFO | workers.stt_worker | Task requeued for retry
+2026-02-16 14:20:04,584 | INFO | workers.stt_worker | Task received | task_id=6992dd02993565eae9549785
+2026-02-16 14:20:04,585 | ERROR | workers.stt_worker | Task crashed | task_id=6992dd02993565eae9549785
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\stt_worker.py", line 147, in callback
+    raise Exception("Audio analysis task not created in DB")
+Exception: Audio analysis task not created in DB
+2026-02-16 14:20:04,709 | ERROR | workers.stt_worker | Max retries exceeded. Moving to DLQ | task_id=6992dd02993565eae9549785
+2026-02-16 14:20:04,710 | INFO | workers.stt_worker | Task requeued for retry
+2026-02-16 14:20:04,839 | INFO | workers.stt_worker | Task received | task_id=6992dd55993565eae9549790
+2026-02-16 14:20:04,840 | ERROR | workers.stt_worker | Task crashed | task_id=6992dd55993565eae9549790
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\stt_worker.py", line 147, in callback
+    raise Exception("Audio analysis task not created in DB")
+Exception: Audio analysis task not created in DB
+2026-02-16 14:20:04,960 | ERROR | workers.stt_worker | Max retries exceeded. Moving to DLQ | task_id=6992dd55993565eae9549790
+2026-02-16 14:20:04,961 | INFO | workers.stt_worker | Task requeued for retry
+2026-02-16 14:28:02,047 | ERROR | pika.adapters.utils.io_services_utils | Wrapped func exited with exception. Caller's stack:
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\diagnostic_utils.py", line 53, in log_exception_func_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 1235, in _consume
+    super(_AsyncSSLTransport, self)._consume()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 791, in _consume
+    data = self._sigint_safe_recv(self._sock, self._MAX_RECV_BYTES)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 79, in retry_sigint_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 846, in _sigint_safe_recv
+    return sock.recv(max_bytes)
+           ~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1285, in recv
+    return self.read(buflen)
+           ~~~~~~~~~^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1140, in read
+    return self._sslobj.read(len)
+           ~~~~~~~~~~~~~~~~~^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\diagnostic_utils.py", line 53, in log_exception_func_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 1235, in _consume
+    super(_AsyncSSLTransport, self)._consume()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 791, in _consume
+    data = self._sigint_safe_recv(self._sock, self._MAX_RECV_BYTES)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 79, in retry_sigint_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 846, in _sigint_safe_recv
+    return sock.recv(max_bytes)
+           ~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1285, in recv
+    return self.read(buflen)
+           ~~~~~~~~~^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1140, in read
+    return self._sslobj.read(len)
+           ~~~~~~~~~~~~~~~~~^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2026-02-16 14:28:02,049 | INFO | pika.adapters.utils.io_services_utils | _AsyncTransportBase._initate_abort(): Initiating abrupt asynchronous transport shutdown: state=1; error=ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None); <ssl.SSLSocket fd=1372, family=2, type=1, proto=0, laddr=('192.168.100.7', 55999), raddr=('15.206.140.228', 5671)>
+2026-02-16 14:28:02,050 | INFO | pika.adapters.utils.io_services_utils | Deactivating transport: state=1; <ssl.SSLSocket fd=1372, family=2, type=1, proto=0, laddr=('192.168.100.7', 55999), raddr=('15.206.140.228', 5671)>
+2026-02-16 14:28:02,050 | ERROR | pika.adapters.base_connection | connection_lost: StreamLostError: ("Stream connection lost: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",)
+2026-02-16 14:28:02,051 | INFO | pika.connection | AMQP stack terminated, failed to connect, or aborted: opened=True, error-arg=StreamLostError: ("Stream connection lost: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",); pending-error=None
+2026-02-16 14:28:02,051 | INFO | pika.connection | Stack terminated due to StreamLostError: ("Stream connection lost: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",)
+2026-02-16 14:28:02,051 | INFO | pika.adapters.utils.io_services_utils | Closing transport socket and unlinking: state=2; <ssl.SSLSocket fd=1372, family=2, type=1, proto=0, laddr=('192.168.100.7', 55999), raddr=('15.206.140.228', 5671)>
+2026-02-16 14:28:02,052 | ERROR | pika.adapters.blocking_connection | Unexpected connection close detected: StreamLostError: ("Stream connection lost: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",)
+2026-02-16 14:47:14,712 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 14:47:14,778 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1268, family=2, type=1, proto=6, laddr=('192.168.100.7', 52456), raddr=('15.206.140.228', 5671)>
+2026-02-16 14:47:14,856 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1268, family=2, type=1, proto=0, laddr=('192.168.100.7', 52456), raddr=('15.206.140.228', 5671)>
+2026-02-16 14:47:14,858 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002395D4D3380>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002395D4D3380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 14:47:15,057 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002395D4D3380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 14:47:15,058 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002395D4D3380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 14:47:15,060 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002395D4D3380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 14:47:15,061 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 14:48:12,700 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 14:48:12,769 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1348, family=2, type=1, proto=6, laddr=('192.168.100.7', 59989), raddr=('15.206.140.228', 5671)>
+2026-02-16 14:48:12,844 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1348, family=2, type=1, proto=0, laddr=('192.168.100.7', 59989), raddr=('15.206.140.228', 5671)>
+2026-02-16 14:48:12,846 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001FF4B763380>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001FF4B763380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 14:48:13,056 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001FF4B763380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 14:48:13,057 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001FF4B763380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 14:48:13,059 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001FF4B763380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 14:48:13,060 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 14:48:13,830 | INFO | workers.stt_worker | Worker started and waiting for speech to text jobs...
+2026-02-16 14:48:13,831 | INFO | workers.stt_worker | Task received | task_id=6992e76b94a978686b387578
+2026-02-16 14:48:13,832 | ERROR | workers.stt_worker | Task crashed | task_id=6992e76b94a978686b387578
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\stt_worker.py", line 147, in callback
+    raise Exception("Audio analysis task not created in DB")
+Exception: Audio analysis task not created in DB
+2026-02-16 14:48:15,303 | INFO | workers.stt_worker | Moving to Waiting Room (10s delay) | retry=1
+2026-02-16 14:48:25,377 | INFO | workers.stt_worker | Task received | task_id=6992e76b94a978686b387578
+2026-02-16 14:48:25,378 | ERROR | workers.stt_worker | Task crashed | task_id=6992e76b94a978686b387578
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\stt_worker.py", line 147, in callback
+    raise Exception("Audio analysis task not created in DB")
+Exception: Audio analysis task not created in DB
+2026-02-16 14:48:25,507 | INFO | workers.stt_worker | Moving to Waiting Room (10s delay) | retry=2
+2026-02-16 14:48:35,579 | INFO | workers.stt_worker | Task received | task_id=6992e76b94a978686b387578
+2026-02-16 14:48:35,580 | ERROR | workers.stt_worker | Task crashed | task_id=6992e76b94a978686b387578
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\stt_worker.py", line 147, in callback
+    raise Exception("Audio analysis task not created in DB")
+Exception: Audio analysis task not created in DB
+2026-02-16 14:48:35,703 | ERROR | workers.stt_worker | Max retries exceeded. Moving to DLQ | task_id=6992e76b94a978686b387578
+2026-02-16 14:48:50,744 | INFO | workers.stt_worker | Worker stopped manually
+2026-02-16 14:48:50,813 | INFO | pika.adapters.blocking_connection | Closing connection (200): Normal shutdown
+2026-02-16 14:48:50,814 | INFO | pika.channel | Closing channel (200): 'Normal shutdown' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001FF4B763380> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 16:00:38,198 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 16:00:38,266 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1332, family=2, type=1, proto=6, laddr=('192.168.100.7', 63478), raddr=('15.206.140.228', 5671)>
+2026-02-16 16:00:38,341 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1332, family=2, type=1, proto=0, laddr=('192.168.100.7', 63478), raddr=('15.206.140.228', 5671)>
+2026-02-16 16:00:38,343 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000260802E3620>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000260802E3620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 16:00:38,548 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000260802E3620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 16:00:38,549 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000260802E3620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 16:00:38,551 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000260802E3620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 16:00:38,552 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 16:00:39,369 | WARNING | pika.channel | Received remote Channel.Close (406): "PRECONDITION_FAILED - inequivalent arg 'x-dead-letter-exchange' for queue 'audio_analysis' in vhost 'gfhwdutw': received the value 'stt_failure_exchange' of type 'longstr' but current is none" on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000260802E3620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 16:11:36,629 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 16:11:36,696 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1360, family=2, type=1, proto=6, laddr=('192.168.100.7', 52060), raddr=('15.206.140.228', 5671)>
+2026-02-16 16:11:36,771 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1360, family=2, type=1, proto=0, laddr=('192.168.100.7', 52060), raddr=('15.206.140.228', 5671)>
+2026-02-16 16:11:36,774 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001BDA6E93620>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001BDA6E93620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 16:11:36,974 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001BDA6E93620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 16:11:36,976 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001BDA6E93620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 16:11:36,977 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001BDA6E93620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 16:11:36,978 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 16:11:38,184 | INFO | workers.stt_worker | Worker started and waiting for speech to text jobs...
+2026-02-16 16:36:23,396 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 16:36:23,470 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1364, family=2, type=1, proto=6, laddr=('192.168.100.7', 53982), raddr=('15.206.140.228', 5671)>
+2026-02-16 16:36:23,543 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1364, family=2, type=1, proto=0, laddr=('192.168.100.7', 53982), raddr=('15.206.140.228', 5671)>
+2026-02-16 16:36:23,545 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001D980303620>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001D980303620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 16:36:23,757 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001D980303620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 16:36:23,759 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001D980303620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 16:36:23,760 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001D980303620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 16:36:23,761 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 16:36:25,829 | INFO | workers.stt_worker | Worker started and waiting for speech to text jobs...
+2026-02-16 17:34:58,884 | INFO | workers.stt_worker | Worker stopped manually
+2026-02-16 17:34:58,976 | INFO | pika.adapters.blocking_connection | Closing connection (200): Normal shutdown
+2026-02-16 17:34:58,978 | INFO | pika.channel | Closing channel (200): 'Normal shutdown' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001D980303620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 17:39:09,982 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 17:39:10,048 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1404, family=2, type=1, proto=6, laddr=('192.168.100.7', 56869), raddr=('15.206.140.228', 5671)>
+2026-02-16 17:39:10,130 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1404, family=2, type=1, proto=0, laddr=('192.168.100.7', 56869), raddr=('15.206.140.228', 5671)>
+2026-02-16 17:39:10,133 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000279CC683620>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000279CC683620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 17:39:10,333 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000279CC683620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 17:39:10,335 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000279CC683620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 17:39:10,336 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000279CC683620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 17:39:10,338 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 17:39:12,293 | INFO | workers.stt_worker | Worker started and waiting for speech to text jobs...
+2026-02-16 17:39:12,293 | INFO | workers.stt_worker | Task received | task_id=69930fb01bcb8ab6550971d3
+2026-02-16 17:40:06,842 | INFO | workers.stt_worker | Task 69930fb01bcb8ab6550971d3 speech to text processing completed successfully
+2026-02-16 17:40:07,166 | INFO | workers.stt_worker | Task created successfully with ID: 69931026d009dfa4439fdf62
+2026-02-16 17:40:07,243 | INFO | workers.stt_worker | Enqueued audio analysis task 69931026d009dfa4439fdf62 for question result 69930fb01bcb8ab6550971d1
+2026-02-16 17:40:07,243 | INFO | workers.stt_worker | New Task 69930fb01bcb8ab6550971d3 audio analysis task created successfully
+2026-02-16 17:40:07,567 | INFO | workers.stt_worker | Task created successfully with ID: 69931027d009dfa4439fdf63
+2026-02-16 17:40:07,635 | INFO | workers.stt_worker | Enqueued audio analysis task 69931027d009dfa4439fdf63 for question result 69930fb01bcb8ab6550971d1
+2026-02-16 17:40:07,635 | INFO | workers.stt_worker | New Task 69930fb01bcb8ab6550971d3 video analysis task created successfully
+2026-02-16 17:40:07,754 | INFO | workers.stt_worker | Task completed | task_id=69930fb01bcb8ab6550971d3
+2026-02-16 17:48:59,610 | INFO | workers.stt_worker | Task received | task_id=6993123b1bcb8ab65509720b
+2026-02-16 17:49:58,440 | INFO | workers.stt_worker | Task 6993123b1bcb8ab65509720b speech to text processing completed successfully
+2026-02-16 17:49:58,746 | INFO | workers.stt_worker | Task created successfully with ID: 69931276d009dfa4439fdf64
+2026-02-16 17:49:58,812 | INFO | workers.stt_worker | Enqueued audio analysis task 69931276d009dfa4439fdf64 for question result 6993123b1bcb8ab655097209
+2026-02-16 17:49:58,813 | INFO | workers.stt_worker | New Task 6993123b1bcb8ab65509720b audio analysis task created successfully
+2026-02-16 17:49:59,137 | INFO | workers.stt_worker | Task created successfully with ID: 69931276d009dfa4439fdf65
+2026-02-16 17:49:59,214 | INFO | workers.stt_worker | Enqueued audio analysis task 69931276d009dfa4439fdf65 for question result 6993123b1bcb8ab655097209
+2026-02-16 17:49:59,215 | INFO | workers.stt_worker | New Task 6993123b1bcb8ab65509720b video analysis task created successfully
+2026-02-16 17:49:59,338 | INFO | workers.stt_worker | Task completed | task_id=6993123b1bcb8ab65509720b
+2026-02-16 17:49:59,410 | INFO | workers.stt_worker | Task received | task_id=6993125e1bcb8ab655097234
+2026-02-16 17:50:12,869 | INFO | workers.stt_worker | Task 6993125e1bcb8ab655097234 speech to text processing completed successfully
+2026-02-16 17:50:13,171 | INFO | workers.stt_worker | Task created successfully with ID: 69931284d009dfa4439fdf66
+2026-02-16 17:50:13,243 | INFO | workers.stt_worker | Enqueued audio analysis task 69931284d009dfa4439fdf66 for question result 6993125e1bcb8ab655097232
+2026-02-16 17:50:13,244 | INFO | workers.stt_worker | New Task 6993125e1bcb8ab655097234 audio analysis task created successfully
+2026-02-16 17:50:13,488 | INFO | workers.stt_worker | Task created successfully with ID: 69931285d009dfa4439fdf67
+2026-02-16 17:50:13,560 | INFO | workers.stt_worker | Enqueued audio analysis task 69931285d009dfa4439fdf67 for question result 6993125e1bcb8ab655097232
+2026-02-16 17:50:13,561 | INFO | workers.stt_worker | New Task 6993125e1bcb8ab655097234 video analysis task created successfully
+2026-02-16 17:50:13,690 | INFO | workers.stt_worker | Task completed | task_id=6993125e1bcb8ab655097234
+2026-02-16 18:01:08,888 | INFO | workers.stt_worker | Task received | task_id=699315141bcb8ab655097265
+2026-02-16 18:02:04,433 | INFO | workers.stt_worker | Task 699315141bcb8ab655097265 speech to text processing completed successfully
+2026-02-16 18:02:04,762 | INFO | workers.stt_worker | Task created successfully with ID: 6993154cd009dfa4439fdf68
+2026-02-16 18:02:04,837 | INFO | workers.stt_worker | Enqueued audio analysis task 6993154cd009dfa4439fdf68 for question result 699315141bcb8ab655097263
+2026-02-16 18:02:04,838 | INFO | workers.stt_worker | New Task 699315141bcb8ab655097265 audio analysis task created successfully
+2026-02-16 18:02:05,148 | INFO | workers.stt_worker | Task created successfully with ID: 6993154cd009dfa4439fdf69
+2026-02-16 18:02:05,214 | INFO | workers.stt_worker | Enqueued audio analysis task 6993154cd009dfa4439fdf69 for question result 699315141bcb8ab655097263
+2026-02-16 18:02:05,215 | INFO | workers.stt_worker | New Task 699315141bcb8ab655097265 video analysis task created successfully
+2026-02-16 18:02:05,332 | INFO | workers.stt_worker | Task completed | task_id=699315141bcb8ab655097265
+2026-02-16 18:11:38,348 | INFO | workers.stt_worker | Task received | task_id=6993178a1bcb8ab65509729d
+2026-02-16 18:12:02,614 | INFO | workers.stt_worker | Task 6993178a1bcb8ab65509729d speech to text processing completed successfully
+2026-02-16 18:12:02,845 | INFO | workers.stt_worker | Task created successfully with ID: 699317a2d009dfa4439fdf6a
+2026-02-16 18:12:02,915 | INFO | workers.stt_worker | Enqueued audio analysis task 699317a2d009dfa4439fdf6a for question result 6993178a1bcb8ab65509729b
+2026-02-16 18:12:02,916 | INFO | workers.stt_worker | New Task 6993178a1bcb8ab65509729d audio analysis task created successfully
+2026-02-16 18:12:03,150 | INFO | workers.stt_worker | Task created successfully with ID: 699317a3d009dfa4439fdf6b
+2026-02-16 18:12:03,221 | INFO | workers.stt_worker | Enqueued audio analysis task 699317a3d009dfa4439fdf6b for question result 6993178a1bcb8ab65509729b
+2026-02-16 18:12:03,222 | INFO | workers.stt_worker | New Task 6993178a1bcb8ab65509729d video analysis task created successfully
+2026-02-16 18:12:03,421 | INFO | workers.stt_worker | Task completed | task_id=6993178a1bcb8ab65509729d
+2026-02-16 18:20:35,401 | INFO | workers.stt_worker | Worker stopped manually
+2026-02-16 18:20:47,764 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 18:20:47,832 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1396, family=2, type=1, proto=6, laddr=('192.168.100.7', 61532), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:20:47,900 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1396, family=2, type=1, proto=0, laddr=('192.168.100.7', 61532), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:20:47,901 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001695FDE3620>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001695FDE3620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 18:20:48,098 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001695FDE3620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:20:48,099 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001695FDE3620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:20:48,099 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001695FDE3620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:20:48,100 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 18:20:50,444 | INFO | workers.stt_worker | Worker started and waiting for speech to text jobs...
+2026-02-16 18:22:07,297 | ERROR | pika.adapters.utils.io_services_utils | Wrapped func exited with exception. Caller's stack:
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\diagnostic_utils.py", line 53, in log_exception_func_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 1235, in _consume
+    super(_AsyncSSLTransport, self)._consume()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 791, in _consume
+    data = self._sigint_safe_recv(self._sock, self._MAX_RECV_BYTES)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 79, in retry_sigint_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 846, in _sigint_safe_recv
+    return sock.recv(max_bytes)
+           ~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1285, in recv
+    return self.read(buflen)
+           ~~~~~~~~~^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1140, in read
+    return self._sslobj.read(len)
+           ~~~~~~~~~~~~~~~~~^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\diagnostic_utils.py", line 53, in log_exception_func_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 1235, in _consume
+    super(_AsyncSSLTransport, self)._consume()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 791, in _consume
+    data = self._sigint_safe_recv(self._sock, self._MAX_RECV_BYTES)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 79, in retry_sigint_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 846, in _sigint_safe_recv
+    return sock.recv(max_bytes)
+           ~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1285, in recv
+    return self.read(buflen)
+           ~~~~~~~~~^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1140, in read
+    return self._sslobj.read(len)
+           ~~~~~~~~~~~~~~~~~^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2026-02-16 18:22:07,305 | INFO | pika.adapters.utils.io_services_utils | _AsyncTransportBase._initate_abort(): Initiating abrupt asynchronous transport shutdown: state=1; error=ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None); <ssl.SSLSocket fd=1396, family=2, type=1, proto=0, laddr=('192.168.100.7', 61532), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:22:07,306 | INFO | pika.adapters.utils.io_services_utils | Deactivating transport: state=1; <ssl.SSLSocket fd=1396, family=2, type=1, proto=0, laddr=('192.168.100.7', 61532), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:22:07,308 | ERROR | pika.adapters.base_connection | connection_lost: StreamLostError: ("Stream connection lost: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",)
+2026-02-16 18:22:07,309 | INFO | pika.connection | AMQP stack terminated, failed to connect, or aborted: opened=True, error-arg=StreamLostError: ("Stream connection lost: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",); pending-error=None
+2026-02-16 18:22:07,310 | INFO | pika.connection | Stack terminated due to StreamLostError: ("Stream connection lost: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",)
+2026-02-16 18:22:07,311 | INFO | pika.adapters.utils.io_services_utils | Closing transport socket and unlinking: state=2; <ssl.SSLSocket fd=1396, family=2, type=1, proto=0, laddr=('192.168.100.7', 61532), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:22:07,313 | ERROR | pika.adapters.blocking_connection | Unexpected connection close detected: StreamLostError: ("Stream connection lost: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",)
+2026-02-16 18:23:01,055 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 18:23:01,181 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1340, family=2, type=1, proto=6, laddr=('192.168.100.7', 52866), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:23:01,345 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1340, family=2, type=1, proto=0, laddr=('192.168.100.7', 52866), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:23:01,347 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000025C9B823620>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000025C9B823620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 18:23:01,558 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000025C9B823620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:23:01,559 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000025C9B823620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:23:01,561 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000025C9B823620> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:23:01,563 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 18:23:03,588 | INFO | workers.stt_worker | Worker started and waiting for speech to text jobs...
+2026-02-16 18:26:03,840 | INFO | workers.stt_worker | Task received | task_id=69931aeb1bcb8ab6550972ce
+2026-02-16 18:27:00,637 | INFO | workers.stt_worker | Task 69931aeb1bcb8ab6550972ce speech to text processing completed successfully
+2026-02-16 18:27:00,874 | INFO | workers.stt_worker | Task created successfully with ID: 69931b2455fb718c9b04207d
+2026-02-16 18:27:00,942 | INFO | workers.stt_worker | Enqueued audio analysis task 69931b2455fb718c9b04207d for question result 69931aeb1bcb8ab6550972cc
+2026-02-16 18:27:00,943 | INFO | workers.stt_worker | New Task 69931aeb1bcb8ab6550972ce audio analysis task created successfully
+2026-02-16 18:27:01,190 | INFO | workers.stt_worker | Task created successfully with ID: 69931b2555fb718c9b04207e
+2026-02-16 18:27:01,269 | INFO | workers.stt_worker | Enqueued audio analysis task 69931b2555fb718c9b04207e for question result 69931aeb1bcb8ab6550972cc
+2026-02-16 18:27:01,271 | INFO | workers.stt_worker | New Task 69931aeb1bcb8ab6550972ce video analysis task created successfully
+2026-02-16 18:27:01,391 | INFO | workers.stt_worker | Task completed | task_id=69931aeb1bcb8ab6550972ce
+2026-02-16 18:27:23,616 | INFO | workers.stt_worker | Task received | task_id=69931b3b1bcb8ab6550972d9
+2026-02-16 18:27:56,121 | INFO | workers.stt_worker | Task 69931b3b1bcb8ab6550972d9 speech to text processing completed successfully
+2026-02-16 18:27:56,355 | INFO | workers.stt_worker | Task created successfully with ID: 69931b5c55fb718c9b04207f
+2026-02-16 18:27:56,425 | INFO | workers.stt_worker | Enqueued audio analysis task 69931b5c55fb718c9b04207f for question result 69931b3b1bcb8ab6550972d7
+2026-02-16 18:27:56,426 | INFO | workers.stt_worker | New Task 69931b3b1bcb8ab6550972d9 audio analysis task created successfully
+2026-02-16 18:27:56,673 | INFO | workers.stt_worker | Task created successfully with ID: 69931b5c55fb718c9b042080
+2026-02-16 18:27:56,746 | INFO | workers.stt_worker | Enqueued audio analysis task 69931b5c55fb718c9b042080 for question result 69931b3b1bcb8ab6550972d7
+2026-02-16 18:27:56,746 | INFO | workers.stt_worker | New Task 69931b3b1bcb8ab6550972d9 video analysis task created successfully
+2026-02-16 18:27:56,866 | INFO | workers.stt_worker | Task completed | task_id=69931b3b1bcb8ab6550972d9
+2026-02-16 18:28:48,242 | INFO | workers.stt_worker | Task received | task_id=69931b901bcb8ab6550972e4
+2026-02-16 18:29:26,053 | INFO | workers.stt_worker | Task 69931b901bcb8ab6550972e4 speech to text processing completed successfully
+2026-02-16 18:29:26,411 | INFO | workers.stt_worker | Task created successfully with ID: 69931bb655fb718c9b042081
+2026-02-16 18:29:26,544 | INFO | workers.stt_worker | Enqueued audio analysis task 69931bb655fb718c9b042081 for question result 69931b8f1bcb8ab6550972e2
+2026-02-16 18:29:26,544 | INFO | workers.stt_worker | New Task 69931b901bcb8ab6550972e4 audio analysis task created successfully
+2026-02-16 18:29:26,849 | INFO | workers.stt_worker | Task created successfully with ID: 69931bb655fb718c9b042082
+2026-02-16 18:29:26,919 | INFO | workers.stt_worker | Enqueued audio analysis task 69931bb655fb718c9b042082 for question result 69931b8f1bcb8ab6550972e2
+2026-02-16 18:29:26,920 | INFO | workers.stt_worker | New Task 69931b901bcb8ab6550972e4 video analysis task created successfully
+2026-02-16 18:29:27,103 | INFO | workers.stt_worker | Task completed | task_id=69931b901bcb8ab6550972e4
+2026-02-16 18:30:58,025 | INFO | workers.stt_worker | Task received | task_id=69931c111bcb8ab6550972ef
+2026-02-16 18:31:37,864 | INFO | workers.stt_worker | Task 69931c111bcb8ab6550972ef speech to text processing completed successfully
+2026-02-16 18:31:38,119 | INFO | workers.stt_worker | Task created successfully with ID: 69931c3955fb718c9b042083
+2026-02-16 18:31:38,194 | INFO | workers.stt_worker | Enqueued audio analysis task 69931c3955fb718c9b042083 for question result 69931c111bcb8ab6550972ed
+2026-02-16 18:31:38,194 | INFO | workers.stt_worker | New Task 69931c111bcb8ab6550972ef audio analysis task created successfully
+2026-02-16 18:31:38,438 | INFO | workers.stt_worker | Task created successfully with ID: 69931c3a55fb718c9b042084
+2026-02-16 18:31:38,505 | INFO | workers.stt_worker | Enqueued audio analysis task 69931c3a55fb718c9b042084 for question result 69931c111bcb8ab6550972ed
+2026-02-16 18:31:38,506 | INFO | workers.stt_worker | New Task 69931c111bcb8ab6550972ef video analysis task created successfully
+2026-02-16 18:31:38,626 | INFO | workers.stt_worker | Task completed | task_id=69931c111bcb8ab6550972ef
+2026-02-16 18:32:36,940 | INFO | workers.stt_worker | Task received | task_id=69931c741bcb8ab6550972fa
+2026-02-16 18:33:09,354 | INFO | workers.stt_worker | Task 69931c741bcb8ab6550972fa speech to text processing completed successfully
+2026-02-16 18:33:09,590 | INFO | workers.stt_worker | Task created successfully with ID: 69931c9555fb718c9b042085
+2026-02-16 18:33:09,658 | INFO | workers.stt_worker | Enqueued audio analysis task 69931c9555fb718c9b042085 for question result 69931c741bcb8ab6550972f8
+2026-02-16 18:33:09,659 | INFO | workers.stt_worker | New Task 69931c741bcb8ab6550972fa audio analysis task created successfully
+2026-02-16 18:33:09,896 | INFO | workers.stt_worker | Task created successfully with ID: 69931c9555fb718c9b042086
+2026-02-16 18:33:09,966 | INFO | workers.stt_worker | Enqueued audio analysis task 69931c9555fb718c9b042086 for question result 69931c741bcb8ab6550972f8
+2026-02-16 18:33:09,966 | INFO | workers.stt_worker | New Task 69931c741bcb8ab6550972fa video analysis task created successfully
+2026-02-16 18:33:10,085 | INFO | workers.stt_worker | Task completed | task_id=69931c741bcb8ab6550972fa
+2026-02-16 18:34:45,628 | INFO | workers.stt_worker | Task received | task_id=69931cf51bcb8ab655097305
+2026-02-16 18:35:31,362 | INFO | workers.stt_worker | Task 69931cf51bcb8ab655097305 speech to text processing completed successfully
+2026-02-16 18:35:31,599 | INFO | workers.stt_worker | Task created successfully with ID: 69931d2355fb718c9b042087
+2026-02-16 18:35:31,667 | INFO | workers.stt_worker | Enqueued audio analysis task 69931d2355fb718c9b042087 for question result 69931cf51bcb8ab655097303
+2026-02-16 18:35:31,668 | INFO | workers.stt_worker | New Task 69931cf51bcb8ab655097305 audio analysis task created successfully
+2026-02-16 18:35:31,906 | INFO | workers.stt_worker | Task created successfully with ID: 69931d2355fb718c9b042088
+2026-02-16 18:35:31,975 | INFO | workers.stt_worker | Enqueued audio analysis task 69931d2355fb718c9b042088 for question result 69931cf51bcb8ab655097303
+2026-02-16 18:35:31,976 | INFO | workers.stt_worker | New Task 69931cf51bcb8ab655097305 video analysis task created successfully
+2026-02-16 18:35:32,094 | INFO | workers.stt_worker | Task completed | task_id=69931cf51bcb8ab655097305
+2026-02-16 18:36:56,924 | INFO | workers.stt_worker | Task received | task_id=69931d781bcb8ab655097310
+2026-02-16 18:37:50,171 | INFO | workers.stt_worker | Task 69931d781bcb8ab655097310 speech to text processing completed successfully
+2026-02-16 18:37:50,413 | INFO | workers.stt_worker | Task created successfully with ID: 69931dae55fb718c9b042089
+2026-02-16 18:37:50,483 | INFO | workers.stt_worker | Enqueued audio analysis task 69931dae55fb718c9b042089 for question result 69931d781bcb8ab65509730e
+2026-02-16 18:37:50,484 | INFO | workers.stt_worker | New Task 69931d781bcb8ab655097310 audio analysis task created successfully
+2026-02-16 18:37:50,728 | INFO | workers.stt_worker | Task created successfully with ID: 69931dae55fb718c9b04208a
+2026-02-16 18:37:50,793 | INFO | workers.stt_worker | Enqueued audio analysis task 69931dae55fb718c9b04208a for question result 69931d781bcb8ab65509730e
+2026-02-16 18:37:50,793 | INFO | workers.stt_worker | New Task 69931d781bcb8ab655097310 video analysis task created successfully
+2026-02-16 18:37:50,911 | INFO | workers.stt_worker | Task completed | task_id=69931d781bcb8ab655097310
+2026-02-16 18:38:11,684 | INFO | workers.stt_worker | Task received | task_id=69931dc31bcb8ab65509731b
+2026-02-16 18:38:46,130 | INFO | workers.stt_worker | Task 69931dc31bcb8ab65509731b speech to text processing completed successfully
+2026-02-16 18:38:46,365 | INFO | workers.stt_worker | Task created successfully with ID: 69931de655fb718c9b04208b
+2026-02-16 18:38:46,434 | INFO | workers.stt_worker | Enqueued audio analysis task 69931de655fb718c9b04208b for question result 69931dc31bcb8ab655097319
+2026-02-16 18:38:46,435 | INFO | workers.stt_worker | New Task 69931dc31bcb8ab65509731b audio analysis task created successfully
+2026-02-16 18:38:46,683 | INFO | workers.stt_worker | Task created successfully with ID: 69931de655fb718c9b04208c
+2026-02-16 18:38:46,751 | INFO | workers.stt_worker | Enqueued audio analysis task 69931de655fb718c9b04208c for question result 69931dc31bcb8ab655097319
+2026-02-16 18:38:46,753 | INFO | workers.stt_worker | New Task 69931dc31bcb8ab65509731b video analysis task created successfully
+2026-02-16 18:38:46,875 | INFO | workers.stt_worker | Task completed | task_id=69931dc31bcb8ab65509731b
+2026-02-16 18:38:46,943 | INFO | workers.stt_worker | Task received | task_id=69931de51bcb8ab655097326
+2026-02-16 18:38:59,793 | INFO | workers.stt_worker | Task 69931de51bcb8ab655097326 speech to text processing completed successfully
+2026-02-16 18:39:00,036 | INFO | workers.stt_worker | Task created successfully with ID: 69931df355fb718c9b04208d
+2026-02-16 18:39:00,106 | INFO | workers.stt_worker | Enqueued audio analysis task 69931df355fb718c9b04208d for question result 69931de51bcb8ab655097324
+2026-02-16 18:39:00,106 | INFO | workers.stt_worker | New Task 69931de51bcb8ab655097326 audio analysis task created successfully
+2026-02-16 18:39:00,353 | INFO | workers.stt_worker | Task created successfully with ID: 69931df455fb718c9b04208e
+2026-02-16 18:39:00,427 | INFO | workers.stt_worker | Enqueued audio analysis task 69931df455fb718c9b04208e for question result 69931de51bcb8ab655097324
+2026-02-16 18:39:00,427 | INFO | workers.stt_worker | New Task 69931de51bcb8ab655097326 video analysis task created successfully
+2026-02-16 18:39:00,553 | INFO | workers.stt_worker | Task completed | task_id=69931de51bcb8ab655097326
+2026-02-16 18:40:04,420 | INFO | workers.stt_worker | Task received | task_id=69931e341bcb8ab655097331
+2026-02-16 18:40:32,085 | INFO | workers.stt_worker | Task 69931e341bcb8ab655097331 speech to text processing completed successfully
+2026-02-16 18:40:32,333 | INFO | workers.stt_worker | Task created successfully with ID: 69931e5055fb718c9b04208f
+2026-02-16 18:40:32,410 | INFO | workers.stt_worker | Enqueued audio analysis task 69931e5055fb718c9b04208f for question result 69931e341bcb8ab65509732f
+2026-02-16 18:40:32,410 | INFO | workers.stt_worker | New Task 69931e341bcb8ab655097331 audio analysis task created successfully
+2026-02-16 18:40:32,645 | INFO | workers.stt_worker | Task created successfully with ID: 69931e5055fb718c9b042090
+2026-02-16 18:40:32,710 | INFO | workers.stt_worker | Enqueued audio analysis task 69931e5055fb718c9b042090 for question result 69931e341bcb8ab65509732f
+2026-02-16 18:40:32,711 | INFO | workers.stt_worker | New Task 69931e341bcb8ab655097331 video analysis task created successfully
+2026-02-16 18:40:32,870 | INFO | workers.stt_worker | Task completed | task_id=69931e341bcb8ab655097331
+2026-02-16 18:40:56,407 | INFO | workers.stt_worker | Task received | task_id=69931e681bcb8ab65509733c
+2026-02-16 18:41:16,779 | INFO | workers.stt_worker | Task 69931e681bcb8ab65509733c speech to text processing completed successfully
+2026-02-16 18:41:17,044 | INFO | workers.stt_worker | Task created successfully with ID: 69931e7c55fb718c9b042091
+2026-02-16 18:41:17,127 | INFO | workers.stt_worker | Enqueued audio analysis task 69931e7c55fb718c9b042091 for question result 69931e681bcb8ab65509733a
+2026-02-16 18:41:17,127 | INFO | workers.stt_worker | New Task 69931e681bcb8ab65509733c audio analysis task created successfully
+2026-02-16 18:41:17,395 | INFO | workers.stt_worker | Task created successfully with ID: 69931e7d55fb718c9b042092
+2026-02-16 18:41:17,476 | INFO | workers.stt_worker | Enqueued audio analysis task 69931e7d55fb718c9b042092 for question result 69931e681bcb8ab65509733a
+2026-02-16 18:41:17,477 | INFO | workers.stt_worker | New Task 69931e681bcb8ab65509733c video analysis task created successfully
+2026-02-16 18:41:17,612 | INFO | workers.stt_worker | Task completed | task_id=69931e681bcb8ab65509733c
+2026-02-16 18:42:45,046 | INFO | workers.stt_worker | Task received | task_id=69931ed41bcb8ab655097347
+2026-02-16 18:43:21,793 | INFO | workers.stt_worker | Task 69931ed41bcb8ab655097347 speech to text processing completed successfully
+2026-02-16 18:43:22,029 | INFO | workers.stt_worker | Task created successfully with ID: 69931ef955fb718c9b042093
+2026-02-16 18:43:22,120 | INFO | workers.stt_worker | Enqueued audio analysis task 69931ef955fb718c9b042093 for question result 69931ed41bcb8ab655097345
+2026-02-16 18:43:22,121 | INFO | workers.stt_worker | New Task 69931ed41bcb8ab655097347 audio analysis task created successfully
+2026-02-16 18:43:22,352 | INFO | workers.stt_worker | Task created successfully with ID: 69931efa55fb718c9b042094
+2026-02-16 18:43:22,418 | INFO | workers.stt_worker | Enqueued audio analysis task 69931efa55fb718c9b042094 for question result 69931ed41bcb8ab655097345
+2026-02-16 18:43:22,419 | INFO | workers.stt_worker | New Task 69931ed41bcb8ab655097347 video analysis task created successfully
+2026-02-16 18:43:22,537 | INFO | workers.stt_worker | Task completed | task_id=69931ed41bcb8ab655097347
+2026-02-16 18:51:51,889 | INFO | workers.stt_worker | Task received | task_id=699320f71bcb8ab655097378
+2026-02-16 18:52:24,429 | INFO | workers.stt_worker | Task 699320f71bcb8ab655097378 speech to text processing completed successfully
+2026-02-16 18:52:24,665 | INFO | workers.stt_worker | Task created successfully with ID: 6993211855fb718c9b042095
+2026-02-16 18:52:24,743 | INFO | workers.stt_worker | Enqueued audio analysis task 6993211855fb718c9b042095 for question result 699320f71bcb8ab655097376
+2026-02-16 18:52:24,744 | INFO | workers.stt_worker | New Task 699320f71bcb8ab655097378 audio analysis task created successfully
+2026-02-16 18:52:24,984 | INFO | workers.stt_worker | Task created successfully with ID: 6993211855fb718c9b042096
+2026-02-16 18:52:25,050 | INFO | workers.stt_worker | Enqueued audio analysis task 6993211855fb718c9b042096 for question result 699320f71bcb8ab655097376
+2026-02-16 18:52:25,051 | INFO | workers.stt_worker | New Task 699320f71bcb8ab655097378 video analysis task created successfully
+2026-02-16 18:52:25,172 | INFO | workers.stt_worker | Task completed | task_id=699320f71bcb8ab655097378
+2026-02-16 18:52:55,847 | INFO | workers.stt_worker | Task received | task_id=699321371bcb8ab655097383
+2026-02-16 18:53:25,417 | INFO | workers.stt_worker | Task 699321371bcb8ab655097383 speech to text processing completed successfully
+2026-02-16 18:53:25,656 | INFO | workers.stt_worker | Task created successfully with ID: 6993215555fb718c9b042097
+2026-02-16 18:53:25,723 | INFO | workers.stt_worker | Enqueued audio analysis task 6993215555fb718c9b042097 for question result 699321371bcb8ab655097381
+2026-02-16 18:53:25,723 | INFO | workers.stt_worker | New Task 699321371bcb8ab655097383 audio analysis task created successfully
+2026-02-16 18:53:25,958 | INFO | workers.stt_worker | Task created successfully with ID: 6993215555fb718c9b042098
+2026-02-16 18:53:26,028 | INFO | workers.stt_worker | Enqueued audio analysis task 6993215555fb718c9b042098 for question result 699321371bcb8ab655097381
+2026-02-16 18:53:26,029 | INFO | workers.stt_worker | New Task 699321371bcb8ab655097383 video analysis task created successfully
+2026-02-16 18:53:26,150 | INFO | workers.stt_worker | Task completed | task_id=699321371bcb8ab655097383
+2026-02-16 18:54:40,907 | INFO | workers.stt_worker | Task received | task_id=699321a01bcb8ab65509738e
+2026-02-16 18:55:12,901 | INFO | workers.stt_worker | Task 699321a01bcb8ab65509738e speech to text processing completed successfully
+2026-02-16 18:55:13,149 | INFO | workers.stt_worker | Task created successfully with ID: 699321c155fb718c9b042099
+2026-02-16 18:55:13,226 | INFO | workers.stt_worker | Enqueued audio analysis task 699321c155fb718c9b042099 for question result 699321a01bcb8ab65509738c
+2026-02-16 18:55:13,227 | INFO | workers.stt_worker | New Task 699321a01bcb8ab65509738e audio analysis task created successfully
+2026-02-16 18:55:13,461 | INFO | workers.stt_worker | Task created successfully with ID: 699321c155fb718c9b04209a
+2026-02-16 18:55:13,530 | INFO | workers.stt_worker | Enqueued audio analysis task 699321c155fb718c9b04209a for question result 699321a01bcb8ab65509738c
+2026-02-16 18:55:13,531 | INFO | workers.stt_worker | New Task 699321a01bcb8ab65509738e video analysis task created successfully
+2026-02-16 18:55:13,653 | INFO | workers.stt_worker | Task completed | task_id=699321a01bcb8ab65509738e
+2026-02-16 18:56:51,451 | INFO | workers.stt_worker | Task received | task_id=699322231bcb8ab655097399
+2026-02-16 18:57:25,097 | INFO | workers.stt_worker | Task 699322231bcb8ab655097399 speech to text processing completed successfully
+2026-02-16 18:57:25,336 | INFO | workers.stt_worker | Task created successfully with ID: 6993224555fb718c9b04209b
+2026-02-16 18:57:25,406 | INFO | workers.stt_worker | Enqueued audio analysis task 6993224555fb718c9b04209b for question result 699322231bcb8ab655097397
+2026-02-16 18:57:25,407 | INFO | workers.stt_worker | New Task 699322231bcb8ab655097399 audio analysis task created successfully
+2026-02-16 18:57:25,641 | INFO | workers.stt_worker | Task created successfully with ID: 6993224555fb718c9b04209c
+2026-02-16 18:57:25,711 | INFO | workers.stt_worker | Enqueued audio analysis task 6993224555fb718c9b04209c for question result 699322231bcb8ab655097397
+2026-02-16 18:57:25,711 | INFO | workers.stt_worker | New Task 699322231bcb8ab655097399 video analysis task created successfully
+2026-02-16 18:57:25,828 | INFO | workers.stt_worker | Task completed | task_id=699322231bcb8ab655097399
+2026-02-16 18:58:06,063 | INFO | workers.stt_worker | Task received | task_id=6993226d1bcb8ab6550973a4
+2026-02-16 18:58:31,888 | INFO | workers.stt_worker | Task 6993226d1bcb8ab6550973a4 speech to text processing completed successfully
+2026-02-16 18:58:32,128 | INFO | workers.stt_worker | Task created successfully with ID: 6993228855fb718c9b04209d
+2026-02-16 18:58:32,194 | INFO | workers.stt_worker | Enqueued audio analysis task 6993228855fb718c9b04209d for question result 6993226d1bcb8ab6550973a2
+2026-02-16 18:58:32,194 | INFO | workers.stt_worker | New Task 6993226d1bcb8ab6550973a4 audio analysis task created successfully
+2026-02-16 18:58:32,430 | INFO | workers.stt_worker | Task created successfully with ID: 6993228855fb718c9b04209e
+2026-02-16 18:58:32,495 | INFO | workers.stt_worker | Enqueued audio analysis task 6993228855fb718c9b04209e for question result 6993226d1bcb8ab6550973a2
+2026-02-16 18:58:32,496 | INFO | workers.stt_worker | New Task 6993226d1bcb8ab6550973a4 video analysis task created successfully
+2026-02-16 18:58:32,614 | INFO | workers.stt_worker | Task completed | task_id=6993226d1bcb8ab6550973a4
+2026-02-16 18:59:46,716 | INFO | workers.stt_worker | Task received | task_id=699322d21bcb8ab6550973af
+2026-02-16 19:00:18,916 | INFO | workers.stt_worker | Task 699322d21bcb8ab6550973af speech to text processing completed successfully
+2026-02-16 19:00:19,163 | INFO | workers.stt_worker | Task created successfully with ID: 699322f355fb718c9b04209f
+2026-02-16 19:00:19,236 | INFO | workers.stt_worker | Enqueued audio analysis task 699322f355fb718c9b04209f for question result 699322d21bcb8ab6550973ad
+2026-02-16 19:00:19,236 | INFO | workers.stt_worker | New Task 699322d21bcb8ab6550973af audio analysis task created successfully
+2026-02-16 19:00:19,479 | INFO | workers.stt_worker | Task created successfully with ID: 699322f355fb718c9b0420a0
+2026-02-16 19:00:19,550 | INFO | workers.stt_worker | Enqueued audio analysis task 699322f355fb718c9b0420a0 for question result 699322d21bcb8ab6550973ad
+2026-02-16 19:00:19,550 | INFO | workers.stt_worker | New Task 699322d21bcb8ab6550973af video analysis task created successfully
+2026-02-16 19:00:19,672 | INFO | workers.stt_worker | Task completed | task_id=699322d21bcb8ab6550973af
+2026-02-16 19:14:51,405 | INFO | workers.stt_worker | Task received | task_id=6993265b1bcb8ab6550973e0
+2026-02-16 19:15:09,331 | INFO | workers.stt_worker | Task 6993265b1bcb8ab6550973e0 speech to text processing completed successfully
+2026-02-16 19:15:09,578 | INFO | workers.stt_worker | Task created successfully with ID: 6993266d55fb718c9b0420a1
+2026-02-16 19:15:09,654 | INFO | workers.stt_worker | Enqueued audio analysis task 6993266d55fb718c9b0420a1 for question result 6993265a1bcb8ab6550973de
+2026-02-16 19:15:09,655 | INFO | workers.stt_worker | New Task 6993265b1bcb8ab6550973e0 audio analysis task created successfully
+2026-02-16 19:15:09,908 | INFO | workers.stt_worker | Task created successfully with ID: 6993266d55fb718c9b0420a2
+2026-02-16 19:15:09,983 | INFO | workers.stt_worker | Enqueued audio analysis task 6993266d55fb718c9b0420a2 for question result 6993265a1bcb8ab6550973de
+2026-02-16 19:15:09,985 | INFO | workers.stt_worker | New Task 6993265b1bcb8ab6550973e0 video analysis task created successfully
+2026-02-16 19:15:10,110 | INFO | workers.stt_worker | Task completed | task_id=6993265b1bcb8ab6550973e0
+2026-02-16 19:15:19,008 | INFO | workers.stt_worker | Task received | task_id=699326761bcb8ab6550973eb
+2026-02-16 19:15:33,977 | INFO | workers.stt_worker | Task 699326761bcb8ab6550973eb speech to text processing completed successfully
+2026-02-16 19:15:34,222 | INFO | workers.stt_worker | Task created successfully with ID: 6993268655fb718c9b0420a3
+2026-02-16 19:15:34,296 | INFO | workers.stt_worker | Enqueued audio analysis task 6993268655fb718c9b0420a3 for question result 699326761bcb8ab6550973e9
+2026-02-16 19:15:34,296 | INFO | workers.stt_worker | New Task 699326761bcb8ab6550973eb audio analysis task created successfully
+2026-02-16 19:15:34,538 | INFO | workers.stt_worker | Task created successfully with ID: 6993268655fb718c9b0420a4
+2026-02-16 19:15:34,609 | INFO | workers.stt_worker | Enqueued audio analysis task 6993268655fb718c9b0420a4 for question result 699326761bcb8ab6550973e9
+2026-02-16 19:15:34,610 | INFO | workers.stt_worker | New Task 699326761bcb8ab6550973eb video analysis task created successfully
+2026-02-16 19:15:34,737 | INFO | workers.stt_worker | Task completed | task_id=699326761bcb8ab6550973eb
+2026-02-16 19:17:22,382 | INFO | workers.stt_worker | Task received | task_id=699326f21bcb8ab6550973f6
+2026-02-16 19:17:51,603 | INFO | workers.stt_worker | Task 699326f21bcb8ab6550973f6 speech to text processing completed successfully
+2026-02-16 19:17:51,844 | INFO | workers.stt_worker | Task created successfully with ID: 6993270f55fb718c9b0420a5
+2026-02-16 19:17:51,913 | INFO | workers.stt_worker | Enqueued audio analysis task 6993270f55fb718c9b0420a5 for question result 699326f21bcb8ab6550973f4
+2026-02-16 19:17:51,914 | INFO | workers.stt_worker | New Task 699326f21bcb8ab6550973f6 audio analysis task created successfully
+2026-02-16 19:17:52,149 | INFO | workers.stt_worker | Task created successfully with ID: 6993271055fb718c9b0420a6
+2026-02-16 19:17:52,249 | INFO | workers.stt_worker | Enqueued audio analysis task 6993271055fb718c9b0420a6 for question result 699326f21bcb8ab6550973f4
+2026-02-16 19:17:52,250 | INFO | workers.stt_worker | New Task 699326f21bcb8ab6550973f6 video analysis task created successfully
+2026-02-16 19:17:52,375 | INFO | workers.stt_worker | Task completed | task_id=699326f21bcb8ab6550973f6

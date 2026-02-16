@@ -76,7 +76,6 @@ def final_interview_pipeline(interview_id: str):
                     "shortSummary": doc['lLMAnalysis']['shortSummary'] if doc['lLMAnalysis']['shortSummary'] else {},
                     "questionText": doc['questionText'] if doc['questionText'] else {},
                 })
-            break
 
         print("Final input data passing to llm for final interview evaluation", input_data)
         

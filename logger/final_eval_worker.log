@@ -1,0 +1,119 @@
+2026-02-16 17:22:06,495 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 17:22:06,560 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1272, family=2, type=1, proto=6, laddr=('192.168.100.7', 61512), raddr=('15.206.140.228', 5671)>
+2026-02-16 17:22:06,636 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1272, family=2, type=1, proto=0, laddr=('192.168.100.7', 61512), raddr=('15.206.140.228', 5671)>
+2026-02-16 17:22:06,638 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000021D60AD0EC0>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000021D60AD0EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 17:22:06,839 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000021D60AD0EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 17:22:06,840 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000021D60AD0EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 17:22:06,842 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000021D60AD0EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 17:22:06,843 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 17:34:26,956 | INFO | pika.adapters.blocking_connection | Closing connection (200): Normal shutdown
+2026-02-16 17:34:26,961 | INFO | pika.channel | Closing channel (200): 'Normal shutdown' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000021D60AD0EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 17:34:27,027 | INFO | pika.channel | Received <Channel.CloseOk> on <Channel number=1 CLOSING conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000021D60AD0EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 17:34:27,029 | INFO | pika.connection | Closing connection (200): 'Normal shutdown'
+2026-02-16 17:34:27,096 | INFO | pika.adapters.utils.io_services_utils | Aborting transport connection: state=1; <ssl.SSLSocket fd=1272, family=2, type=1, proto=0, laddr=('192.168.100.7', 61512), raddr=('15.206.140.228', 5671)>
+2026-02-16 17:34:27,097 | INFO | pika.adapters.utils.io_services_utils | _AsyncTransportBase._initate_abort(): Initiating abrupt asynchronous transport shutdown: state=1; error=None; <ssl.SSLSocket fd=1272, family=2, type=1, proto=0, laddr=('192.168.100.7', 61512), raddr=('15.206.140.228', 5671)>
+2026-02-16 17:34:27,098 | INFO | pika.adapters.utils.io_services_utils | Deactivating transport: state=1; <ssl.SSLSocket fd=1272, family=2, type=1, proto=0, laddr=('192.168.100.7', 61512), raddr=('15.206.140.228', 5671)>
+2026-02-16 17:34:27,098 | INFO | pika.connection | AMQP stack terminated, failed to connect, or aborted: opened=True, error-arg=None; pending-error=ConnectionClosedByClient: (200) 'Normal shutdown'
+2026-02-16 17:34:27,099 | INFO | pika.connection | Stack terminated due to ConnectionClosedByClient: (200) 'Normal shutdown'
+2026-02-16 17:34:27,100 | INFO | pika.adapters.utils.io_services_utils | Closing transport socket and unlinking: state=3; <ssl.SSLSocket fd=1272, family=2, type=1, proto=0, laddr=('192.168.100.7', 61512), raddr=('15.206.140.228', 5671)>
+2026-02-16 17:34:27,101 | INFO | pika.adapters.blocking_connection | User-initiated close: result=BlockingConnection__OnClosedArgs(connection=<SelectConnection CLOSED transport=None params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>, error=ConnectionClosedByClient: (200) 'Normal shutdown')
+2026-02-16 18:17:35,723 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 18:17:35,864 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1204, family=2, type=1, proto=6, laddr=('192.168.100.7', 57323), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:17:36,021 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1204, family=2, type=1, proto=0, laddr=('192.168.100.7', 57323), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:17:36,023 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000211710F0EC0>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000211710F0EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 18:17:36,316 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000211710F0EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:17:36,317 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000211710F0EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:17:36,318 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000211710F0EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:17:36,320 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 18:17:38,331 | INFO | workers.final_eval_worker | Task received | task_id=6993183f4f03f3eb903952fc
+2026-02-16 18:17:43,189 | INFO | workers.final_eval_worker | Task 6993183f4f03f3eb903952fc final interview evaluation completed successfully now pushing to pdf report generation queue
+2026-02-16 18:17:43,312 | INFO | workers.final_eval_worker | Task created successfully with ID: 699318f7c92202241fffa2ab
+2026-02-16 18:17:43,380 | INFO | workers.final_eval_worker | Enqueued pdf report generation task 699318f7c92202241fffa2ab for report id 699318f7c92202241fffa2aa
+2026-02-16 18:17:43,381 | INFO | workers.final_eval_worker | New Task 6993183f4f03f3eb903952fc report generation pdf task created successfully
+2026-02-16 18:17:43,504 | INFO | workers.final_eval_worker | Task completed | task_id=6993183f4f03f3eb903952fc
+2026-02-16 18:18:31,169 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 18:18:31,237 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1240, family=2, type=1, proto=6, laddr=('192.168.100.7', 52715), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:18:31,313 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1240, family=2, type=1, proto=0, laddr=('192.168.100.7', 52715), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:18:31,316 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001A9B752CEC0>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001A9B752CEC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 18:18:31,525 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001A9B752CEC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:18:31,525 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001A9B752CEC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:18:31,526 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001A9B752CEC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:18:31,526 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 18:18:33,570 | INFO | workers.final_eval_worker | Task received | task_id=6993183f4f03f3eb903952fc
+2026-02-16 18:18:33,572 | ERROR | workers.final_eval_worker | Task crashed | task_id=6993183f4f03f3eb903952fc
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\final_eval_worker.py", line 75, in callback
+    raise Exception("Test")
+Exception: Test
+2026-02-16 18:18:35,061 | INFO | workers.final_eval_worker | Moving to Waiting Room (10s delay) | retry=1
+2026-02-16 18:18:45,139 | INFO | workers.final_eval_worker | Task received | task_id=6993183f4f03f3eb903952fc
+2026-02-16 18:18:45,140 | ERROR | workers.final_eval_worker | Task crashed | task_id=6993183f4f03f3eb903952fc
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\final_eval_worker.py", line 75, in callback
+    raise Exception("Test")
+Exception: Test
+2026-02-16 18:18:45,259 | INFO | workers.final_eval_worker | Moving to Waiting Room (10s delay) | retry=2
+2026-02-16 18:18:55,331 | INFO | workers.final_eval_worker | Task received | task_id=6993183f4f03f3eb903952fc
+2026-02-16 18:18:55,332 | ERROR | workers.final_eval_worker | Task crashed | task_id=6993183f4f03f3eb903952fc
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\workers\final_eval_worker.py", line 75, in callback
+    raise Exception("Test")
+Exception: Test
+2026-02-16 18:18:55,452 | ERROR | workers.final_eval_worker | Max retries exceeded. Moving to DLQ | task_id=6993183f4f03f3eb903952fc
+2026-02-16 18:19:10,556 | INFO | pika.adapters.blocking_connection | Closing connection (200): Normal shutdown
+2026-02-16 18:19:10,557 | INFO | pika.channel | Closing channel (200): 'Normal shutdown' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001A9B752CEC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 18:19:10,625 | INFO | pika.channel | Received <Channel.CloseOk> on <Channel number=1 CLOSING conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001A9B752CEC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 18:19:10,627 | INFO | pika.connection | Closing connection (200): 'Normal shutdown'
+2026-02-16 18:20:28,942 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 18:20:29,034 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1252, family=2, type=1, proto=6, laddr=('192.168.100.7', 61510), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:20:29,142 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1252, family=2, type=1, proto=0, laddr=('192.168.100.7', 61510), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:20:29,145 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000022B1714CEC0>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000022B1714CEC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 18:20:29,400 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000022B1714CEC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:20:29,401 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000022B1714CEC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:20:29,402 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000022B1714CEC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:20:29,404 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 18:21:44,899 | ERROR | pika.adapters.utils.selector_ioloop_adapter | Address resolution failed: gaierror(11001, 'getaddrinfo failed')
+2026-02-16 18:21:44,902 | ERROR | pika.adapters.utils.connection_workflow | getaddrinfo failed: gaierror(11001, 'getaddrinfo failed').
+2026-02-16 18:21:44,903 | ERROR | pika.adapters.utils.connection_workflow | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - gaierror(11001, 'getaddrinfo failed'); first exception - None.
+2026-02-16 18:21:44,904 | ERROR | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - gaierror(11001, 'getaddrinfo failed'); first exception - None
+2026-02-16 18:21:44,905 | ERROR | pika.adapters.blocking_connection | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - gaierror(11001, 'getaddrinfo failed'); first exception - None
+2026-02-16 18:21:44,906 | ERROR | pika.adapters.blocking_connection | Error in _create_connection().
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\blocking_connection.py", line 451, in _create_connection
+    raise self._reap_last_connection_workflow_error(error)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\selector_ioloop_adapter.py", line 565, in _resolve
+    result = socket.getaddrinfo(self._host, self._port, self._family,
+                                self._socktype, self._proto,
+                                self._flags)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+2026-02-16 18:22:56,890 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 18:22:56,966 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1124, family=2, type=1, proto=6, laddr=('192.168.100.7', 51960), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:22:57,039 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1124, family=2, type=1, proto=0, laddr=('192.168.100.7', 51960), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:22:57,040 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000018ED91D1010>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000018ED91D1010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 18:22:57,255 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000018ED91D1010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:22:57,255 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000018ED91D1010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:22:57,256 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000018ED91D1010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:22:57,256 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 18:22:59,612 | INFO | workers.final_eval_worker | Worker started and waiting for final interview evaluation jobs...
+2026-02-16 18:43:01,198 | INFO | workers.final_eval_worker | Task received | task_id=69931ee4acc3b1a88b6ab173
+2026-02-16 18:43:09,475 | INFO | workers.final_eval_worker | Task 69931ee4acc3b1a88b6ab173 final interview evaluation completed successfully now pushing to pdf report generation queue
+2026-02-16 18:43:09,633 | INFO | workers.final_eval_worker | Task created successfully with ID: 69931eed58fc965f4289340e
+2026-02-16 18:43:09,704 | INFO | workers.final_eval_worker | Enqueued pdf report generation task 69931eed58fc965f4289340e for report id 69931eed58fc965f4289340d
+2026-02-16 18:43:09,704 | INFO | workers.final_eval_worker | New Task 69931ee4acc3b1a88b6ab173 report generation pdf task created successfully
+2026-02-16 18:43:09,882 | INFO | workers.final_eval_worker | Task completed | task_id=69931ee4acc3b1a88b6ab173
+2026-02-16 18:49:12,388 | INFO | pika.adapters.blocking_connection | Closing connection (200): Normal shutdown
+2026-02-16 18:49:12,390 | INFO | pika.channel | Closing channel (200): 'Normal shutdown' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000018ED91D1010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 18:49:12,458 | INFO | pika.channel | Received <Channel.CloseOk> on <Channel number=1 CLOSING conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000018ED91D1010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-02-16 18:49:12,460 | INFO | pika.connection | Closing connection (200): 'Normal shutdown'
+2026-02-16 18:49:26,093 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-16 18:49:26,158 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1184, family=2, type=1, proto=6, laddr=('192.168.100.7', 53658), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:49:26,231 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1184, family=2, type=1, proto=0, laddr=('192.168.100.7', 53658), raddr=('15.206.140.228', 5671)>
+2026-02-16 18:49:26,232 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001631F471010>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001631F471010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-16 18:49:26,431 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001631F471010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:49:26,432 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001631F471010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:49:26,433 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001631F471010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-16 18:49:26,435 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-16 18:49:28,389 | INFO | workers.final_eval_worker | Worker started and waiting for final interview evaluation jobs...
