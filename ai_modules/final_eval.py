@@ -99,11 +99,11 @@ def final_interview_pipeline(interview_id: str):
         
         report_doc = {
             "interviewId": ObjectId(interview_id),
-            "overallScores.contentScore": final_result['overallScores']['contentScore'],
-            "overallScores.fluencyScore": final_result['overallScores']['fluencyScore'],
-            "overallScores.communicationScore": final_result['overallScores']['communicationScore'],
-            "overallScores.confidenceScore": final_result['overallScores']['confidenceScore'],
-            "overallScores.overallScore": final_result['overallScores']['overallScore'],
+            "contentScore": final_result['overallScores']['contentScore'],
+            "fluencyScore": final_result['overallScores']['fluencyScore'],
+            "communicationScore": final_result['overallScores']['communicationScore'],
+            "confidenceScore": final_result['overallScores']['confidenceScore'],
+            "overallScore": final_result['overallScores']['overallScore'],
             
             "overallAnswerQuality": final_result['overallAnswerQuality'],
             "overallInterviewScore": final_result['overallInterviewScore'],
@@ -116,8 +116,8 @@ def final_interview_pipeline(interview_id: str):
             
             "overallImprovementSuggestions": final_result['overallImprovementSuggestions'],
             
-            "integrity.integrityConcern": final_result['integrity']['integrityConcern'],
-            "integrity.integrityNotes": final_result['integrity']['integrityNotes'],
+            "integrityConcern": final_result['integrity']['integrityConcern'],
+            "integrityNotes": final_result['integrity']['integrityNotes'],
             
             "interviewSummary": final_result['interviewSummary'],
             "createdAt": datetime.now(),

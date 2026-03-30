@@ -117,3 +117,53 @@ socket.gaierror: [Errno 11001] getaddrinfo failed
 2026-02-16 18:49:26,433 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001631F471010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
 2026-02-16 18:49:26,435 | INFO | pika.adapters.blocking_connection | Created channel=1
 2026-02-16 18:49:28,389 | INFO | workers.final_eval_worker | Worker started and waiting for final interview evaluation jobs...
+2026-02-23 11:45:30,747 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-23 11:45:30,819 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1200, family=2, type=1, proto=6, laddr=('192.168.100.7', 54663), raddr=('15.206.140.228', 5671)>
+2026-02-23 11:45:30,888 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1200, family=2, type=1, proto=0, laddr=('192.168.100.7', 54663), raddr=('15.206.140.228', 5671)>
+2026-02-23 11:45:30,889 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000026E36811010>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000026E36811010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-23 11:45:31,103 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000026E36811010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-23 11:45:31,104 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000026E36811010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-23 11:45:31,105 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000026E36811010> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-23 11:45:31,105 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-23 11:45:33,524 | INFO | workers.final_eval_worker | Worker started and waiting for final interview evaluation jobs...
+2026-02-23 11:45:33,524 | INFO | workers.final_eval_worker | Task received | task_id=699bf6f561ccd8f5ecef4570
+2026-02-23 11:45:47,592 | INFO | workers.final_eval_worker | Task 699bf6f561ccd8f5ecef4570 final interview evaluation completed successfully now pushing to pdf report generation queue
+2026-02-23 11:45:47,708 | INFO | workers.final_eval_worker | Task created successfully with ID: 699bf79bbf4a154d4c969616
+2026-02-23 11:45:47,778 | INFO | workers.final_eval_worker | Enqueued pdf report generation task 699bf79bbf4a154d4c969616 for report id 699bf79bbf4a154d4c969615
+2026-02-23 11:45:47,779 | INFO | workers.final_eval_worker | New Task 699bf6f561ccd8f5ecef4570 report generation pdf task created successfully
+2026-02-23 11:45:47,899 | INFO | workers.final_eval_worker | Task completed | task_id=699bf6f561ccd8f5ecef4570
+2026-02-23 12:12:58,378 | INFO | workers.final_eval_worker | Task received | task_id=699bfdf961ccd8f5ecef4571
+2026-02-23 12:13:15,826 | INFO | workers.final_eval_worker | Task 699bfdf961ccd8f5ecef4571 final interview evaluation completed successfully now pushing to pdf report generation queue
+2026-02-23 12:13:15,995 | INFO | workers.final_eval_worker | Task created successfully with ID: 699bfe0bbf4a154d4c969618
+2026-02-23 12:13:16,126 | INFO | workers.final_eval_worker | Enqueued pdf report generation task 699bfe0bbf4a154d4c969618 for report id 699bfe0bbf4a154d4c969617
+2026-02-23 12:13:16,126 | INFO | workers.final_eval_worker | New Task 699bfdf961ccd8f5ecef4571 report generation pdf task created successfully
+2026-02-23 12:13:16,353 | INFO | workers.final_eval_worker | Task completed | task_id=699bfdf961ccd8f5ecef4571
+2026-03-04 13:05:25,298 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-03-04 13:05:25,371 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1252, family=2, type=1, proto=6, laddr=('192.168.100.7', 59752), raddr=('15.206.140.228', 5671)>
+2026-03-04 13:05:25,467 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1252, family=2, type=1, proto=0, laddr=('192.168.100.7', 59752), raddr=('15.206.140.228', 5671)>
+2026-03-04 13:05:25,469 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001F88D0D0EC0>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001F88D0D0EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-03-04 13:05:25,704 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001F88D0D0EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-03-04 13:05:25,706 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001F88D0D0EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-03-04 13:05:25,707 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001F88D0D0EC0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-03-04 13:05:25,708 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-03-04 13:05:28,076 | INFO | workers.final_eval_worker | Worker started and waiting for final interview evaluation jobs...
+2026-03-04 13:05:28,077 | INFO | workers.final_eval_worker | Task received | task_id=69a7e75fc50a03cf4114d6e6
+2026-03-04 13:05:41,453 | INFO | workers.final_eval_worker | Task 69a7e75fc50a03cf4114d6e6 final interview evaluation completed successfully now pushing to pdf report generation queue
+2026-03-04 13:05:41,583 | INFO | workers.final_eval_worker | Task created successfully with ID: 69a7e7d5658cb6cc7863892c
+2026-03-04 13:05:41,666 | INFO | workers.final_eval_worker | Enqueued pdf report generation task 69a7e7d5658cb6cc7863892c for interview id 69a7e05205c6060d147150ef
+2026-03-04 13:05:41,667 | INFO | workers.final_eval_worker | New Task 69a7e75fc50a03cf4114d6e6 report generation pdf task created successfully
+2026-03-04 13:05:42,077 | INFO | workers.final_eval_worker | Task completed | task_id=69a7e75fc50a03cf4114d6e6
+2026-03-04 13:58:50,768 | INFO | workers.final_eval_worker | Task received | task_id=69a7f44ac50a03cf4114d6e7
+2026-03-04 13:59:09,255 | INFO | workers.final_eval_worker | Task 69a7f44ac50a03cf4114d6e7 final interview evaluation completed successfully now pushing to pdf report generation queue
+2026-03-04 13:59:09,459 | INFO | workers.final_eval_worker | Task created successfully with ID: 69a7f45d658cb6cc7863892e
+2026-03-04 13:59:09,527 | INFO | workers.final_eval_worker | Enqueued pdf report generation task 69a7f45d658cb6cc7863892e for interview id 69a7f2b7472d6d3eb2db06fc
+2026-03-04 13:59:09,527 | INFO | workers.final_eval_worker | New Task 69a7f44ac50a03cf4114d6e7 report generation pdf task created successfully
+2026-03-04 13:59:09,657 | INFO | workers.final_eval_worker | Task completed | task_id=69a7f44ac50a03cf4114d6e7
+2026-03-04 18:32:59,163 | INFO | pika.heartbeat | Connection is idle, 1 stale byte intervals
+2026-03-04 18:32:59,366 | INFO | pika.adapters.utils.io_services_utils | Aborting transport connection: state=1; <ssl.SSLSocket fd=1252, family=2, type=1, proto=0, laddr=('192.168.100.7', 59752), raddr=('15.206.140.228', 5671)>
+2026-03-04 18:32:59,425 | INFO | pika.adapters.utils.io_services_utils | _AsyncTransportBase._initate_abort(): Initiating abrupt asynchronous transport shutdown: state=1; error=None; <ssl.SSLSocket fd=1252, family=2, type=1, proto=0, laddr=('192.168.100.7', 59752), raddr=('15.206.140.228', 5671)>
+2026-03-04 18:32:59,440 | INFO | pika.adapters.utils.io_services_utils | Deactivating transport: state=1; <ssl.SSLSocket fd=1252, family=2, type=1, proto=0, laddr=('192.168.100.7', 59752), raddr=('15.206.140.228', 5671)>
+2026-03-04 18:32:59,460 | INFO | pika.connection | AMQP stack terminated, failed to connect, or aborted: opened=True, error-arg=None; pending-error=AMQPHeartbeatTimeout: ('No activity or too many missed heartbeats in the last 120 seconds',)
+2026-03-04 18:32:59,493 | INFO | pika.connection | Stack terminated due to AMQPHeartbeatTimeout: ('No activity or too many missed heartbeats in the last 120 seconds',)
+2026-03-04 18:32:59,558 | INFO | pika.adapters.utils.io_services_utils | Closing transport socket and unlinking: state=3; <ssl.SSLSocket fd=1252, family=2, type=1, proto=0, laddr=('192.168.100.7', 59752), raddr=('15.206.140.228', 5671)>
+2026-03-04 18:32:59,576 | ERROR | pika.adapters.blocking_connection | Unexpected connection close detected: AMQPHeartbeatTimeout: ('No activity or too many missed heartbeats in the last 120 seconds',)

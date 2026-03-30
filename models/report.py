@@ -23,24 +23,17 @@ class PyObjectId(ObjectId):
             raise ValueError("Invalid ObjectId")
 
 
-class Score(BaseModel):
-    contentScore: Optional[int] = None
-    communicationScore: Optional[int] = None
-    fluencyScore: Optional[int] = None
-    confidenceScore: Optional[int] = None
-    overallScore: Optional[int] = None
-
-
-class Integrity(BaseModel):
-    integrityConcern: Optional[bool] = False
-    integrityNotes: Optional[str] = None
-
 
 class FinalInterviewReport(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
     interviewId: PyObjectId
 
-    overallScore: Optional[Score] = None
+    contentScore: Optional[int] = None
+    communicationScore: Optional[int] = None
+    fluencyScore: Optional[int] = None
+    confidenceScore: Optional[int] = None
+    overallScore: Optional[int] = None
+    
     overallAnswerQuality: Optional[str] = None
     overallInterviewScore: Optional[int] = None
 
@@ -49,7 +42,9 @@ class FinalInterviewReport(BaseModel):
     commonMissingConcepts: List[str] = []
     overallImprovementSuggestions: List[str] = []
 
-    integrity: Optional[Integrity] = Integrity()
+    integrityConcern: Optional[bool] = False
+    integrityNotes: Optional[str] = None
+    
     interviewSummary: Optional[str] = None
     pdfUrl: Optional[str] = None
 

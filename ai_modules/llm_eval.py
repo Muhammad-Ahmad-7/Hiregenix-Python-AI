@@ -101,7 +101,6 @@ def llm_eval_pipeline(question_result_id: str):
             print("❌ Question Result not found in DB")
             return False
         print(f"✅ Question Result found in DB: {question_result}")
-        # Extract audio from the video and update the question result document
         
         prompt_template = ChatPromptTemplate.from_messages([
         ("system", INTERVIEW_EVALUATION_PROMPT),
@@ -120,13 +119,14 @@ def llm_eval_pipeline(question_result_id: str):
         parsed_output = parser.parse(result.content)
         final_result = parsed_output.model_dump()
         
-        # DB question result document updated with transcribed text and audio url
+        # DB question result document updated with the llm evaluation result and stages.llmEvaluated = true, stages.done = true and status = completed
         question_result_collection.update_one(
             {"_id": ObjectId(question_result_id)},
             {"$set": {
                 "lLMAnalysis": final_result,
                 "stages.llmEvaluated": True,
                 "stages.done": True,
+                "status": "DONE",
                 "updatedAt": datetime.now(),
             }},
         )

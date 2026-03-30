@@ -2,17 +2,19 @@ import os
 import json
 import pika
 import traceback
-from utils.constant import FINAL_INTERVIEW_EVAL_QUEUE, REPORT_GENERATION_PDF_QUEUE, FINAL_INTERVIEW_EVAL_DELAY_QUEUE
-from config.db import task_collection
-from ai_modules.final_eval import final_interview_pipeline
+from ai_modules.report_generation import report_generation_pipeline
+from utils.constant import REPORT_GENERATION_PDF_QUEUE, REPORT_GENERATION_PDF_DELAY_QUEUE, FAILED_REPORT_GENERATION_PDF_TASK_QUEUE
+from config.db import task_collection, question_result_collection, interview_collection
 from bson import ObjectId
+from ai_modules.llm_eval import llm_eval_pipeline
+from pymongo import ReturnDocument
 from utils.rabbitmq import connect_rabbitmq, initialize_queues
 from utils.logger_config import setup_logging
 import logging
-from pymongo import ReturnDocument
 
-setup_logging("logger/final_eval_worker.log")
+setup_logging("logger/report_generation_worker.log")
 logger = logging.getLogger(__name__)
+
 
 # --- Setup RabbitMQ Connection ---
 channel, connection = connect_rabbitmq()
@@ -22,44 +24,8 @@ channel, connection = connect_rabbitmq()
 initialize_queues(channel=channel)
 
 
-
 channel.confirm_delivery()
 
-
-def create_and_push_report_generation_pdf_task_to_queue(interview_id: str, candidate_id: str) -> ObjectId:
-    """Create a new audio analysis task document and push it to the audio analysis queue."""
-    try:
-        doc = {
-            "userId": candidate_id,
-            "type": "report_generation_pdf",
-            "status": "pending",
-            "payload": {
-                "interviewId": interview_id,
-            },
-        }
-        result = task_collection.insert_one(doc)
-        if not result.acknowledged or not result.inserted_id:
-            logger.warning("Task creation failed")
-            return False
-        logger.info("Task created successfully with ID: %s", result.inserted_id)
-        body = str(result.inserted_id).encode()
-        delivered = channel.basic_publish(
-            exchange='',
-            routing_key=REPORT_GENERATION_PDF_QUEUE,
-            body=body,
-            properties=pika.BasicProperties(
-                delivery_mode=pika.DeliveryMode.Persistent,
-            ),
-            mandatory=True  # raise on unroutable
-        )
-        logger.info("Enqueued pdf report generation task %s for interview id %s", result.inserted_id, interview_id)
-        return True
-    except pika.exceptions.AMQPChannelError as e:
-        logger.error("Error: %s", e)
-        # Handle channel errors, e.g., if the message was nack-ed or unroutable
-    except Exception as e:
-        logger.error("Error creating and pushing llm evaluation task: {%s}",e)
-        return False
 
 # --- Main Callback ---
 def callback(ch, method, properties, body):
@@ -67,8 +33,7 @@ def callback(ch, method, properties, body):
     logger.info("Task received | task_id=%s", task_id)
     
     if not ObjectId.is_valid(task_id):
-        logger.info("Invalid task id")
-        ch.basic_ack(delivery_tag=method.delivery_tag)
+        # ch.basic_ack(delivery_tag=method.delivery_tag)
         return
 
     try:
@@ -80,7 +45,7 @@ def callback(ch, method, properties, body):
                 logger.warning("Task not found | task_id=%s", task_id)
             else:
                 logger.warning("Task skip: Current status is %s", actual_task.get('status'))
-            ch.basic_ack(delivery_tag=method.delivery_tag)
+            # ch.basic_ack(delivery_tag=method.delivery_tag)
             return
 
         logger.debug(
@@ -91,23 +56,18 @@ def callback(ch, method, properties, body):
 
         candidate_id=task['userId']
         
-        interview_id = task["payload"]["interview_id"]
+        # fetching the question result id for fetching the question result document
+        interview_id = task["payload"]["interviewId"]
         
-        result = final_interview_pipeline(interview_id=interview_id)
+        print("Task payload fetched for report generation: ", task)
         
+        # report generation logic goes here
+        result = report_generation_pipeline(interview_id, candidate_id)
         if not result:
             logger.info("Acknowledge the task because interview does not exist")
-            ch.basic_ack(delivery_tag=method.delivery_tag)
+            # ch.basic_ack(delivery_tag=method.delivery_tag)
         
-        report_id = result
-        
-        logger.info("Task %s final interview evaluation completed successfully now pushing to pdf report generation queue", task_id)
-        res = create_and_push_report_generation_pdf_task_to_queue(interview_id=interview_id, candidate_id=candidate_id)
-        
-        if not res:
-            raise Exception("Report generation pdf task not created in DB")
-        
-        logger.info("New Task %s report generation pdf task created successfully", task_id)
+        logger.info("Task %s report generation completed successfully", task_id)
         
         # --- Mark Task as Completed ---
         task_collection.update_one(
@@ -116,7 +76,7 @@ def callback(ch, method, properties, body):
         )
         logger.info("Task completed | task_id=%s", task_id)
         # Acknowledge successful message
-        ch.basic_ack(delivery_tag=method.delivery_tag)
+        # ch.basic_ack(delivery_tag=method.delivery_tag)
 
     except Exception as e:
         logger.exception("Task crashed | task_id=%s", task_id)
@@ -139,7 +99,7 @@ def callback(ch, method, properties, body):
             try:
                 ch.basic_publish(
                     exchange='',
-                    routing_key=FINAL_INTERVIEW_EVAL_DELAY_QUEUE,
+                    routing_key=REPORT_GENERATION_PDF_DELAY_QUEUE,
                     body=body,
                     properties=pika.BasicProperties(delivery_mode=pika.DeliveryMode.Persistent)
                 )
@@ -151,19 +111,17 @@ def callback(ch, method, properties, body):
 
 
 
-
 # --- Start Consuming Messages ---
 channel.basic_qos(prefetch_count=1)  # Fair dispatch
 channel.basic_consume(
-    queue=FINAL_INTERVIEW_EVAL_QUEUE,
+    queue=REPORT_GENERATION_PDF_QUEUE,
     on_message_callback=callback,
     auto_ack=False  # Manual ack ensures reliability
 )
-
+logger.info("Worker started and waiting for report generation jobs...")
 try:
-    logger.info("Worker started and waiting for final interview evaluation jobs...")
     channel.start_consuming()
 except KeyboardInterrupt:
-    print("👋 Worker stopped manually")
+    logger.info("Worker stopped manually")
     channel.stop_consuming()
     connection.close()

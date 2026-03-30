@@ -1,0 +1,235 @@
+2026-02-23 11:33:29,986 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-23 11:33:30,058 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1284, family=2, type=1, proto=6, laddr=('192.168.100.7', 57168), raddr=('15.206.140.228', 5671)>
+2026-02-23 11:33:30,133 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1284, family=2, type=1, proto=0, laddr=('192.168.100.7', 57168), raddr=('15.206.140.228', 5671)>
+2026-02-23 11:33:30,134 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000208708F5E80>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000208708F5E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-23 11:33:30,348 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000208708F5E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-23 11:33:30,349 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000208708F5E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-23 11:33:30,349 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000208708F5E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-23 11:33:30,350 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-23 11:33:30,443 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-02-23 11:33:30,515 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1412, family=2, type=1, proto=6, laddr=('192.168.100.7', 57172), raddr=('15.206.140.228', 5671)>
+2026-02-23 11:33:30,592 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1412, family=2, type=1, proto=0, laddr=('192.168.100.7', 57172), raddr=('15.206.140.228', 5671)>
+2026-02-23 11:33:30,593 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001A788B75E80>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001A788B75E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-02-23 11:33:30,808 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001A788B75E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-23 11:33:30,808 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001A788B75E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-23 11:33:30,809 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001A788B75E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-02-23 11:33:30,809 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-02-23 11:33:32,363 | INFO | workers.audio_analysis_worker | Worker started and waiting for audio analysis jobs...
+2026-02-23 11:33:32,363 | INFO | workers.audio_analysis_worker | Task received | task_id=699bf40516231b13123f68c8
+2026-02-23 11:33:32,803 | INFO | workers.audio_analysis_worker | Worker started and waiting for audio analysis jobs...
+2026-02-23 11:33:32,804 | INFO | workers.audio_analysis_worker | Task received | task_id=699bf41aa81cd736c5ef24b7
+2026-02-23 11:33:47,757 | INFO | workers.audio_analysis_worker | Task 699bf40516231b13123f68c8 audio analysis completed successfully now pushing to LLM evaluation queue
+2026-02-23 11:33:47,883 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-02-23 11:33:48,012 | INFO | workers.audio_analysis_worker | Task completed | task_id=699bf40516231b13123f68c8
+2026-02-23 11:33:48,083 | INFO | workers.audio_analysis_worker | Task received | task_id=699bf43516231b13123f68ca
+2026-02-23 11:33:48,856 | INFO | workers.audio_analysis_worker | Task 699bf41aa81cd736c5ef24b7 audio analysis completed successfully now pushing to LLM evaluation queue
+2026-02-23 11:33:48,982 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-02-23 11:33:49,105 | INFO | workers.audio_analysis_worker | Task completed | task_id=699bf41aa81cd736c5ef24b7
+2026-02-23 11:33:49,179 | INFO | workers.audio_analysis_worker | Task received | task_id=699bf442a81cd736c5ef24b9
+2026-02-23 11:33:52,989 | INFO | workers.audio_analysis_worker | Task 699bf43516231b13123f68ca audio analysis completed successfully now pushing to LLM evaluation queue
+2026-02-23 11:33:53,105 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-02-23 11:33:53,236 | INFO | workers.audio_analysis_worker | Task completed | task_id=699bf43516231b13123f68ca
+2026-02-23 11:33:53,307 | INFO | workers.audio_analysis_worker | Task received | task_id=699bf45316231b13123f68cc
+2026-02-23 11:33:53,421 | INFO | workers.audio_analysis_worker | Task 699bf442a81cd736c5ef24b9 audio analysis completed successfully now pushing to LLM evaluation queue
+2026-02-23 11:33:53,547 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-02-23 11:33:53,683 | INFO | workers.audio_analysis_worker | Task completed | task_id=699bf442a81cd736c5ef24b9
+2026-02-23 11:33:56,535 | INFO | workers.audio_analysis_worker | Task 699bf45316231b13123f68cc audio analysis completed successfully now pushing to LLM evaluation queue
+2026-02-23 11:33:56,718 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-02-23 11:33:57,055 | INFO | workers.audio_analysis_worker | Task completed | task_id=699bf45316231b13123f68cc
+2026-02-23 11:56:48,152 | INFO | workers.audio_analysis_worker | Task received | task_id=699bfa2f16231b13123f68ce
+2026-02-23 11:56:50,784 | INFO | workers.audio_analysis_worker | Task 699bfa2f16231b13123f68ce audio analysis completed successfully now pushing to LLM evaluation queue
+2026-02-23 11:56:50,909 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-02-23 11:56:51,039 | INFO | workers.audio_analysis_worker | Task completed | task_id=699bfa2f16231b13123f68ce
+2026-02-23 11:58:35,671 | INFO | workers.audio_analysis_worker | Task received | task_id=699bfa9ba81cd736c5ef24bb
+2026-02-23 11:58:38,609 | INFO | workers.audio_analysis_worker | Task 699bfa9ba81cd736c5ef24bb audio analysis completed successfully now pushing to LLM evaluation queue
+2026-02-23 11:58:38,772 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-02-23 11:58:38,918 | INFO | workers.audio_analysis_worker | Task completed | task_id=699bfa9ba81cd736c5ef24bb
+2026-02-23 12:00:39,714 | INFO | workers.audio_analysis_worker | Task received | task_id=699bfb1716231b13123f68d0
+2026-02-23 12:00:44,507 | INFO | workers.audio_analysis_worker | Task 699bfb1716231b13123f68d0 audio analysis completed successfully now pushing to LLM evaluation queue
+2026-02-23 12:00:45,122 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-02-23 12:00:45,405 | INFO | workers.audio_analysis_worker | Task completed | task_id=699bfb1716231b13123f68d0
+2026-02-23 12:02:36,734 | INFO | workers.audio_analysis_worker | Task received | task_id=699bfb8ca81cd736c5ef24bd
+2026-02-23 12:02:43,808 | INFO | workers.audio_analysis_worker | Task 699bfb8ca81cd736c5ef24bd audio analysis completed successfully now pushing to LLM evaluation queue
+2026-02-23 12:02:45,296 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-02-23 12:02:45,993 | INFO | workers.audio_analysis_worker | Task completed | task_id=699bfb8ca81cd736c5ef24bd
+2026-02-23 12:04:17,310 | INFO | workers.audio_analysis_worker | Task received | task_id=699bfbf016231b13123f68d2
+2026-02-23 12:04:23,920 | INFO | workers.audio_analysis_worker | Task 699bfbf016231b13123f68d2 audio analysis completed successfully now pushing to LLM evaluation queue
+2026-02-23 12:04:24,619 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-02-23 12:04:25,421 | INFO | workers.audio_analysis_worker | Task completed | task_id=699bfbf016231b13123f68d2
+2026-02-23 12:04:47,843 | INFO | workers.audio_analysis_worker | Task received | task_id=699bfc0ea81cd736c5ef24bf
+2026-02-23 12:04:52,287 | INFO | workers.audio_analysis_worker | Task 699bfc0ea81cd736c5ef24bf audio analysis completed successfully now pushing to LLM evaluation queue
+2026-02-23 12:04:52,608 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-02-23 12:04:53,125 | INFO | workers.audio_analysis_worker | Task completed | task_id=699bfc0ea81cd736c5ef24bf
+2026-02-23 12:06:48,760 | INFO | workers.audio_analysis_worker | Task received | task_id=699bfc8816231b13123f68d4
+2026-02-23 12:06:52,774 | INFO | workers.audio_analysis_worker | Task 699bfc8816231b13123f68d4 audio analysis completed successfully now pushing to LLM evaluation queue
+2026-02-23 12:06:53,176 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-02-23 12:06:53,543 | INFO | workers.audio_analysis_worker | Task completed | task_id=699bfc8816231b13123f68d4
+2026-02-23 12:07:44,927 | INFO | workers.audio_analysis_worker | Task received | task_id=699bfcbfa81cd736c5ef24c1
+2026-02-23 12:07:49,755 | INFO | workers.audio_analysis_worker | Task 699bfcbfa81cd736c5ef24c1 audio analysis completed successfully now pushing to LLM evaluation queue
+2026-02-23 12:07:50,168 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-02-23 12:07:50,479 | INFO | workers.audio_analysis_worker | Task completed | task_id=699bfcbfa81cd736c5ef24c1
+2026-02-23 12:09:07,448 | INFO | workers.audio_analysis_worker | Task received | task_id=699bfd1316231b13123f68d6
+2026-02-23 12:09:14,018 | INFO | workers.audio_analysis_worker | Task 699bfd1316231b13123f68d6 audio analysis completed successfully now pushing to LLM evaluation queue
+2026-02-23 12:09:14,236 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-02-23 12:09:14,461 | INFO | workers.audio_analysis_worker | Task completed | task_id=699bfd1316231b13123f68d6
+2026-02-23 12:11:40,524 | INFO | workers.audio_analysis_worker | Task received | task_id=699bfdaba81cd736c5ef24c3
+2026-02-23 12:11:45,723 | INFO | workers.audio_analysis_worker | Task 699bfdaba81cd736c5ef24c3 audio analysis completed successfully now pushing to LLM evaluation queue
+2026-02-23 12:11:45,984 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-02-23 12:11:46,135 | INFO | workers.audio_analysis_worker | Task completed | task_id=699bfdaba81cd736c5ef24c3
+2026-03-04 12:54:45,416 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-03-04 12:54:45,491 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1336, family=2, type=1, proto=6, laddr=('192.168.100.7', 56586), raddr=('15.206.140.228', 5671)>
+2026-03-04 12:54:47,903 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1336, family=2, type=1, proto=0, laddr=('192.168.100.7', 56586), raddr=('15.206.140.228', 5671)>
+2026-03-04 12:54:47,906 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000131053B5E80>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000131053B5E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-03-04 12:54:48,158 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000131053B5E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-03-04 12:54:48,160 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000131053B5E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-03-04 12:54:48,161 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000131053B5E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-03-04 12:54:48,162 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-03-04 12:54:50,556 | INFO | workers.audio_analysis_worker | Worker started and waiting for audio analysis jobs...
+2026-03-04 12:55:33,284 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-03-04 12:55:34,018 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1144, family=2, type=1, proto=6, laddr=('192.168.100.7', 59115), raddr=('15.206.140.228', 5671)>
+2026-03-04 12:55:34,514 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1144, family=2, type=1, proto=0, laddr=('192.168.100.7', 59115), raddr=('15.206.140.228', 5671)>
+2026-03-04 12:55:34,517 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001CA10965E80>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001CA10965E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-03-04 12:55:35,400 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001CA10965E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-03-04 12:55:35,401 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001CA10965E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-03-04 12:55:35,401 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001CA10965E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-03-04 12:55:35,402 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-03-04 12:55:37,185 | INFO | workers.audio_analysis_worker | Task received | task_id=69a7e578d28e85ac375d3f6b
+2026-03-04 12:55:38,281 | INFO | workers.audio_analysis_worker | Acknowledge the task because question does not exist
+2026-03-04 12:55:38,281 | INFO | workers.audio_analysis_worker | Task 69a7e578d28e85ac375d3f6b audio analysis completed successfully now pushing to LLM evaluation queue
+2026-03-04 12:55:38,406 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-03-04 12:55:38,533 | INFO | workers.audio_analysis_worker | Task completed | task_id=69a7e578d28e85ac375d3f6b
+2026-03-04 12:55:38,632 | WARNING | pika.channel | Received remote Channel.Close (406): 'PRECONDITION_FAILED - unknown delivery tag 1' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x00000131053B5E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-03-04 12:55:39,239 | INFO | workers.audio_analysis_worker | Worker started and waiting for audio analysis jobs...
+2026-03-04 12:56:29,885 | INFO | workers.audio_analysis_worker | Task received | task_id=69a7e5ad0ee17b811eb684d8
+2026-03-04 12:57:16,714 | INFO | workers.audio_analysis_worker | Task 69a7e5ad0ee17b811eb684d8 audio analysis completed successfully now pushing to LLM evaluation queue
+2026-03-04 12:57:16,918 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-03-04 12:57:17,043 | INFO | workers.audio_analysis_worker | Task completed | task_id=69a7e5ad0ee17b811eb684d8
+2026-03-04 12:57:17,124 | INFO | workers.audio_analysis_worker | Task received | task_id=69a7e5d60ee17b811eb684da
+2026-03-04 12:57:19,790 | INFO | workers.audio_analysis_worker | Task 69a7e5d60ee17b811eb684da audio analysis completed successfully now pushing to LLM evaluation queue
+2026-03-04 12:57:19,946 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-03-04 12:57:20,074 | INFO | workers.audio_analysis_worker | Task completed | task_id=69a7e5d60ee17b811eb684da
+2026-03-04 13:01:07,580 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-03-04 13:01:07,648 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1348, family=2, type=1, proto=6, laddr=('192.168.100.7', 52974), raddr=('15.206.140.228', 5671)>
+2026-03-04 13:01:07,727 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1348, family=2, type=1, proto=0, laddr=('192.168.100.7', 52974), raddr=('15.206.140.228', 5671)>
+2026-03-04 13:01:07,730 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000020D1E3B5E80>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000020D1E3B5E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-03-04 13:01:08,001 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000020D1E3B5E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-03-04 13:01:08,002 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000020D1E3B5E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-03-04 13:01:08,003 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000020D1E3B5E80> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-03-04 13:01:08,004 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-03-04 13:01:10,060 | INFO | workers.audio_analysis_worker | Worker started and waiting for audio analysis jobs...
+2026-03-04 13:54:07,317 | INFO | workers.audio_analysis_worker | Task received | task_id=69a7f32e0ee17b811eb684dc
+2026-03-04 13:54:13,754 | INFO | workers.audio_analysis_worker | Task 69a7f32e0ee17b811eb684dc audio analysis completed successfully now pushing to LLM evaluation queue
+2026-03-04 13:54:14,242 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-03-04 13:54:14,984 | INFO | workers.audio_analysis_worker | Task completed | task_id=69a7f32e0ee17b811eb684dc
+2026-03-04 13:55:17,481 | INFO | workers.audio_analysis_worker | Task received | task_id=69a7f37598dc14ba1fdce169
+2026-03-04 13:55:25,427 | INFO | workers.audio_analysis_worker | Task 69a7f37598dc14ba1fdce169 audio analysis completed successfully now pushing to LLM evaluation queue
+2026-03-04 13:55:25,549 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-03-04 13:55:25,689 | INFO | workers.audio_analysis_worker | Task completed | task_id=69a7f37598dc14ba1fdce169
+2026-03-04 13:56:30,123 | INFO | workers.audio_analysis_worker | Task received | task_id=69a7f3bd0ee17b811eb684de
+2026-03-04 13:56:33,988 | INFO | workers.audio_analysis_worker | Task 69a7f3bd0ee17b811eb684de audio analysis completed successfully now pushing to LLM evaluation queue
+2026-03-04 13:56:34,226 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-03-04 13:56:34,384 | INFO | workers.audio_analysis_worker | Task completed | task_id=69a7f3bd0ee17b811eb684de
+2026-03-04 13:57:06,545 | INFO | workers.audio_analysis_worker | Task received | task_id=69a7f3e298dc14ba1fdce16b
+2026-03-04 13:57:09,307 | INFO | workers.audio_analysis_worker | Task 69a7f3e298dc14ba1fdce16b audio analysis completed successfully now pushing to LLM evaluation queue
+2026-03-04 13:57:09,557 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-03-04 13:57:09,678 | INFO | workers.audio_analysis_worker | Task completed | task_id=69a7f3e298dc14ba1fdce16b
+2026-03-04 13:57:59,516 | INFO | workers.audio_analysis_worker | Task received | task_id=69a7f4170ee17b811eb684e0
+2026-03-04 13:58:02,146 | INFO | workers.audio_analysis_worker | Task 69a7f4170ee17b811eb684e0 audio analysis completed successfully now pushing to LLM evaluation queue
+2026-03-04 13:58:02,399 | INFO | workers.audio_analysis_worker | Skipping LLM enqueue - conditions not met
+2026-03-04 13:58:03,028 | INFO | workers.audio_analysis_worker | Task completed | task_id=69a7f4170ee17b811eb684e0
+2026-03-04 18:32:57,919 | ERROR | pika.adapters.utils.io_services_utils | Wrapped func exited with exception. Caller's stack:
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\diagnostic_utils.py", line 53, in log_exception_func_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 1235, in _consume
+    super(_AsyncSSLTransport, self)._consume()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 791, in _consume
+    data = self._sigint_safe_recv(self._sock, self._MAX_RECV_BYTES)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 79, in retry_sigint_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 846, in _sigint_safe_recv
+    return sock.recv(max_bytes)
+           ~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1285, in recv
+    return self.read(buflen)
+           ~~~~~~~~~^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1140, in read
+    return self._sslobj.read(len)
+           ~~~~~~~~~~~~~~~~~^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\diagnostic_utils.py", line 53, in log_exception_func_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 1235, in _consume
+    super(_AsyncSSLTransport, self)._consume()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 791, in _consume
+    data = self._sigint_safe_recv(self._sock, self._MAX_RECV_BYTES)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 79, in retry_sigint_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 846, in _sigint_safe_recv
+    return sock.recv(max_bytes)
+           ~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1285, in recv
+    return self.read(buflen)
+           ~~~~~~~~~^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1140, in read
+    return self._sslobj.read(len)
+           ~~~~~~~~~~~~~~~~~^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2026-03-04 18:32:57,964 | INFO | pika.adapters.utils.io_services_utils | _AsyncTransportBase._initate_abort(): Initiating abrupt asynchronous transport shutdown: state=1; error=ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None); <ssl.SSLSocket fd=1348, family=2, type=1, proto=0, laddr=('192.168.100.7', 52974), raddr=('15.206.140.228', 5671)>
+2026-03-04 18:32:57,989 | INFO | pika.adapters.utils.io_services_utils | Deactivating transport: state=1; <ssl.SSLSocket fd=1348, family=2, type=1, proto=0, laddr=('192.168.100.7', 52974), raddr=('15.206.140.228', 5671)>
+2026-03-04 18:32:58,019 | ERROR | pika.adapters.base_connection | connection_lost: StreamLostError: ("Stream connection lost: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",)
+2026-03-04 18:32:58,051 | INFO | pika.connection | AMQP stack terminated, failed to connect, or aborted: opened=True, error-arg=StreamLostError: ("Stream connection lost: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",); pending-error=None
+2026-03-04 18:32:58,084 | INFO | pika.connection | Stack terminated due to StreamLostError: ("Stream connection lost: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",)
+2026-03-04 18:32:58,127 | INFO | pika.adapters.utils.io_services_utils | Closing transport socket and unlinking: state=2; <ssl.SSLSocket fd=1348, family=2, type=1, proto=0, laddr=('192.168.100.7', 52974), raddr=('15.206.140.228', 5671)>
+2026-03-04 18:32:58,148 | ERROR | pika.adapters.blocking_connection | Unexpected connection close detected: StreamLostError: ("Stream connection lost: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",)
+2026-03-04 18:33:07,859 | ERROR | pika.adapters.utils.io_services_utils | Wrapped func exited with exception. Caller's stack:
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\diagnostic_utils.py", line 53, in log_exception_func_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 1235, in _consume
+    super(_AsyncSSLTransport, self)._consume()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 791, in _consume
+    data = self._sigint_safe_recv(self._sock, self._MAX_RECV_BYTES)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 79, in retry_sigint_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 846, in _sigint_safe_recv
+    return sock.recv(max_bytes)
+           ~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1285, in recv
+    return self.read(buflen)
+           ~~~~~~~~~^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1140, in read
+    return self._sslobj.read(len)
+           ~~~~~~~~~~~~~~~~~^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\diagnostic_utils.py", line 53, in log_exception_func_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 1235, in _consume
+    super(_AsyncSSLTransport, self)._consume()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 791, in _consume
+    data = self._sigint_safe_recv(self._sock, self._MAX_RECV_BYTES)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 79, in retry_sigint_wrap
+    return func(*args, **kwargs)
+  File "F:\Comsats\FYP\CODE\HireGenix-Python-Workers\venv\Lib\site-packages\pika\adapters\utils\io_services_utils.py", line 846, in _sigint_safe_recv
+    return sock.recv(max_bytes)
+           ~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1285, in recv
+    return self.read(buflen)
+           ~~~~~~~~~^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1140, in read
+    return self._sslobj.read(len)
+           ~~~~~~~~~~~~~~~~~^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2026-03-04 18:33:07,866 | INFO | pika.adapters.utils.io_services_utils | _AsyncTransportBase._initate_abort(): Initiating abrupt asynchronous transport shutdown: state=1; error=ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None); <ssl.SSLSocket fd=1144, family=2, type=1, proto=0, laddr=('192.168.100.7', 59115), raddr=('15.206.140.228', 5671)>
+2026-03-04 18:33:07,867 | INFO | pika.adapters.utils.io_services_utils | Deactivating transport: state=1; <ssl.SSLSocket fd=1144, family=2, type=1, proto=0, laddr=('192.168.100.7', 59115), raddr=('15.206.140.228', 5671)>
+2026-03-04 18:33:07,869 | ERROR | pika.adapters.base_connection | connection_lost: StreamLostError: ("Stream connection lost: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",)
+2026-03-04 18:33:07,877 | INFO | pika.connection | AMQP stack terminated, failed to connect, or aborted: opened=True, error-arg=StreamLostError: ("Stream connection lost: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",); pending-error=None
+2026-03-04 18:33:07,881 | INFO | pika.connection | Stack terminated due to StreamLostError: ("Stream connection lost: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",)
+2026-03-04 18:33:07,883 | INFO | pika.adapters.utils.io_services_utils | Closing transport socket and unlinking: state=2; <ssl.SSLSocket fd=1144, family=2, type=1, proto=0, laddr=('192.168.100.7', 59115), raddr=('15.206.140.228', 5671)>
+2026-03-04 18:33:07,887 | ERROR | pika.adapters.blocking_connection | Unexpected connection close detected: StreamLostError: ("Stream connection lost: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",)

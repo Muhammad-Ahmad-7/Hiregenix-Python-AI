@@ -11,7 +11,7 @@ from utils.rabbitmq import connect_rabbitmq, initialize_queues
 from utils.logger_config import setup_logging
 import logging
 
-setup_logging("llm_worker.log")
+setup_logging("logger/llm_worker.log")
 logger = logging.getLogger(__name__)
 
 
@@ -93,7 +93,7 @@ def callback(ch, method, properties, body):
         # fetching the question result id for fetching the question result document
         question_result_id = task["payload"]["questionResultId"]
         
-        # speech to text  processing logic goes here
+        # llm evaluation logic goes here
         result = llm_eval_pipeline(question_result_id)
         if not result:
             logger.info("Acknowledge the task because question does not exist")

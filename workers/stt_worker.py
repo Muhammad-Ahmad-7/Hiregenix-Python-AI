@@ -12,7 +12,7 @@ import logging
 from pymongo import ReturnDocument
 from utils.rabbitmq import connect_rabbitmq, initialize_queues
 
-setup_logging("stt_worker.log")
+setup_logging("logger/stt_worker.log")
 logger = logging.getLogger(__name__)
 
 # --- Setup RabbitMQ Connection ---

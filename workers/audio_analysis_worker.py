@@ -13,7 +13,7 @@ from utils.logger_config import setup_logging
 import logging
 
 
-setup_logging("audio_worker.log")
+setup_logging("logger/audio_worker.log")
 logger = logging.getLogger(__name__)
 
 # --- Setup RabbitMQ Connection ---
