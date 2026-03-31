@@ -1,15 +1,14 @@
 
-from config.db import question_result_collection, task_collection
+from config.db import question_result_collection
 from bson import ObjectId
 import subprocess
-import whisper
-from concurrent.futures import ThreadPoolExecutor
 from utils.upload_file import upload_to_cloudinary
-import tempfile
 import os
-from typing import List, Dict
 import numpy as np
 from datetime import datetime
+from config.env import ASSEMBLY_AI_API_KEY
+import assemblyai as aai
+import requests
 
 def speech_to_text_pipeline(question_result_id: str) -> bool:
     video_path=None
@@ -48,15 +47,8 @@ def speech_to_text_pipeline(question_result_id: str) -> bool:
             return False
         print(f"✅ Audio extracted at: {extracted_audio_path}")
 
-        audio_url = ""
-        transcribed_text = ""
-        # Extracting speech to text from the audio
-        with ThreadPoolExecutor() as executor:
-            cloud_future = executor.submit(upload_to_cloudinary, extracted_audio_path)
-            stt_future = executor.submit(extract_stt, audio_path)
-            
-            audio_url = cloud_future.result()
-            sttData = stt_future.result()
+        audio_url = upload_to_cloudinary(extracted_audio_path)
+        sttData = extract_stt(audio_path=audio_url)
             
         print(f"✅ Transcribed Text: {sttData}")
         print(f"✅ Audio URL: {audio_url}")
@@ -103,73 +95,40 @@ def extract_audio_from_video(video_url: str, output_audio_path: str) -> bool:
         return False
 
 
-model = whisper.load_model("small")
+
 def extract_stt(audio_path: str) -> str:
-    result = model.transcribe(audio_path, word_timestamps=True)
-    result = clean_whisper_output(result)
-    return result
+    """Extract speech to text from assemblyai API."""
+    try:
+        aai.settings.api_key = ASSEMBLY_AI_API_KEY
+        config = aai.TranscriptionConfig(speech_models=["universal-3-pro"], language_code="en", sentiment_analysis=True)
 
+        transcript = aai.Transcriber(config=config).transcribe(audio_path)
 
-def convert_float(value):
-    if isinstance(value, np.floating):
-        return float(value)
-    return value
+        if transcript.status == "error":
+            raise RuntimeError(f"Transcription failed: {transcript.error}")
 
-def clean_whisper_output(raw_whisper: Dict) -> Dict:
-    """
-    Cleans Whisper output so it is fully JSON-serializable and structured for MongoDB.
-    Converts all numpy floats to regular floats and strips unnecessary spaces.
-    
-    Args:
-        raw_whisper (Dict): Raw Whisper output.
-    
-    Returns:
-        Dict: Cleaned structure with 'text', 'segments', and 'words'.
-    """
-    def convert_float(value):
-        if isinstance(value, np.floating):
-            return float(value)
-        return value
+        clean_segments = []
 
-    transcript = raw_whisper.get("text", "").strip()
+        for seg in transcript.json_response['sentiment_analysis_results']:
+            # print(seg)
+            clean_segments.append({
+                "text": seg['text'],
+                "start": seg['start'] / 1000,  # convert ms → seconds (optional)
+                "end": seg['end'] / 1000,
+                "confidence": seg['confidence'],
+                "sentiment": seg['sentiment'].value  # IMPORTANT
+            })
 
-    cleaned_segments: List[Dict] = []
+        result = {
+            "text": transcript.text,
+            "confidence": transcript.confidence,
+            "segments": clean_segments
+        }
+        return result
+    except Exception as e:
+        print(f"❌ Error extracting speech to text: {e}")
+        return False
 
-    for seg in raw_whisper.get("segments", []):
-        seg_text = seg.get("text", "").strip()
-        start = convert_float(seg.get("start", 0.0))
-        end = convert_float(seg.get("end", 0.0))
-
-        cleaned_words = []
-        for w in seg.get("words", []):
-            word_text = w.get("word", "").strip()
-            if not word_text:
-                continue
-            word_obj = {
-                "word": word_text,
-                "start": convert_float(w.get("start")),
-                "end": convert_float(w.get("end")),
-            }
-            cleaned_words.append(word_obj)
-
-        cleaned_segments.append({
-            "text": seg_text,
-            "start": start,
-            "end": end,
-            "words": cleaned_words
-        })
-
-    return {
-        "transcript": transcript,
-        "segments": cleaned_segments,
-    }
-
-# def stt(url: str):
-#     res = model.transcribe(url, word_timestamps=True)
-#     print(clean_whisper_output(res))
-
-import requests
-from pathlib import Path
 
 def download_video(url: str, local_path: str):
     with requests.get(url, stream=True, timeout=60) as r:

@@ -1,7 +1,6 @@
 from config.db import question_result_collection, task_collection
 from bson import ObjectId
 import subprocess
-import whisper
 from concurrent.futures import ThreadPoolExecutor
 from utils.upload_file import upload_to_cloudinary
 import tempfile
@@ -11,7 +10,6 @@ import numpy as np
 import requests
 import os
 import numpy as np
-import whisper
 import librosa
 import requests
 from datetime import datetime
