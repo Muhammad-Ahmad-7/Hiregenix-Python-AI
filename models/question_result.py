@@ -47,6 +47,7 @@ class Stages(BaseModel):
     audioExtracted: bool = False
     sttDone: bool = False
     videoAnalyzed: bool = False
+    audioAnalyzed: bool = False
     llmEvaluated: bool = False
     done: bool = False
     failed: bool = False
@@ -60,16 +61,21 @@ class QuestionResult(BaseModel):
     questionId: str = Field(..., description="Question id from question bank")
     questionText: str = Field(..., description="Snapshot of question at the time of interview")
     
-    candidateAnswer: Optional[str] = None
-    transcriptText: Optional[str] = None
+    candidateAnswer: Optional[str] = None    
+    sttData: Optional[dict] = None
     videoUrl: Optional[str] = None
     audioUrl: Optional[str] = None
+    videoAnalysis: Optional[dict] = None
+    audioAnalysis: Optional[dict] = None
+    lLMAnalysis: Optional[dict] = None
     
     scores: Optional[Scores] = None
-    lLMAnalysis: Optional[LLMAnalysis] = None
     
     status: QuestionResultStatus = QuestionResultStatus.PROCESSING
     stages: Stages = Field(default_factory=Stages, description="Stages of processing")
+    llmEnqueued: bool = False
+    llmStartedAt: Optional[datetime] = None
+    llmCompletedAt: Optional[datetime] = None
     
     createdAt: Optional[datetime] = Field(default_factory=datetime.utcnow, description="Document creation timestamp")
     updatedAt: Optional[datetime] = Field(default_factory=datetime.utcnow, description="Document update timestamp")

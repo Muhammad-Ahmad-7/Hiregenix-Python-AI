@@ -1,20 +1,29 @@
 
-from config.db import question_result_collection, task_collection
+from config.db import question_result_collection
 from bson import ObjectId
 import subprocess
-import whisper
-from concurrent.futures import ThreadPoolExecutor
 from utils.upload_file import upload_to_cloudinary
-import tempfile
 import os
+import numpy as np
+from datetime import datetime
+from config.env import ASSEMBLY_AI_API_KEY
+import assemblyai as aai
+import requests
 
 def speech_to_text_pipeline(question_result_id: str) -> bool:
+    video_path=None
+    audio_path=None
     try:
         question_result = question_result_collection.find_one({"_id": ObjectId(question_result_id)})
         print(f" 🔍 Fetched Question Result {question_result_id} from DB: {question_result}")
 
         if not question_result:
             print("❌ Question Result not found in DB")
+            return False
+        print("✅ Question Result found in DB")
+        
+        if question_result["stages"]["sttDone"] and question_result['stages']['audioExtracted']:
+            print(f"✅ Question Result {question_result_id} already processed")
             return False
         
         # Extract audio from the video and update the question result document
@@ -38,29 +47,21 @@ def speech_to_text_pipeline(question_result_id: str) -> bool:
             return False
         print(f"✅ Audio extracted at: {extracted_audio_path}")
 
-        audio_url = ""
-        transcribed_text = ""
-        # Extracting speech to text from the audio
-        with ThreadPoolExecutor() as executor:
-            cloud_future = executor.submit(upload_to_cloudinary, extracted_audio_path)
-            stt_future = executor.submit(extract_stt, audio_path)
+        audio_url = upload_to_cloudinary(extracted_audio_path)
+        sttData = extract_stt(audio_path=audio_url)
             
-            audio_url = cloud_future.result()
-            transcribed_text = stt_future.result()
-            
-        print(f"✅ Transcribed Text: {transcribed_text}")
+        print(f"✅ Transcribed Text: {sttData}")
         print(f"✅ Audio URL: {audio_url}")
         
         # DB question result document updated with transcribed text and audio url
         question_result_collection.update_one(
             {"_id": ObjectId(question_result_id)},
             {"$set": {
-                "transcriptText": transcribed_text,
+                "sttData": sttData,
                 "audioUrl": audio_url,
-                "stages": {
-                    "sttDone": True,
-                    "audioExtracted": True
-                }
+                "stages.sttDone": True,
+                "stages.audioExtracted": True,
+                "updatedAt": datetime.now(),
             }},
             upsert=True
         )
@@ -72,9 +73,9 @@ def speech_to_text_pipeline(question_result_id: str) -> bool:
         return False
     
     finally:
-        if os.path.exists(video_path):
+        if video_path and os.path.exists(video_path):
             os.remove(video_path)
-        if os.path.exists(audio_path):
+        if audio_path and os.path.exists(audio_path):
             os.remove(audio_path)
 
 
@@ -94,14 +95,40 @@ def extract_audio_from_video(video_url: str, output_audio_path: str) -> bool:
         return False
 
 
-model = whisper.load_model("small")
+
 def extract_stt(audio_path: str) -> str:
-    result = model.transcribe(audio_path)
-    return result["text"]
+    """Extract speech to text from assemblyai API."""
+    try:
+        aai.settings.api_key = ASSEMBLY_AI_API_KEY
+        config = aai.TranscriptionConfig(speech_models=["universal-3-pro"], language_code="en", sentiment_analysis=True)
 
+        transcript = aai.Transcriber(config=config).transcribe(audio_path)
 
-import requests
-from pathlib import Path
+        if transcript.status == "error":
+            raise RuntimeError(f"Transcription failed: {transcript.error}")
+
+        clean_segments = []
+
+        for seg in transcript.json_response['sentiment_analysis_results']:
+            # print(seg)
+            clean_segments.append({
+                "text": seg['text'],
+                "start": seg['start'] / 1000,  # convert ms → seconds (optional)
+                "end": seg['end'] / 1000,
+                "confidence": seg['confidence'],
+                "sentiment": seg['sentiment'].value  # IMPORTANT
+            })
+
+        result = {
+            "text": transcript.text,
+            "confidence": transcript.confidence,
+            "segments": clean_segments
+        }
+        return result
+    except Exception as e:
+        print(f"❌ Error extracting speech to text: {e}")
+        return False
+
 
 def download_video(url: str, local_path: str):
     with requests.get(url, stream=True, timeout=60) as r:

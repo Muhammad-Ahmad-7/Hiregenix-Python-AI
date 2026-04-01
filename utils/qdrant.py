@@ -1,13 +1,14 @@
 
 from qdrant_client.models import VectorParams, Distance
 from qdrant_client import QdrantClient
+from config.env import QDRANT_URL, QDRANT_API_KEY
 
 
 def connection_qdrant():
     # --- Setup Qdrant DB ---
     client = QdrantClient(
-        url="https://3f23e5b1-e25d-4fab-85bc-ad8b524c921c.eu-central-1-0.aws.cloud.qdrant.io:6333", 
-        api_key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIn0.RgwGRYz6Mwom_DHpizYb_5rZLzWWW6r5saV8bZ7Nq-g",
+        url=QDRANT_URL, 
+        api_key=QDRANT_API_KEY,
     )
     return client
 

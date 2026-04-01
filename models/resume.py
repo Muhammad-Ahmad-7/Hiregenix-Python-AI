@@ -7,27 +7,31 @@ from datetime import datetime
 # ---------------------------
 # Helper to handle ObjectId
 # ---------------------------
+from typing import Any
+from bson import ObjectId
+from pydantic_core import core_schema
+
 class PyObjectId(ObjectId):
-    
     @classmethod
     def __get_pydantic_core_schema__(
         cls, source_type: Any, handler
     ) -> core_schema.CoreSchema:
         return core_schema.union_schema([
+            # 1. Check if it's already an ObjectId instance
             core_schema.is_instance_schema(ObjectId),
-            core_schema.no_info_plain_validator_function(cls.validate, core_schema.str_schema()),
+            # 2. Use a chain: first ensure it's a string, then run your validator
+            core_schema.chain_schema([
+                core_schema.str_schema(),
+                core_schema.no_info_plain_validator_function(cls.validate),
+            ]),
         ])
 
     @classmethod
-    def validate(cls, v):
-        if isinstance(v, ObjectId):
-            return v
-        if isinstance(v, str) and ObjectId.is_valid(v):
-            return ObjectId(v)
-        raise ValueError("Invalid ObjectId")
+    def validate(cls, v: Any) -> ObjectId:
+        if not ObjectId.is_valid(v):
+            raise ValueError("Invalid ObjectId")
+        return ObjectId(v)
 
-    def __str__(self):
-        return str(super())
 
 
 # ---------------------------

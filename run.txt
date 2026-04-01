@@ -1,1 +1,0 @@
-watchmedo auto-restart --recursive --pattern="*.py" -- F:\Comsats\FYP\CODE\HireGenix-FastApi\venv\Scripts\python.exe -m workers.job_posting_worker
