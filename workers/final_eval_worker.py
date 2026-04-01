@@ -81,6 +81,7 @@ def callback(ch, method, properties, body):
             else:
                 logger.warning("Task skip: Current status is %s", actual_task.get('status'))
             ch.basic_ack(delivery_tag=method.delivery_tag)
+            logger.info("Acknowledged message for non-pending task | task_id=%s", task_id)
             return
 
         logger.debug(
@@ -135,6 +136,11 @@ def callback(ch, method, properties, body):
             ch.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
         else:
             logger.info("Moving to Waiting Room (10s delay) | retry=%s", retry_count)
+            # update the task status back to pending for retry
+            task_collection.update_one(
+                {"_id": ObjectId(task_id)},
+                {"$set": {"status": "pending", "error": None}},
+            )
             # Manually publish to Delay Queue
             try:
                 ch.basic_publish(

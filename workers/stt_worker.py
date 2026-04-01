@@ -93,7 +93,7 @@ def create_and_push_video_analysis_task_to_queue(question_result_id: str, candid
             ),
             mandatory=True  # raise on unroutable
         )
-        logger.info("Enqueued audio analysis task %s for question result %s", result.inserted_id, question_result_id)
+        logger.info("Enqueued video analysis task %s for question result %s", result.inserted_id, question_result_id)
         return True
     except Exception as e:
         logger.exception("Error creating and pushing audio analysis task")
@@ -119,13 +119,16 @@ def callback(ch, method, properties, body):
             else:
                 logger.warning("Task skip: Current status is %s", actual_task.get('status'))
             ch.basic_ack(delivery_tag=method.delivery_tag)
+            logger.info("Acknowledged message for non-pending task | task_id=%s", task_id)
             return
 
-        logger.debug(
+        logger.info(
             "Task fetched | task_id=%s | user_id=%s",
             task_id,
             task.get("userId")
         )
+        
+        # raise Exception("Testing  retry mechanism")
 
         candidate_id=task['userId']
         
@@ -187,6 +190,11 @@ def callback(ch, method, properties, body):
             ch.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
         else:
             logger.info("Moving to Waiting Room (10s delay) | retry=%s", retry_count)
+            # update the task status back to pending for retry
+            task_collection.update_one(
+                {"_id": ObjectId(task_id)},
+                {"$set": {"status": "pending", "error": None}},
+            )
             # Manually publish to Delay Queue
             try:
                 ch.basic_publish(
