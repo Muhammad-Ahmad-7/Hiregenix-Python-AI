@@ -95,40 +95,57 @@ def extract_audio_from_video(video_url: str, output_audio_path: str) -> bool:
         return False
 
 
-
-def extract_stt(audio_path: str) -> str:
+def extract_stt(audio_path: str) -> dict: # Changed return type hint
     """Extract speech to text from assemblyai API."""
     try:
         aai.settings.api_key = ASSEMBLY_AI_API_KEY
-        config = aai.TranscriptionConfig(speech_models=["universal-3-pro"], language_code="en", sentiment_analysis=True)
+        config = aai.TranscriptionConfig(
+            speech_models=["universal-3-pro"], 
+            language_code="en", 
+            sentiment_analysis=True
+        )
 
         transcript = aai.Transcriber(config=config).transcribe(audio_path)
-
+        
         if transcript.status == "error":
             raise RuntimeError(f"Transcription failed: {transcript.error}")
 
+        # --- 1. Extract Sentiment Segments ---
         clean_segments = []
-
-        for seg in transcript.json_response['sentiment_analysis_results']:
-            # print(seg)
+        # Accessing from json_response is fine, but transcript.sentiment_analysis is cleaner
+        sentiment_results = transcript.json_response.get('sentiment_analysis_results', [])
+        for seg in sentiment_results:
             clean_segments.append({
                 "text": seg['text'],
-                "start": seg['start'] / 1000,  # convert ms → seconds (optional)
+                "start": seg['start'] / 1000, 
                 "end": seg['end'] / 1000,
                 "confidence": seg['confidence'],
-                "sentiment": seg['sentiment'].value  # IMPORTANT
+                "sentiment": seg['sentiment'] 
+            })
+
+        # --- 2. Extract Individual Words (CRITICAL for analyze_audio) ---
+        # This is what was missing!
+        clean_words = []
+        for word in transcript.words:
+            clean_words.append({
+                "text": word.text,
+                "start": word.start / 1000,
+                "end": word.end / 1000,
+                "confidence": word.confidence
             })
 
         result = {
             "text": transcript.text,
             "confidence": transcript.confidence,
-            "segments": clean_segments
+            "segments": clean_segments,
+            "words": clean_words  # Add this to the result dictionary
         }
         return result
+
     except Exception as e:
         print(f"❌ Error extracting speech to text: {e}")
-        return False
-
+        # Return an empty dict structure instead of False to prevent '.get' crashes
+        return {"text": "", "confidence": 0, "segments": [], "words": []}
 
 def download_video(url: str, local_path: str):
     with requests.get(url, stream=True, timeout=60) as r:

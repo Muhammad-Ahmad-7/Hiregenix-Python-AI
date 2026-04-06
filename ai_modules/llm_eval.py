@@ -109,7 +109,7 @@ def llm_eval_pipeline(question_result_id: str):
 
         prompt = prompt_template.format(
             question_text=question_result['questionText'],
-            transcript_text=question_result['sttData']['transcript'],
+            transcript_text=question_result['sttData']['text'],
             audio_analysis=question_result['audioAnalysis'],
             video_analysis=question_result['videoAnalysis'],
             format_instructions=parser.get_format_instructions()

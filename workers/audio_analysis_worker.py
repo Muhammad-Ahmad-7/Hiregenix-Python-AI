@@ -80,7 +80,7 @@ def callback(ch, method, properties, body):
             logger.info("Acknowledged message for non-pending task | task_id=%s", task_id)
             return
 
-        logger.debug(
+        logger.info(
             "Task fetched | task_id=%s | user_id=%s",
             task_id,
             task.get("userId")
@@ -95,6 +95,7 @@ def callback(ch, method, properties, body):
         if not result:
             logger.info("Acknowledge the task because question does not exist")
             ch.basic_ack(delivery_tag=method.delivery_tag)
+            return
         
         logger.info("Task %s audio analysis completed successfully now pushing to LLM evaluation queue", task_id)
         

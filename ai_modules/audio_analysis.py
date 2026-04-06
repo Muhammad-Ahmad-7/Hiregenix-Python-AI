@@ -77,8 +77,7 @@ def analyze_audio(audio_path, stt_data):
     duration = librosa.get_duration(y=y, sr=sr)
     
     # --- WORDS & SPEECH ---
-    segments = stt_data.get('segments', [])
-    all_words = [w for seg in segments for w in seg.get('words', [])]
+    all_words = stt_data.get('words', [])
     word_count = len(all_words)
     
     # Active speech time
@@ -103,8 +102,8 @@ def analyze_audio(audio_path, stt_data):
     filler_words = ["um", "uh", "ah", "like", "hmmm"]
     multi_word_fillers = ["you know", "i mean", "sort of", "kind of"]
     
-    transcript = stt_data.get('transcript', '').lower()
-    detected_single = sum(1 for w in all_words if w['word'].lower().strip(',.') in filler_words)
+    transcript = stt_data.get('text', '').lower()
+    detected_single = sum(1 for w in all_words if w['text'].lower().strip(',.') in filler_words)
     detected_multi = sum(transcript.count(f) for f in multi_word_fillers)
     filler_count = detected_single + detected_multi
     filler_per_minute = (filler_count / duration) * 60 if duration > 0 else 0.0

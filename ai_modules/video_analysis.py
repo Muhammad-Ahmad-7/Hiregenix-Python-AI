@@ -33,7 +33,7 @@ def video_analysis_pipeline(question_result_id: str) -> bool:
         # Downloading the video
         download_result = download_video(video_url, video_path);
         if not download_result:
-            return False
+            raise Exception("Video download failed")
         print(f"✅ Video downloaded at: {video_path}")
         
         result = analyze_interview(video_path)
@@ -54,7 +54,7 @@ def video_analysis_pipeline(question_result_id: str) -> bool:
 
     except Exception as e:
         print(f"❌ Error processing question result {question_result_id}: {e}")
-        return False
+        raise e
     
     finally:
         if video_path and os.path.exists(video_path):

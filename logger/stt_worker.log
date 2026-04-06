@@ -732,3 +732,242 @@ Exception: Testing  retry mechanism
 2026-04-01 16:58:58,558 | INFO | __main__ | Worker stopped manually
 2026-04-01 16:58:58,636 | INFO | pika.adapters.blocking_connection | Closing connection (200): Normal shutdown
 2026-04-01 16:58:58,636 | INFO | pika.channel | Closing channel (200): 'Normal shutdown' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001A1D4B23590> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-04-06 11:52:56,194 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-04-06 11:52:56,262 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1612, family=2, type=1, proto=6, laddr=('192.168.100.7', 54735), raddr=('15.206.140.228', 5671)>
+2026-04-06 11:52:56,333 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1612, family=2, type=1, proto=0, laddr=('192.168.100.7', 54735), raddr=('15.206.140.228', 5671)>
+2026-04-06 11:52:56,334 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001F87FD73090>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001F87FD73090> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-04-06 11:52:56,579 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001F87FD73090> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-04-06 11:52:56,579 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001F87FD73090> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-04-06 11:52:56,580 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001F87FD73090> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-04-06 11:52:56,581 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-04-06 11:53:00,066 | INFO | __main__ | Worker started and waiting for speech to text jobs...
+2026-04-06 11:53:00,066 | INFO | __main__ | Task received | task_id=69d35804cef479a44a7c989f
+2026-04-06 11:53:00,964 | INFO | __main__ | Task fetched | task_id=69d35804cef479a44a7c989f | user_id=698ba20ef6c33be1cee19c8f
+2026-04-06 11:54:40,494 | INFO | httpx | HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
+2026-04-06 11:54:40,849 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/7056712c-3b96-43e1-9cea-93fd1b77766e "HTTP/1.1 200 OK"
+2026-04-06 11:54:44,159 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/7056712c-3b96-43e1-9cea-93fd1b77766e "HTTP/1.1 200 OK"
+2026-04-06 11:54:44,327 | INFO | __main__ | Task 69d35804cef479a44a7c989f speech to text processing completed successfully
+2026-04-06 11:54:44,644 | INFO | __main__ | Task created successfully with ID: 69d358b4df4f85abbd9d19dd
+2026-04-06 11:54:44,758 | INFO | __main__ | Enqueued audio analysis task 69d358b4df4f85abbd9d19dd for question result 69d35803cef479a44a7c989d
+2026-04-06 11:54:44,758 | INFO | __main__ | New Task 69d35804cef479a44a7c989f audio analysis task created successfully
+2026-04-06 11:54:45,074 | INFO | __main__ | Task created successfully with ID: 69d358b4df4f85abbd9d19de
+2026-04-06 11:54:45,209 | INFO | __main__ | Enqueued video analysis task 69d358b4df4f85abbd9d19de for question result 69d35803cef479a44a7c989d
+2026-04-06 11:54:45,209 | INFO | __main__ | New Task 69d35804cef479a44a7c989f video analysis task created successfully
+2026-04-06 11:54:45,371 | INFO | __main__ | Task completed | task_id=69d35804cef479a44a7c989f
+2026-04-06 11:54:45,490 | INFO | __main__ | Task received | task_id=69d35882cef479a44a7c98c0
+2026-04-06 11:54:45,657 | INFO | __main__ | Task fetched | task_id=69d35882cef479a44a7c98c0 | user_id=698ba20ef6c33be1cee19c8f
+2026-04-06 11:56:21,496 | INFO | httpx | HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
+2026-04-06 11:56:21,867 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/7698ded7-7cdf-4148-b87c-0f6431bd4cde "HTTP/1.1 200 OK"
+2026-04-06 11:56:25,555 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/7698ded7-7cdf-4148-b87c-0f6431bd4cde "HTTP/1.1 200 OK"
+2026-04-06 11:56:25,687 | INFO | __main__ | Task 69d35882cef479a44a7c98c0 speech to text processing completed successfully
+2026-04-06 11:56:25,932 | INFO | __main__ | Task created successfully with ID: 69d35919df4f85abbd9d19df
+2026-04-06 11:56:26,009 | INFO | __main__ | Enqueued audio analysis task 69d35919df4f85abbd9d19df for question result 69d35882cef479a44a7c98be
+2026-04-06 11:56:26,009 | INFO | __main__ | New Task 69d35882cef479a44a7c98c0 audio analysis task created successfully
+2026-04-06 11:56:26,246 | INFO | __main__ | Task created successfully with ID: 69d3591adf4f85abbd9d19e0
+2026-04-06 11:56:26,316 | INFO | __main__ | Enqueued video analysis task 69d3591adf4f85abbd9d19e0 for question result 69d35882cef479a44a7c98be
+2026-04-06 11:56:26,316 | INFO | __main__ | New Task 69d35882cef479a44a7c98c0 video analysis task created successfully
+2026-04-06 11:56:26,439 | INFO | __main__ | Task completed | task_id=69d35882cef479a44a7c98c0
+2026-04-06 12:18:40,663 | INFO | pika.heartbeat | Connection is idle, 1 stale byte intervals
+2026-04-06 12:18:40,665 | INFO | pika.adapters.utils.io_services_utils | Aborting transport connection: state=1; <ssl.SSLSocket fd=1612, family=2, type=1, proto=0, laddr=('192.168.100.7', 54735), raddr=('15.206.140.228', 5671)>
+2026-04-06 12:18:40,672 | INFO | pika.adapters.utils.io_services_utils | _AsyncTransportBase._initate_abort(): Initiating abrupt asynchronous transport shutdown: state=1; error=None; <ssl.SSLSocket fd=1612, family=2, type=1, proto=0, laddr=('192.168.100.7', 54735), raddr=('15.206.140.228', 5671)>
+2026-04-06 12:18:40,680 | INFO | pika.adapters.utils.io_services_utils | Deactivating transport: state=1; <ssl.SSLSocket fd=1612, family=2, type=1, proto=0, laddr=('192.168.100.7', 54735), raddr=('15.206.140.228', 5671)>
+2026-04-06 12:18:40,682 | INFO | pika.connection | AMQP stack terminated, failed to connect, or aborted: opened=True, error-arg=None; pending-error=AMQPHeartbeatTimeout: ('No activity or too many missed heartbeats in the last 120 seconds',)
+2026-04-06 12:18:40,686 | INFO | pika.connection | Stack terminated due to AMQPHeartbeatTimeout: ('No activity or too many missed heartbeats in the last 120 seconds',)
+2026-04-06 12:18:40,693 | INFO | pika.adapters.utils.io_services_utils | Closing transport socket and unlinking: state=3; <ssl.SSLSocket fd=1612, family=2, type=1, proto=0, laddr=('192.168.100.7', 54735), raddr=('15.206.140.228', 5671)>
+2026-04-06 12:18:40,694 | ERROR | pika.adapters.blocking_connection | Unexpected connection close detected: AMQPHeartbeatTimeout: ('No activity or too many missed heartbeats in the last 120 seconds',)
+2026-04-06 12:35:33,439 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-04-06 12:35:33,509 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1320, family=2, type=1, proto=6, laddr=('192.168.100.7', 64129), raddr=('15.206.140.228', 5671)>
+2026-04-06 12:35:33,579 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1320, family=2, type=1, proto=0, laddr=('192.168.100.7', 64129), raddr=('15.206.140.228', 5671)>
+2026-04-06 12:35:33,579 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000014BF91EADD0>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000014BF91EADD0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-04-06 12:35:34,043 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000014BF91EADD0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-04-06 12:35:34,043 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000014BF91EADD0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-04-06 12:35:34,043 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000014BF91EADD0> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-04-06 12:35:34,043 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-04-06 12:35:37,219 | INFO | __main__ | Worker started and waiting for speech to text jobs...
+2026-04-06 12:38:47,412 | INFO | __main__ | Task received | task_id=69d36307cef479a44a7c98e0
+2026-04-06 12:38:48,894 | INFO | __main__ | Task fetched | task_id=69d36307cef479a44a7c98e0 | user_id=698ba20ef6c33be1cee19c8f
+2026-04-06 12:39:36,914 | INFO | httpx | HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
+2026-04-06 12:39:37,335 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/2eb82cdb-b669-43c2-8db0-8e2a5d31f2a0 "HTTP/1.1 200 OK"
+2026-04-06 12:39:40,671 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/2eb82cdb-b669-43c2-8db0-8e2a5d31f2a0 "HTTP/1.1 200 OK"
+2026-04-06 12:39:44,067 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/2eb82cdb-b669-43c2-8db0-8e2a5d31f2a0 "HTTP/1.1 200 OK"
+2026-04-06 12:39:44,294 | INFO | __main__ | Task 69d36307cef479a44a7c98e0 speech to text processing completed successfully
+2026-04-06 12:39:44,687 | INFO | __main__ | Task created successfully with ID: 69d36340fb57f3e396980189
+2026-04-06 12:39:44,781 | INFO | __main__ | Enqueued audio analysis task 69d36340fb57f3e396980189 for question result 69d36306cef479a44a7c98de
+2026-04-06 12:39:44,781 | INFO | __main__ | New Task 69d36307cef479a44a7c98e0 audio analysis task created successfully
+2026-04-06 12:39:45,012 | INFO | __main__ | Task created successfully with ID: 69d36340fb57f3e39698018a
+2026-04-06 12:39:45,080 | INFO | __main__ | Enqueued video analysis task 69d36340fb57f3e39698018a for question result 69d36306cef479a44a7c98de
+2026-04-06 12:39:45,080 | INFO | __main__ | New Task 69d36307cef479a44a7c98e0 video analysis task created successfully
+2026-04-06 12:39:45,190 | INFO | __main__ | Task completed | task_id=69d36307cef479a44a7c98e0
+2026-04-06 15:07:22,733 | INFO | pika.heartbeat | Connection is idle, 1 stale byte intervals
+2026-04-06 15:07:23,092 | INFO | pika.adapters.utils.io_services_utils | Aborting transport connection: state=1; <ssl.SSLSocket fd=1320, family=2, type=1, proto=0, laddr=('192.168.100.7', 64129), raddr=('15.206.140.228', 5671)>
+2026-04-06 15:07:23,092 | INFO | pika.adapters.utils.io_services_utils | _AsyncTransportBase._initate_abort(): Initiating abrupt asynchronous transport shutdown: state=1; error=None; <ssl.SSLSocket fd=1320, family=2, type=1, proto=0, laddr=('192.168.100.7', 64129), raddr=('15.206.140.228', 5671)>
+2026-04-06 15:07:23,094 | INFO | pika.adapters.utils.io_services_utils | Deactivating transport: state=1; <ssl.SSLSocket fd=1320, family=2, type=1, proto=0, laddr=('192.168.100.7', 64129), raddr=('15.206.140.228', 5671)>
+2026-04-06 15:07:23,094 | INFO | pika.connection | AMQP stack terminated, failed to connect, or aborted: opened=True, error-arg=None; pending-error=AMQPHeartbeatTimeout: ('No activity or too many missed heartbeats in the last 120 seconds',)
+2026-04-06 15:07:23,095 | INFO | pika.connection | Stack terminated due to AMQPHeartbeatTimeout: ('No activity or too many missed heartbeats in the last 120 seconds',)
+2026-04-06 15:07:23,101 | INFO | pika.adapters.utils.io_services_utils | Closing transport socket and unlinking: state=3; <ssl.SSLSocket fd=1320, family=2, type=1, proto=0, laddr=('192.168.100.7', 64129), raddr=('15.206.140.228', 5671)>
+2026-04-06 15:07:23,108 | ERROR | pika.adapters.blocking_connection | Unexpected connection close detected: AMQPHeartbeatTimeout: ('No activity or too many missed heartbeats in the last 120 seconds',)
+2026-04-06 19:37:17,046 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-04-06 19:37:17,115 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1400, family=2, type=1, proto=6, laddr=('192.168.100.7', 61767), raddr=('15.206.140.228', 5671)>
+2026-04-06 19:37:17,681 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1400, family=2, type=1, proto=0, laddr=('192.168.100.7', 61767), raddr=('15.206.140.228', 5671)>
+2026-04-06 19:37:17,681 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000020F3B6EAD90>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000020F3B6EAD90> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-04-06 19:37:18,125 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000020F3B6EAD90> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-04-06 19:37:18,126 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000020F3B6EAD90> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-04-06 19:37:18,126 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000020F3B6EAD90> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-04-06 19:37:18,126 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-04-06 19:37:21,542 | INFO | __main__ | Worker started and waiting for speech to text jobs...
+2026-04-06 19:38:42,229 | INFO | __main__ | Task received | task_id=69d3c5722962da778a6a3c6d
+2026-04-06 19:38:43,616 | INFO | __main__ | Task fetched | task_id=69d3c5722962da778a6a3c6d | user_id=698ba20ef6c33be1cee19c8f
+2026-04-06 19:38:54,710 | INFO | httpx | HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
+2026-04-06 19:38:55,096 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/dd776ec6-a8b5-40f1-ada5-d299e44e6a80 "HTTP/1.1 200 OK"
+2026-04-06 19:38:58,576 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/dd776ec6-a8b5-40f1-ada5-d299e44e6a80 "HTTP/1.1 200 OK"
+2026-04-06 19:38:58,878 | INFO | __main__ | Task 69d3c5722962da778a6a3c6d speech to text processing completed successfully
+2026-04-06 19:38:59,207 | INFO | __main__ | Task created successfully with ID: 69d3c5830cf0e0d1d868ab3b
+2026-04-06 19:38:59,326 | INFO | __main__ | Enqueued audio analysis task 69d3c5830cf0e0d1d868ab3b for question result 69d3c5712962da778a6a3c6b
+2026-04-06 19:38:59,330 | INFO | __main__ | New Task 69d3c5722962da778a6a3c6d audio analysis task created successfully
+2026-04-06 19:38:59,652 | INFO | __main__ | Task created successfully with ID: 69d3c5830cf0e0d1d868ab3c
+2026-04-06 19:38:59,757 | INFO | __main__ | Enqueued video analysis task 69d3c5830cf0e0d1d868ab3c for question result 69d3c5712962da778a6a3c6b
+2026-04-06 19:38:59,757 | INFO | __main__ | New Task 69d3c5722962da778a6a3c6d video analysis task created successfully
+2026-04-06 19:38:59,924 | INFO | __main__ | Task completed | task_id=69d3c5722962da778a6a3c6d
+2026-04-06 19:39:11,483 | INFO | __main__ | Task received | task_id=69d3c58f2962da778a6a3c78
+2026-04-06 19:39:11,604 | INFO | __main__ | Task fetched | task_id=69d3c58f2962da778a6a3c78 | user_id=698ba20ef6c33be1cee19c8f
+2026-04-06 19:39:20,025 | INFO | httpx | HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
+2026-04-06 19:39:20,368 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/aa397140-41dc-4297-a27f-394c0c769ad9 "HTTP/1.1 200 OK"
+2026-04-06 19:39:23,741 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/aa397140-41dc-4297-a27f-394c0c769ad9 "HTTP/1.1 200 OK"
+2026-04-06 19:39:23,889 | INFO | __main__ | Task 69d3c58f2962da778a6a3c78 speech to text processing completed successfully
+2026-04-06 19:39:24,279 | INFO | __main__ | Task created successfully with ID: 69d3c59c0cf0e0d1d868ab3d
+2026-04-06 19:39:24,360 | INFO | __main__ | Enqueued audio analysis task 69d3c59c0cf0e0d1d868ab3d for question result 69d3c58f2962da778a6a3c76
+2026-04-06 19:39:24,360 | INFO | __main__ | New Task 69d3c58f2962da778a6a3c78 audio analysis task created successfully
+2026-04-06 19:39:24,687 | INFO | __main__ | Task created successfully with ID: 69d3c59c0cf0e0d1d868ab3e
+2026-04-06 19:39:24,769 | INFO | __main__ | Enqueued video analysis task 69d3c59c0cf0e0d1d868ab3e for question result 69d3c58f2962da778a6a3c76
+2026-04-06 19:39:24,769 | INFO | __main__ | New Task 69d3c58f2962da778a6a3c78 video analysis task created successfully
+2026-04-06 19:39:24,906 | INFO | __main__ | Task completed | task_id=69d3c58f2962da778a6a3c78
+2026-04-06 19:42:30,370 | INFO | __main__ | Task received | task_id=69d3c6562962da778a6a3ca6
+2026-04-06 19:42:30,491 | INFO | __main__ | Task fetched | task_id=69d3c6562962da778a6a3ca6 | user_id=698ba20ef6c33be1cee19c8f
+2026-04-06 19:42:41,389 | INFO | httpx | HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
+2026-04-06 19:42:41,803 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/d6d7a253-d2db-4a66-9735-93d4f4346d91 "HTTP/1.1 200 OK"
+2026-04-06 19:42:45,247 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/d6d7a253-d2db-4a66-9735-93d4f4346d91 "HTTP/1.1 200 OK"
+2026-04-06 19:42:48,686 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/d6d7a253-d2db-4a66-9735-93d4f4346d91 "HTTP/1.1 200 OK"
+2026-04-06 19:42:48,871 | INFO | __main__ | Task 69d3c6562962da778a6a3ca6 speech to text processing completed successfully
+2026-04-06 19:42:49,167 | INFO | __main__ | Task created successfully with ID: 69d3c6680cf0e0d1d868ab3f
+2026-04-06 19:42:49,285 | INFO | __main__ | Enqueued audio analysis task 69d3c6680cf0e0d1d868ab3f for question result 69d3c6552962da778a6a3ca4
+2026-04-06 19:42:49,285 | INFO | __main__ | New Task 69d3c6562962da778a6a3ca6 audio analysis task created successfully
+2026-04-06 19:42:49,535 | INFO | __main__ | Task created successfully with ID: 69d3c6690cf0e0d1d868ab40
+2026-04-06 19:42:49,638 | INFO | __main__ | Enqueued video analysis task 69d3c6690cf0e0d1d868ab40 for question result 69d3c6552962da778a6a3ca4
+2026-04-06 19:42:49,638 | INFO | __main__ | New Task 69d3c6562962da778a6a3ca6 video analysis task created successfully
+2026-04-06 19:42:49,755 | INFO | __main__ | Task completed | task_id=69d3c6562962da778a6a3ca6
+2026-04-06 19:42:56,977 | INFO | __main__ | Task received | task_id=69d3c6702962da778a6a3cb3
+2026-04-06 19:42:57,107 | INFO | __main__ | Task fetched | task_id=69d3c6702962da778a6a3cb3 | user_id=698ba20ef6c33be1cee19c8f
+2026-04-06 19:43:03,873 | INFO | httpx | HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
+2026-04-06 19:43:05,657 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/ae8e0bfa-d21a-44a3-8b5e-d1b6feaf0381 "HTTP/1.1 200 OK"
+2026-04-06 19:43:09,350 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/ae8e0bfa-d21a-44a3-8b5e-d1b6feaf0381 "HTTP/1.1 200 OK"
+2026-04-06 19:43:09,771 | INFO | __main__ | Task 69d3c6702962da778a6a3cb3 speech to text processing completed successfully
+2026-04-06 19:43:10,379 | INFO | __main__ | Task created successfully with ID: 69d3c67e0cf0e0d1d868ab41
+2026-04-06 19:43:10,446 | INFO | __main__ | Enqueued audio analysis task 69d3c67e0cf0e0d1d868ab41 for question result 69d3c6702962da778a6a3cb1
+2026-04-06 19:43:10,446 | INFO | __main__ | New Task 69d3c6702962da778a6a3cb3 audio analysis task created successfully
+2026-04-06 19:43:10,782 | INFO | __main__ | Task created successfully with ID: 69d3c67e0cf0e0d1d868ab42
+2026-04-06 19:43:10,855 | INFO | __main__ | Enqueued video analysis task 69d3c67e0cf0e0d1d868ab42 for question result 69d3c6702962da778a6a3cb1
+2026-04-06 19:43:10,855 | INFO | __main__ | New Task 69d3c6702962da778a6a3cb3 video analysis task created successfully
+2026-04-06 19:43:10,988 | INFO | __main__ | Task completed | task_id=69d3c6702962da778a6a3cb3
+2026-04-06 19:43:11,062 | INFO | __main__ | Task received | task_id=69d3c6732962da778a6a3cbc
+2026-04-06 19:43:11,207 | INFO | __main__ | Task fetched | task_id=69d3c6732962da778a6a3cbc | user_id=698ba20ef6c33be1cee19c8f
+2026-04-06 19:43:34,247 | INFO | httpx | HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
+2026-04-06 19:43:34,810 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/a550a3b1-0e6e-485a-af34-c87f9a0c2992 "HTTP/1.1 200 OK"
+2026-04-06 19:43:38,216 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/a550a3b1-0e6e-485a-af34-c87f9a0c2992 "HTTP/1.1 200 OK"
+2026-04-06 19:43:41,565 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/a550a3b1-0e6e-485a-af34-c87f9a0c2992 "HTTP/1.1 200 OK"
+2026-04-06 19:43:45,317 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/a550a3b1-0e6e-485a-af34-c87f9a0c2992 "HTTP/1.1 200 OK"
+2026-04-06 19:43:45,500 | INFO | __main__ | Task 69d3c6732962da778a6a3cbc speech to text processing completed successfully
+2026-04-06 19:43:45,900 | INFO | __main__ | Task created successfully with ID: 69d3c6a10cf0e0d1d868ab43
+2026-04-06 19:43:45,993 | INFO | __main__ | Enqueued audio analysis task 69d3c6a10cf0e0d1d868ab43 for question result 69d3c6732962da778a6a3cba
+2026-04-06 19:43:45,994 | INFO | __main__ | New Task 69d3c6732962da778a6a3cbc audio analysis task created successfully
+2026-04-06 19:43:46,251 | INFO | __main__ | Task created successfully with ID: 69d3c6a20cf0e0d1d868ab44
+2026-04-06 19:43:46,323 | INFO | __main__ | Enqueued video analysis task 69d3c6a20cf0e0d1d868ab44 for question result 69d3c6732962da778a6a3cba
+2026-04-06 19:43:46,323 | INFO | __main__ | New Task 69d3c6732962da778a6a3cbc video analysis task created successfully
+2026-04-06 19:43:46,454 | INFO | __main__ | Task completed | task_id=69d3c6732962da778a6a3cbc
+2026-04-06 19:58:30,961 | INFO | __main__ | Worker stopped manually
+2026-04-06 20:00:21,090 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-04-06 20:00:21,161 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1464, family=2, type=1, proto=6, laddr=('192.168.100.7', 53437), raddr=('15.206.140.228', 5671)>
+2026-04-06 20:00:21,240 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1464, family=2, type=1, proto=0, laddr=('192.168.100.7', 53437), raddr=('15.206.140.228', 5671)>
+2026-04-06 20:00:21,246 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000022B7FA44650>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000022B7FA44650> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-04-06 20:00:21,471 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000022B7FA44650> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-04-06 20:00:21,471 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000022B7FA44650> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-04-06 20:00:21,471 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000022B7FA44650> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-04-06 20:00:21,471 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-04-06 20:00:25,120 | INFO | __main__ | Worker started and waiting for speech to text jobs...
+2026-04-06 20:00:25,120 | INFO | __main__ | Task received | task_id=69d3ca482962da778a6a3cea
+2026-04-06 20:00:26,543 | INFO | __main__ | Task fetched | task_id=69d3ca482962da778a6a3cea | user_id=698ba20ef6c33be1cee19c8f
+2026-04-06 20:00:38,189 | INFO | httpx | HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
+2026-04-06 20:00:38,513 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/e86215f1-4acc-47e0-a372-7e0211db8597 "HTTP/1.1 200 OK"
+2026-04-06 20:00:41,907 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/e86215f1-4acc-47e0-a372-7e0211db8597 "HTTP/1.1 200 OK"
+2026-04-06 20:00:45,461 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/e86215f1-4acc-47e0-a372-7e0211db8597 "HTTP/1.1 200 OK"
+2026-04-06 20:00:48,811 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/e86215f1-4acc-47e0-a372-7e0211db8597 "HTTP/1.1 200 OK"
+2026-04-06 20:00:52,190 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/e86215f1-4acc-47e0-a372-7e0211db8597 "HTTP/1.1 200 OK"
+2026-04-06 20:00:52,347 | INFO | __main__ | Task 69d3ca482962da778a6a3cea speech to text processing completed successfully
+2026-04-06 20:00:52,678 | INFO | __main__ | Task created successfully with ID: 69d3caa4475124c1bd36823c
+2026-04-06 20:00:52,761 | INFO | __main__ | Enqueued audio analysis task 69d3caa4475124c1bd36823c for question result 69d3ca482962da778a6a3ce8
+2026-04-06 20:00:52,763 | INFO | __main__ | New Task 69d3ca482962da778a6a3cea audio analysis task created successfully
+2026-04-06 20:00:53,190 | INFO | __main__ | Task created successfully with ID: 69d3caa4475124c1bd36823d
+2026-04-06 20:00:53,268 | INFO | __main__ | Enqueued video analysis task 69d3caa4475124c1bd36823d for question result 69d3ca482962da778a6a3ce8
+2026-04-06 20:00:53,268 | INFO | __main__ | New Task 69d3ca482962da778a6a3cea video analysis task created successfully
+2026-04-06 20:00:53,399 | INFO | __main__ | Task completed | task_id=69d3ca482962da778a6a3cea
+2026-04-06 20:00:53,471 | INFO | __main__ | Task received | task_id=69d3ca522962da778a6a3cf5
+2026-04-06 20:00:53,605 | INFO | __main__ | Task fetched | task_id=69d3ca522962da778a6a3cf5 | user_id=698ba20ef6c33be1cee19c8f
+2026-04-06 20:01:00,248 | INFO | httpx | HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
+2026-04-06 20:01:00,585 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/0ac557dc-17c2-4160-a8dc-7f04a3f024bb "HTTP/1.1 200 OK"
+2026-04-06 20:01:04,023 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/0ac557dc-17c2-4160-a8dc-7f04a3f024bb "HTTP/1.1 200 OK"
+2026-04-06 20:01:07,502 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/0ac557dc-17c2-4160-a8dc-7f04a3f024bb "HTTP/1.1 200 OK"
+2026-04-06 20:01:07,626 | INFO | __main__ | Task 69d3ca522962da778a6a3cf5 speech to text processing completed successfully
+2026-04-06 20:01:08,011 | INFO | __main__ | Task created successfully with ID: 69d3cab3475124c1bd36823e
+2026-04-06 20:01:08,083 | INFO | __main__ | Enqueued audio analysis task 69d3cab3475124c1bd36823e for question result 69d3ca512962da778a6a3cf3
+2026-04-06 20:01:08,083 | INFO | __main__ | New Task 69d3ca522962da778a6a3cf5 audio analysis task created successfully
+2026-04-06 20:01:08,418 | INFO | __main__ | Task created successfully with ID: 69d3cab4475124c1bd36823f
+2026-04-06 20:01:08,492 | INFO | __main__ | Enqueued video analysis task 69d3cab4475124c1bd36823f for question result 69d3ca512962da778a6a3cf3
+2026-04-06 20:01:08,492 | INFO | __main__ | New Task 69d3ca522962da778a6a3cf5 video analysis task created successfully
+2026-04-06 20:01:08,615 | INFO | __main__ | Task completed | task_id=69d3ca522962da778a6a3cf5
+2026-04-06 20:06:26,489 | INFO | __main__ | Worker stopped manually
+2026-04-06 20:06:26,557 | INFO | pika.adapters.blocking_connection | Closing connection (200): Normal shutdown
+2026-04-06 20:06:26,557 | INFO | pika.channel | Closing channel (200): 'Normal shutdown' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x0000022B7FA44650> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>>
+2026-04-06 20:29:20,865 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-04-06 20:29:20,935 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1040, family=2, type=1, proto=6, laddr=('192.168.100.7', 56842), raddr=('15.206.140.228', 5671)>
+2026-04-06 20:29:21,046 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1040, family=2, type=1, proto=0, laddr=('192.168.100.7', 56842), raddr=('15.206.140.228', 5671)>
+2026-04-06 20:29:21,046 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001F6DEAD3510>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001F6DEAD3510> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-04-06 20:29:21,563 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001F6DEAD3510> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-04-06 20:29:21,563 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001F6DEAD3510> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-04-06 20:29:21,563 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000001F6DEAD3510> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-04-06 20:29:21,563 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-04-06 20:29:25,434 | INFO | __main__ | Worker started and waiting for speech to text jobs...
+2026-04-06 20:29:25,434 | INFO | __main__ | Task received | task_id=69d3cc192962da778a6a3d1d
+2026-04-06 20:29:26,495 | INFO | __main__ | Task fetched | task_id=69d3cc192962da778a6a3d1d | user_id=698ba20ef6c33be1cee19c8f
+2026-04-06 20:29:34,525 | INFO | httpx | HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
+2026-04-06 20:29:34,948 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/a928eff1-eae6-44ae-aeb0-ee8b97342d15 "HTTP/1.1 200 OK"
+2026-04-06 20:29:38,318 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/a928eff1-eae6-44ae-aeb0-ee8b97342d15 "HTTP/1.1 200 OK"
+2026-04-06 20:29:38,483 | INFO | __main__ | Task 69d3cc192962da778a6a3d1d speech to text processing completed successfully
+2026-04-06 20:29:38,887 | INFO | __main__ | Task created successfully with ID: 69d3d1622852c961aabca27b
+2026-04-06 20:29:38,962 | INFO | __main__ | Enqueued audio analysis task 69d3d1622852c961aabca27b for question result 69d3cc192962da778a6a3d1b
+2026-04-06 20:29:38,962 | INFO | __main__ | New Task 69d3cc192962da778a6a3d1d audio analysis task created successfully
+2026-04-06 20:29:39,210 | INFO | __main__ | Task created successfully with ID: 69d3d1632852c961aabca27c
+2026-04-06 20:29:39,293 | INFO | __main__ | Enqueued video analysis task 69d3d1632852c961aabca27c for question result 69d3cc192962da778a6a3d1b
+2026-04-06 20:29:39,294 | INFO | __main__ | New Task 69d3cc192962da778a6a3d1d video analysis task created successfully
+2026-04-06 20:29:39,415 | INFO | __main__ | Task completed | task_id=69d3cc192962da778a6a3d1d
+2026-04-06 20:55:59,824 | INFO | pika.adapters.utils.connection_workflow | Pika version 1.3.2 connecting to ('15.206.140.228', 5671)
+2026-04-06 20:55:59,889 | INFO | pika.adapters.utils.io_services_utils | Socket connected: <socket.socket fd=1116, family=2, type=1, proto=6, laddr=('192.168.100.7', 62153), raddr=('15.206.140.228', 5671)>
+2026-04-06 20:55:59,963 | INFO | pika.adapters.utils.io_services_utils | SSL handshake completed successfully: <ssl.SSLSocket fd=1116, family=2, type=1, proto=0, laddr=('192.168.100.7', 62153), raddr=('15.206.140.228', 5671)>
+2026-04-06 20:55:59,964 | INFO | pika.adapters.utils.connection_workflow | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002046A296C90>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002046A296C90> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>).
+2026-04-06 20:56:00,163 | INFO | pika.adapters.utils.connection_workflow | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002046A296C90> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-04-06 20:56:00,163 | INFO | pika.adapters.utils.connection_workflow | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002046A296C90> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-04-06 20:56:00,163 | INFO | pika.adapters.blocking_connection | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncSSLTransport object at 0x000002046A296C90> params=<URLParameters host=puffin.rmq2.cloudamqp.com port=5671 virtual_host=gfhwdutw ssl=True>>
+2026-04-06 20:56:00,163 | INFO | pika.adapters.blocking_connection | Created channel=1
+2026-04-06 20:56:03,303 | INFO | __main__ | Worker started and waiting for speech to text jobs...
+2026-04-06 20:56:03,303 | INFO | __main__ | Task received | task_id=69d3d77cef23e66fb2b3baf0
+2026-04-06 20:56:04,351 | INFO | __main__ | Task fetched | task_id=69d3d77cef23e66fb2b3baf0 | user_id=698ba20ef6c33be1cee19c8f
+2026-04-06 20:56:18,211 | INFO | httpx | HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
+2026-04-06 20:56:18,558 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/56d4b055-3a82-4df6-b07e-94f5f8ea4ee1 "HTTP/1.1 200 OK"
+2026-04-06 20:56:21,911 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/56d4b055-3a82-4df6-b07e-94f5f8ea4ee1 "HTTP/1.1 200 OK"
+2026-04-06 20:56:25,295 | INFO | httpx | HTTP Request: GET https://api.assemblyai.com/v2/transcript/56d4b055-3a82-4df6-b07e-94f5f8ea4ee1 "HTTP/1.1 200 OK"
+2026-04-06 20:56:25,431 | INFO | __main__ | Task 69d3d77cef23e66fb2b3baf0 speech to text processing completed successfully
+2026-04-06 20:56:25,673 | INFO | __main__ | Task created successfully with ID: 69d3d7a9f2bce594cebbdf84
+2026-04-06 20:56:25,742 | INFO | __main__ | Enqueued audio analysis task 69d3d7a9f2bce594cebbdf84 for question result 69d3d77cef23e66fb2b3baee
+2026-04-06 20:56:25,742 | INFO | __main__ | New Task 69d3d77cef23e66fb2b3baf0 audio analysis task created successfully
+2026-04-06 20:56:25,982 | INFO | __main__ | Task created successfully with ID: 69d3d7a9f2bce594cebbdf85
+2026-04-06 20:56:26,057 | INFO | __main__ | Enqueued video analysis task 69d3d7a9f2bce594cebbdf85 for question result 69d3d77cef23e66fb2b3baee
+2026-04-06 20:56:26,067 | INFO | __main__ | New Task 69d3d77cef23e66fb2b3baf0 video analysis task created successfully
+2026-04-06 20:56:26,180 | INFO | __main__ | Task completed | task_id=69d3d77cef23e66fb2b3baf0
