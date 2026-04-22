@@ -33,7 +33,7 @@ def callback(ch, method, properties, body):
     logger.info("Task received | task_id=%s", task_id)
     
     if not ObjectId.is_valid(task_id):
-        # ch.basic_ack(delivery_tag=method.delivery_tag)
+        ch.basic_ack(delivery_tag=method.delivery_tag)
         return
 
     try:
@@ -66,7 +66,7 @@ def callback(ch, method, properties, body):
         result = report_generation_pipeline(interview_id, candidate_id)
         if not result:
             logger.info("Acknowledge the task because interview does not exist")
-            # ch.basic_ack(delivery_tag=method.delivery_tag)
+            ch.basic_ack(delivery_tag=method.delivery_tag)
         
         logger.info("Task %s report generation completed successfully", task_id)
         
@@ -77,7 +77,7 @@ def callback(ch, method, properties, body):
         )
         logger.info("Task completed | task_id=%s", task_id)
         # Acknowledge successful message
-        # ch.basic_ack(delivery_tag=method.delivery_tag)
+        ch.basic_ack(delivery_tag=method.delivery_tag)
 
     except Exception as e:
         logger.exception("Task crashed | task_id=%s", task_id)

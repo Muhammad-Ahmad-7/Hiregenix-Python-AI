@@ -1,4 +1,3 @@
-from functools import partial
 import os
 import json
 import pika
@@ -13,7 +12,7 @@ from pymongo import ReturnDocument
 import logging
 from utils.logger_config import setup_logging
 from utils.rabbitmq import connect_rabbitmq, initialize_queues
-import threading
+
 
 setup_logging("logger/video_analysis_worker.log")
 logger = logging.getLogger(__name__)
@@ -38,7 +37,6 @@ channel.confirm_delivery()
 def create_and_push_llm_evaluation_task_to_queue(question_result_id: str, candidate_id: str) -> ObjectId:
     """Create a new audio analysis task document and push it to the audio analysis queue."""
     try:
-        global channel, connection
         doc = {
             "userId": candidate_id,
             "type": "llm_evaluation",
@@ -53,130 +51,20 @@ def create_and_push_llm_evaluation_task_to_queue(question_result_id: str, candid
             return False
         logger.info("Task created successfully with ID: %s", result.inserted_id)
         body = str(result.inserted_id).encode()
-        if not connection or connection.is_closed or channel.is_closed:
-            logger.warning("RabbitMQ connection/channel was closed. Attempting to reconnect...")
-            channel, connection = connect_rabbitmq()
-            initialize_queues(channel=channel)
-            channel.confirm_delivery()
-        try:
-            channel.basic_publish(
-                exchange='',
-                routing_key=LLM_EVALUATION_QUEUE,
-                body=body,
-                properties=pika.BasicProperties(
-                    delivery_mode=pika.DeliveryMode.Persistent,
-                ),
-                mandatory=True  # raise on unroutable
-            )
-        except Exception as publish_error:
-            logger.info("Failed to publish to LLM evaluation queue retrying: %s", publish_error)
-            # Try to reconnect and publish again
-            channel, connection = connect_rabbitmq()
-            initialize_queues(channel=channel)
-            channel.confirm_delivery()
-            channel.basic_publish(
-                exchange='',
-                routing_key=LLM_EVALUATION_QUEUE,
-                body=body,
-                properties=pika.BasicProperties(
-                    delivery_mode=pika.DeliveryMode.Persistent,
-                ),
-                mandatory=True  # raise on unroutable
-            )
+        channel.basic_publish(
+            exchange='',
+            routing_key=LLM_EVALUATION_QUEUE,
+            body=body,
+            properties=pika.BasicProperties(
+                delivery_mode=pika.DeliveryMode.Persistent,
+            ),
+            mandatory=True  # raise on unroutable
+        )
         logger.info("Enqueued llm evaluation task %s for question result %s", result.inserted_id, question_result_id)
         return True
     except Exception as e:
         logger.exception("Error creating and pushing llm evaluation task")
         return False
-
-
-def process_video(ch, method, body, task_id, question_result_id, candidate_id):
-    """
-    This runs in a BACKGROUND thread. 
-    It handles the heavy work and then asks the main thread to ACK.
-    """
-    try:
-        # 1. Run the heavy video pipeline
-        result = video_analysis_pipeline(question_result_id)
-        if not result:
-            logger.info("Acknowledge the task because question does not exist")
-            ch.connection.add_callback_threadsafe(lambda: ch.basic_ack(delivery_tag=method.delivery_tag))
-            return
-        
-        # 2. Handle DB updates (Mongo is thread-safe)
-        if result:
-            # ... your find_one_and_update logic for LLM ...
-            db_result = question_result_collection.find_one_and_update(
-                {
-                    "_id": ObjectId(question_result_id),
-                    "status": "PROCESSING",
-                    "stages.audioAnalyzed": True,
-                    "stages.videoAnalyzed": True,
-                    "llmEnqueued": False,
-                },
-                {
-                    "$set": {
-                        "llmEnqueued": True,
-                        "llmStartedAt": datetime.utcnow(),
-                    }
-                },
-                return_document=ReturnDocument.AFTER
-            )
-            if db_result:
-                create_and_push_llm_evaluation_task_to_queue(question_result_id, candidate_id)
-            else:
-                logger.info("Skipping LLM enqueue - conditions not met")
-        
-        task_collection.update_one(
-            {"_id": ObjectId(task_id)},
-            {"$set": {"status": "completed", "error": None}}
-        )
-
-        # 3. Success! Ask the MAIN thread to send the ACK
-        cb = partial(ch.basic_ack, delivery_tag=method.delivery_tag)
-        ch.connection.add_callback_threadsafe(cb)
-
-    except Exception as e:
-        # Handle retries/DLQ logic here...
-        logger.exception("Task crashed | task_id=%s", task_id)
-        # Mark task as failed and store error message
-        updated_task = task_collection.find_one_and_update(
-            {"_id": ObjectId(task_id)},
-            {
-                "$set": {"status": "failed", "error": str(e)},
-                "$inc": {"retryCount": 1}
-            },
-            return_document=ReturnDocument.AFTER  # This returns the document AFTER the update
-        )
-        retry_count = updated_task['retryCount']
-        if retry_count >=3:
-            logger.error("Max retries exceeded. Moving to DLQ | task_id=%s", task_id)
-            ch.connection.add_callback_threadsafe(
-                lambda: ch.basic_nack(method.delivery_tag, requeue=False)
-            )
-        else:
-            logger.info("Moving to Waiting Room (10s delay) | retry=%s", retry_count)
-            # update the task status back to pending for retry
-            task_collection.update_one(
-                {"_id": ObjectId(task_id)},
-                {"$set": {"status": "pending", "error": None}},
-            )
-            # Manually publish to Delay Queue
-            def move_to_delay_and_ack():
-                try:
-                    ch.basic_publish(
-                        exchange='',
-                        routing_key=VIDEO_ANALYSIS_DELAY_QUEUE,
-                        body=body,
-                        properties=pika.BasicProperties(delivery_mode=pika.DeliveryMode.Persistent)
-                    )
-                    ch.basic_ack(delivery_tag=method.delivery_tag)
-                    logger.info("Moved to delay queue and acknowledged original message | task_id=%s", task_id)
-                except Exception as e:
-                    logger.error("Main thread failed to publish to delay queue: %s", e)
-                    # Fallback: if publish fails, at least tell RabbitMQ to requeue the original
-                    ch.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
-            ch.connection.add_callback_threadsafe(move_to_delay_and_ack)
 
 def callback(ch, method, properties, body):
     task_id = body.decode()
@@ -199,7 +87,7 @@ def callback(ch, method, properties, body):
             logger.info("Acknowledged message for non-pending task | task_id=%s", task_id)
             return
 
-        logger.info(
+        logger.debug(
             "Task fetched | task_id=%s | user_id=%s",
             task_id,
             task.get("userId")
@@ -208,13 +96,47 @@ def callback(ch, method, properties, body):
     
         # fetching the question result id for fetching the question result document
         question_result_id = task["payload"]["questionResultId"]
+
+        result = video_analysis_pipeline(connection=connection, question_result_id=question_result_id)
+        if not result:
+            logger.info("Acknowledge the task because question does not exist")
+            ch.basic_ack(delivery_tag=method.delivery_tag)
         
-        t = threading.Thread(
-            target=process_video, 
-            args=(ch, method, body, task_id, question_result_id, candidate_id)
+        logger.info("Task %s video analysis completed successfully now pushing to LLM evaluation queue", task_id)
+        
+        #TODO: Now push to the llm queue
+        
+        result = question_result_collection.find_one_and_update(
+            {
+                "_id": ObjectId(question_result_id),
+                "status": "PROCESSING",
+                "stages.audioAnalyzed": True,
+                "stages.videoAnalyzed": True,
+                "llmEnqueued": False,
+            },
+            {
+                "$set": {
+                    "llmEnqueued": True,
+                    "llmStartedAt": datetime.utcnow(),
+                }
+            },
+            return_document=ReturnDocument.AFTER
         )
-        t.daemon = True  # Daemonize thread to exit with main program
-        t.start()
+        
+        if result:
+            # create a task and push it in the llm queue
+            create_and_push_llm_evaluation_task_to_queue(question_result_id, candidate_id)
+        else:
+            logger.info("Skipping LLM enqueue - conditions not met")
+        
+        # --- Mark Task as Completed ---
+        task_collection.update_one(
+            {"_id": ObjectId(task_id)},
+            {"$set": {"status": "completed", "error": None}},
+        )
+        logger.info("Task completed | task_id=%s", task_id)
+        # Acknowledge successful message
+        ch.basic_ack(delivery_tag=method.delivery_tag)
     
     except Exception as e:
         logger.exception("Task crashed | task_id=%s", task_id)

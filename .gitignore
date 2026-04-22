@@ -146,6 +146,7 @@ Thumbs.db
 
 # Project Specific (HireGenix Workers)
 temp/
+logger/
 *.mp3
 *.webm
 *.wav

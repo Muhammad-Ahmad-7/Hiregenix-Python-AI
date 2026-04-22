@@ -12,7 +12,7 @@ from datetime import datetime
 
 
 
-def video_analysis_pipeline(question_result_id: str) -> bool:
+def video_analysis_pipeline(connection, question_result_id: str) -> bool:
     video_path = None
     try:
         question_result = question_result_collection.find_one({"_id": ObjectId(question_result_id)})
@@ -36,7 +36,7 @@ def video_analysis_pipeline(question_result_id: str) -> bool:
             raise Exception("Video download failed")
         print(f"✅ Video downloaded at: {video_path}")
         
-        result = analyze_interview(video_path)
+        result = analyze_interview(connection, video_path)
         print(f"Video Analysis Done\nFinal Result: {result}")
         
         # DB question result document updated with transcribed text and audio url
@@ -85,7 +85,7 @@ GAZE_THRESHOLD = 0.42
 BLINK_THRESHOLD = 0.5
 BANNED_CATEGORIES = ['cell phone', 'laptop', 'book', 'mobile phone']
 
-def analyze_interview(video_path):
+def analyze_interview(connection, video_path):
     
     print(f"🧠 Loading Models: {LANDMARK_MODEL}, {DETECTOR_MODEL}, {OBJECT_MODEL}")
     # 1. Initialize Face Landmarker (Behavior)
@@ -133,6 +133,7 @@ def analyze_interview(video_path):
     print(f"--- Launching Triple-Model Audit: {video_path} ---")
 
     while cap.isOpened():
+        connection.process_data_events()  # Keep RabbitMQ connection alive
         success, frame = cap.read()
         if not success: break
 

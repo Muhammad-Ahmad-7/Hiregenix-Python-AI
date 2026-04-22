@@ -1,4 +1,4 @@
-from config.db import report_collection, question_result_collection, candidate_collection
+from config.db import report_collection, question_result_collection, candidate_collection, interview_collection
 from bson import ObjectId
 
 from reportlab.platypus import (
@@ -251,6 +251,11 @@ def report_generation_pipeline(interview_id, candidate_id):
             {"_id": report_doc["_id"]},
             {"$set": {"pdfUrl": uploaded_url, "updatedAt": datetime.datetime.now()}},
             return_document=True
+        )
+        
+        interview_collection.find_one_and_update(
+            {"_id": ObjectId(interview_id)},
+            {"$set": {"status": "completed", "updatedAt": datetime.datetime.now()}},
         )
         
         if not doc:
