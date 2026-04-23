@@ -19,7 +19,7 @@ channel, connection = connect_rabbitmq()
 
 # Initializing the queues and exchange
 
-initialize_queues(channel=channel)
+channel = initialize_queues(channel=channel)
 
 channel.confirm_delivery()
 

@@ -3,6 +3,7 @@
 RESUME_ANALYSIS_QUEUE = "resume_analysis"
 CANDIDATE_PROFILE_EMBEDDINGS_QUEUE="candidate_profile_embeddings"
 JOB_DESCRIPTION_EMBEDDINGS_QUEUE="job_description_embeddings"
+COMPANY_KB_EMBEDDINGS_QUEUE="company_kb_embeddings"
 JOB_RECOMMENDATION_QUEUE="job_recommendation"
 LIVENESS_CHECK_QUEUE = "liveness_check"
 FACE_CHECK_QUEUE = "face_check"
@@ -35,6 +36,7 @@ FAILED_FINAL_INTERVIEW_EVAL_TASK_QUEUE="final_interview_eval_dead_letter_queue"
 FAILED_REPORT_GENERATION_PDF_TASK_QUEUE="report_generation_pdf_dead_letter_queue"
 FAILED_CANDIDATE_PROFILE_EMBEDDINGS_TASK_QUEUE="candidate_profile_embeddings_dead_letter_queue"
 FAILED_JOB_DESCRIPTION_EMBEDDINGS_TASK_QUEUE="job_description_embeddings_dead_letter_queue"
+FAILED_COMPANY_KB_EMBEDDINGS_TASK_QUEUE="company_kb_embeddings_dead_letter_queue"
 FAILED_JOB_RECOMMENDATION_TASK_QUEUE="job_recommendation_dead_letter_queue"
 
 
