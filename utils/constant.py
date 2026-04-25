@@ -12,6 +12,8 @@ VIDEO_ANALYSIS_QUEUE = "video_analysis"
 LLM_EVALUATION_QUEUE = "llm_evaluation"
 FINAL_INTERVIEW_EVAL_QUEUE = "final_interview_eval"
 REPORT_GENERATION_PDF_QUEUE="report_generation_pdf"
+SEND_HIRING_EMAIL_QUEUE = "send_hiring_email"
+SEND_REJECTION_EMAIL_QUEUE = "send_rejection_email"
 
 # Delay Queues
 RESUME_ANALYSIS_DELAY_QUEUE = "resume_analysis_delay_queue"
@@ -24,6 +26,8 @@ REPORT_GENERATION_PDF_DELAY_QUEUE="report_generation_pdf_delay_queue"
 CANDIDATE_PROFILE_EMBEDDINGS_DELAY_QUEUE="candidate_profile_embeddings_delay_queue"
 JOB_DESCRIPTION_EMBEDDINGS_DELAY_QUEUE="job_description_embeddings_delay_queue"
 JOB_RECOMMENDATION_DELAY_QUEUE="job_recommendation_delay_queue"
+SEND_HIRING_EMAIL_DELAY_QUEUE="send_hiring_email_delay_queue"
+SEND_REJECTION_EMAIL_DELAY_QUEUE="send_rejection_email_delay_queue"
 
 # Dead letter queues
 FAILED_RESUME_ANALYSIS_TASK_QUEUE="resume_analysis_dead_letter_queue"
@@ -36,6 +40,8 @@ FAILED_REPORT_GENERATION_PDF_TASK_QUEUE="report_generation_pdf_dead_letter_queue
 FAILED_CANDIDATE_PROFILE_EMBEDDINGS_TASK_QUEUE="candidate_profile_embeddings_dead_letter_queue"
 FAILED_JOB_DESCRIPTION_EMBEDDINGS_TASK_QUEUE="job_description_embeddings_dead_letter_queue"
 FAILED_JOB_RECOMMENDATION_TASK_QUEUE="job_recommendation_dead_letter_queue"
+FAILED_SEND_HIRING_EMAIL_TASK_QUEUE="send_hiring_email_dead_letter_queue"
+FAILED_SEND_REJECTION_EMAIL_TASK_QUEUE="send_rejection_email_dead_letter_queue"
 
 
 # Exchange
