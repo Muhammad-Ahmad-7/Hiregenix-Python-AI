@@ -8,7 +8,15 @@ from config.env import GEMINI_API_KEY, OPENAI_API_KEY
 
 
 app = FastAPI(title="Hiregenix AI (RAG)")
+from fastapi.middleware.cors import CORSMiddleware
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # or specify your frontend URL
+    allow_credentials=True,
+    allow_methods=["*"],  # IMPORTANT: allows OPTIONS
+    allow_headers=["*"],
+)
 
 class CompanyChatBody(BaseModel):
     companyId: str
@@ -19,7 +27,7 @@ def _collection_name(company_id: str) -> str:
     return f"company_kb_{company_id}"
 
 
-@app.post("/rag/company-chat")
+@app.post("/chatbot/company-chat")
 def rag_company_chat(body: CompanyChatBody):
     if not body.query.strip():
         raise HTTPException(status_code=400, detail="query is required")
