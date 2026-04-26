@@ -39,6 +39,7 @@ class PyObjectId(ObjectId):
 # ---------------------------
 
 class ExperienceModel(BaseModel):
+    unique_id: Optional[PyObjectId] = Field(default_factory=PyObjectId, alias="_id")
     company: Optional[str] = None
     position: Optional[str] = None
     startDate: Optional[str] = None
@@ -46,18 +47,21 @@ class ExperienceModel(BaseModel):
     description: Optional[str] = None
 
 class EducationModel(BaseModel):
+    unique_id: Optional[PyObjectId] = Field(default_factory=PyObjectId, alias="_id")
     institution: Optional[str] = None
     degree: Optional[str] = None
     startYear: Optional[int] = None
     endYear: Optional[int] = None
 
 class ProjectModel(BaseModel):
+    unique_id: Optional[PyObjectId] = Field(default_factory=PyObjectId, alias="_id")
     name: Optional[str] = None
     description: Optional[str] = None
     link: Optional[str] = None
     technologies: List[str] = Field(default_factory=list)
 
 class CertificationModel(BaseModel):
+    unique_id: Optional[PyObjectId] = Field(default_factory=PyObjectId, alias="_id")
     name: Optional[str] = None
     issuer: Optional[str] = None
     year: Optional[int] = None
