@@ -1,7 +1,7 @@
 import os
 import pika
 from config.env import RABBITMQ_URL
-from utils.constant import CANDIDATE_PROFILE_EMBEDDINGS_QUEUE, FAILED_RESUME_ANALYSIS_TASK_QUEUE, JOB_DESCRIPTION_EMBEDDINGS_QUEUE, JOB_RECOMMENDATION_QUEUE, RESUME_ANALYSIS_DELAY_QUEUE, RESUME_ANALYSIS_QUEUE, SPEECH_TO_TEXT_QUEUE, AUDIO_ANALYSIS_QUEUE, VIDEO_ANALYSIS_QUEUE, DLX_EXCHANGE, FAILED_STT_TASK_QUEUE, SPEECH_TO_TEXT_DELAY_QUEUE, FAILED_AUDIO_ANALYSIS_TASK_QUEUE, FAILED_VIDEO_ANALYSIS_TASK_QUEUE, AUDIO_ANALYSIS_DELAY_QUEUE, VIDEO_ANALYSIS_DELAY_QUEUE,LLM_EVALUATION_QUEUE,LLM_EVALUATION_DELAY_QUEUE,FAILED_LLM_EVALUATION_TASK_QUEUE,FINAL_INTERVIEW_EVAL_QUEUE,FINAL_INTERVIEW_EVAL_DELAY_QUEUE, FAILED_FINAL_INTERVIEW_EVAL_TASK_QUEUE, REPORT_GENERATION_PDF_QUEUE, REPORT_GENERATION_PDF_DELAY_QUEUE, FAILED_REPORT_GENERATION_PDF_TASK_QUEUE, FAILED_CANDIDATE_PROFILE_EMBEDDINGS_TASK_QUEUE, FAILED_JOB_DESCRIPTION_EMBEDDINGS_TASK_QUEUE, FAILED_JOB_RECOMMENDATION_TASK_QUEUE, CANDIDATE_PROFILE_EMBEDDINGS_DELAY_QUEUE, JOB_DESCRIPTION_EMBEDDINGS_DELAY_QUEUE, JOB_RECOMMENDATION_DELAY_QUEUE
+from utils.constant import CANDIDATE_PROFILE_EMBEDDINGS_QUEUE, FAILED_RESUME_ANALYSIS_TASK_QUEUE, FAILED_SEND_HIRING_EMAIL_TASK_QUEUE, FAILED_SEND_REJECTION_EMAIL_TASK_QUEUE, JOB_DESCRIPTION_EMBEDDINGS_QUEUE, JOB_RECOMMENDATION_QUEUE, RESUME_ANALYSIS_DELAY_QUEUE, RESUME_ANALYSIS_QUEUE, SEND_HIRING_EMAIL_DELAY_QUEUE, SEND_HIRING_EMAIL_DELAY_QUEUE, SEND_HIRING_EMAIL_QUEUE, SEND_REJECTION_EMAIL_DELAY_QUEUE, SEND_REJECTION_EMAIL_QUEUE, SPEECH_TO_TEXT_QUEUE, AUDIO_ANALYSIS_QUEUE, VIDEO_ANALYSIS_QUEUE, DLX_EXCHANGE, FAILED_STT_TASK_QUEUE, SPEECH_TO_TEXT_DELAY_QUEUE, FAILED_AUDIO_ANALYSIS_TASK_QUEUE, FAILED_VIDEO_ANALYSIS_TASK_QUEUE, AUDIO_ANALYSIS_DELAY_QUEUE, VIDEO_ANALYSIS_DELAY_QUEUE,LLM_EVALUATION_QUEUE,LLM_EVALUATION_DELAY_QUEUE,FAILED_LLM_EVALUATION_TASK_QUEUE,FINAL_INTERVIEW_EVAL_QUEUE,FINAL_INTERVIEW_EVAL_DELAY_QUEUE, FAILED_FINAL_INTERVIEW_EVAL_TASK_QUEUE, REPORT_GENERATION_PDF_QUEUE, REPORT_GENERATION_PDF_DELAY_QUEUE, FAILED_REPORT_GENERATION_PDF_TASK_QUEUE, FAILED_CANDIDATE_PROFILE_EMBEDDINGS_TASK_QUEUE, FAILED_JOB_DESCRIPTION_EMBEDDINGS_TASK_QUEUE, FAILED_JOB_RECOMMENDATION_TASK_QUEUE, CANDIDATE_PROFILE_EMBEDDINGS_DELAY_QUEUE, JOB_DESCRIPTION_EMBEDDINGS_DELAY_QUEUE, JOB_RECOMMENDATION_DELAY_QUEUE
 
 
 
@@ -109,6 +109,22 @@ def initialize_queues(channel):
             queue=FAILED_RESUME_ANALYSIS_TASK_QUEUE,
             routing_key="resume_analysis.failure"
         )
+        
+        # 11. Send Hiring Email Failure Queue
+        channel.queue_declare(queue=FAILED_SEND_HIRING_EMAIL_TASK_QUEUE,durable=True)
+        channel.queue_bind(
+            exchange=DLX_EXCHANGE,
+            queue=FAILED_SEND_HIRING_EMAIL_TASK_QUEUE,
+            routing_key="send_hiring_email.failure"
+        )
+        
+        # 12. Send Rejection Email Failure Queue
+        channel.queue_declare(queue=FAILED_SEND_REJECTION_EMAIL_TASK_QUEUE,durable=True)    
+        channel.queue_bind(
+            exchange=DLX_EXCHANGE,
+            queue=FAILED_SEND_REJECTION_EMAIL_TASK_QUEUE,
+            routing_key="send_rejection_email.failure"
+        )
 
         # Main Queues
 
@@ -181,6 +197,21 @@ def initialize_queues(channel):
             "x-dead-letter-routing-key": "resume_analysis.failure"
         }
         channel.queue_declare(queue=RESUME_ANALYSIS_QUEUE, durable=True, arguments=main_args_resume_analysis)
+        
+        # 11. Send Hiring Email Queue
+        main_args_send_hiring_email={
+            "x-dead-letter-exchange": DLX_EXCHANGE,
+            "x-dead-letter-routing-key": "send_hiring_email.failure"
+        }
+        channel.queue_declare(queue=SEND_HIRING_EMAIL_QUEUE, durable=True, arguments=main_args_send_hiring_email)
+        
+        # 12. Send Rejection Email Queue
+        main_args_send_rejection_email={
+            "x-dead-letter-exchange": DLX_EXCHANGE,
+            "x-dead-letter-routing-key": "send_rejection_email.failure"
+        }
+        channel.queue_declare(queue=SEND_REJECTION_EMAIL_QUEUE, durable=True, arguments=main_args_send_rejection_email)
+        
 
         # Delay Queues
         
@@ -263,6 +294,23 @@ def initialize_queues(channel):
             "x-message-ttl": 10000,
         }
         channel.queue_declare(queue=RESUME_ANALYSIS_DELAY_QUEUE, durable=True, arguments=delay_args_resume_analysis)
+        
+        # 11. Send Hiring Email Delay Queue
+        delay_args_send_hiring_email={
+            "x-dead-letter-exchange": "",
+            "x-dead-letter-routing-key": SEND_HIRING_EMAIL_QUEUE,
+            "x-message-ttl": 10000,
+        }
+        channel.queue_declare(queue=SEND_HIRING_EMAIL_DELAY_QUEUE, durable=True, arguments=delay_args_send_hiring_email)
+
+        # 12. Send Rejection Email Delay Queue
+        delay_args_send_rejection_email={
+            "x-dead-letter-exchange": "",
+            "x-dead-letter-routing-key": SEND_REJECTION_EMAIL_QUEUE,
+            "x-message-ttl": 10000,
+        }
+        channel.queue_declare(queue=SEND_REJECTION_EMAIL_DELAY_QUEUE, durable=True, arguments=delay_args_send_rejection_email)
         return True
     except Exception as rabbitmq_exception:
-        return False
+        print(f"Error initializing RabbitMQ queues: {rabbitmq_exception}")
+        raise rabbitmq_exception
