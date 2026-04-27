@@ -17,7 +17,7 @@ class PyObjectId(ObjectId):
 class TaskModel(BaseModel):
     id: Optional[PyObjectId] = Field(alias="_id")
     userId: PyObjectId
-    type: Literal["resume_parsing", "profile_enhancement", "resume_feedback", "interview_prep", "candidate_profile_embeddings", "job_description_embeddings", "job_recommendation", "speech_to_text", "audio_analysis", "video_analysis", "llm_evaluation", "final_interview_evaluation", "report_generation_pdf"]
+    type: Literal["resume_parsing", "profile_enhancement", "resume_feedback", "interview_prep", "candidate_profile_embeddings", "job_description_embeddings", "company_kb_embeddings", "job_recommendation", "speech_to_text", "audio_analysis", "video_analysis", "llm_evaluation", "final_interview_evaluation", "report_generation_pdf"]
     payload: Dict[str, Any]
     retryCount: int = 0
     status: Literal["pending", "processing", "completed", "failed"] = "pending"
