@@ -7,6 +7,7 @@ from langchain.chat_models.base import init_chat_model
 from pydantic import BaseModel, Field
 
 from config.env import OPENAI_API_KEY, EMAIL_HOST, EMAIL_PORT, EMAIL_USER, EMAIL_PASS
+from utils.llm_call import get_llm_model
 
 
 # ── Pydantic schema ────────────────────────────────────────────────────────────
@@ -29,12 +30,7 @@ def generate_rejection_email_content(
     logger,
 ) -> RejectionEmailContent:
     try:
-        model = init_chat_model(
-            model_provider="google_genai",
-            model="gemini-2.5-flash",
-            api_key=OPENAI_API_KEY,
-        )
-
+        model = get_llm_model()
         structured_model = model.with_structured_output(RejectionEmailContent)
 
         prompt = ChatPromptTemplate.from_template(

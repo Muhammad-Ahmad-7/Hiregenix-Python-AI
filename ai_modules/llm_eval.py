@@ -13,6 +13,20 @@ from config.env import OPENAI_API_KEY
 from enum import Enum
 from pymongo import ReturnDocument
 
+from utils.llm_call import get_llm_model
+
+
+from typing import List, Optional
+from enum import Enum
+from pydantic import BaseModel, Field, field_validator, ValidationError
+
+from langchain.output_parsers import PydanticOutputParser
+from langchain.output_parsers import OutputFixingParser
+
+
+# =========================
+# ENUMS
+# =========================
 
 class AnswerQualityEnum(str, Enum):
     EXCELLENT = "Excellent"
@@ -35,6 +49,7 @@ class SpeechFlowEnum(str, Enum):
     ACCEPTABLE = "Acceptable"
     SMOOTH = "Smooth"
 
+
 class PaceAssessmentEnum(str, Enum):
     VERY_SLOW = "Very Slow"
     SLOW = "Slow"
@@ -42,6 +57,10 @@ class PaceAssessmentEnum(str, Enum):
     FAST = "Fast"
     VERY_FAST = "Very Fast"
 
+
+# =========================
+# MODELS
+# =========================
 
 class ScoreBreakdown(BaseModel):
     contentScore: int = Field(..., ge=0, le=100)
@@ -55,14 +74,36 @@ class FluencyAssessment(BaseModel):
     grammarQuality: GrammarQualityEnum
     speechFlow: SpeechFlowEnum
     paceAssessment: PaceAssessmentEnum
-    detectedIssues: List[str] = []
+    detectedIssues: List[str] = Field(default_factory=list)
+
+    # 🔥 SELF-HEALING NORMALIZER
+    @field_validator("paceAssessment", mode="before")
+    @classmethod
+    def normalize_pace(cls, value):
+        if not value:
+            return "Moderate"
+
+        v = str(value).lower()
+
+        if "very slow" in v:
+            return "Very Slow"
+        if "slow" in v:
+            return "Slow"
+        if "very fast" in v:
+            return "Very Fast"
+        if "fast" in v:
+            return "Fast"
+        if "moderate" in v:
+            return "Moderate"
+
+        return "Moderate"
 
 
 class EvaluationInsights(BaseModel):
-    strengths: List[str] = []
-    weaknesses: List[str] = []
-    missingConcepts: List[str] = []
-    improvementSuggestions: List[str] = []
+    strengths: List[str] = Field(default_factory=list)
+    weaknesses: List[str] = Field(default_factory=list)
+    missingConcepts: List[str] = Field(default_factory=list)
+    improvementSuggestions: List[str] = Field(default_factory=list)
 
 
 class IntegrityAssessment(BaseModel):
@@ -71,25 +112,96 @@ class IntegrityAssessment(BaseModel):
 
 
 class InterviewEvaluation(BaseModel):
-
     scores: ScoreBreakdown
-
     fluencyAssessment: FluencyAssessment
-
     insights: EvaluationInsights
-
     answerQuality: AnswerQualityEnum
-
     integrity: IntegrityAssessment
-
     shortSummary: str
 
 
+# =========================
+# LANGCHAIN PARSERS
+# =========================
+
 parser = PydanticOutputParser(pydantic_object=InterviewEvaluation)
+
+fixing_parser = OutputFixingParser.from_llm(
+    parser=parser,
+    llm=get_llm_model()  # inject your LLM here when initializing
+)
+
+
+# =========================
+# SAFE + SELF-HEALING PARSER
+# =========================
+
+def cheap_fix_json(output: str) -> str:
+    """
+    Lightweight pre-fix before hitting LLM retry.
+    """
+    try:
+        import json
+        data = json.loads(output)
+
+        # normalize paceAssessment if present
+        pace = data.get("fluencyAssessment", {}).get("paceAssessment", "")
+        if isinstance(pace, str) and "moderate" in pace.lower():
+            data["fluencyAssessment"]["paceAssessment"] = "Moderate"
+
+        return json.dumps(data)
+
+    except Exception:
+        return output
+
+
+def robust_parse(llm, output: str, max_retries: int = 2):
+    """
+    Full self-healing pipeline:
+    1. Cheap fix
+    2. Direct parse
+    3. LangChain fix parser
+    4. LLM repair retry
+    """
+
+    output = cheap_fix_json(output)
+
+    # Step 1: direct parse
+    try:
+        return parser.parse(output)
+    except ValidationError:
+        pass
+
+    # Step 2: LangChain auto-fix
+    try:
+        return fixing_parser.parse(output)
+    except Exception:
+        pass
+
+    # Step 3: controlled LLM repair loop
+    for _ in range(max_retries):
+        repair_prompt = f"""
+Fix this JSON to match schema EXACTLY.
+- Keep meaning
+- Fix enum values strictly
+- No extra text
+
+JSON:
+{output}
+"""
+
+        output = llm.invoke(repair_prompt).content
+
+        try:
+            return parser.parse(output)
+        except ValidationError:
+            continue
+
+    raise ValueError("Failed to parse even after self-healing attempts")
 
 
 # initialize model (example — adapt to your stack)
-model = init_chat_model(model_provider='google_genai', model='gemini-2.5-flash', api_key=OPENAI_API_KEY)
+model = get_llm_model()
 
 
 def llm_eval_pipeline(question_result_id: str):

@@ -12,10 +12,12 @@ from models.resume import ResumeModel, ParsedDataModel, ExperienceModel, Educati
 from datetime import datetime
 from bson import ObjectId
 
+from utils.llm_call import get_llm_model
+
 # initialize model (example — adapt to your stack)
 # model = init_chat_model(model_provider='google_genai', model='gemini-2.5-flash', api_key=OPENAI_API_KEY)
 
-model = init_chat_model(model_provider='groq', model='llama-3.3-70b-versatile', api_key=OPENAI_API_KEY, max_retries=2)
+model = get_llm_model()  # Replace with your actual model initialization function
 
 class StateSchema(TypedDict):
     resume_url: str

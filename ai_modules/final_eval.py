@@ -8,8 +8,7 @@ from langchain.prompts import ChatPromptTemplate
 from pydantic import BaseModel, Field
 from typing import List, Optional
 from prompts.final_interview_eval import FINAL_INTERVIEW_AGGREGATION_PROMPT
-from langchain.chat_models.base import init_chat_model
-from config.env import OPENAI_API_KEY
+from utils.llm_call import get_llm_model
 
 class FluencyAssessment(BaseModel):
     grammarQuality: Optional[str] = None
@@ -43,7 +42,7 @@ parser = PydanticOutputParser(pydantic_object=FinalInterviewReport)
 
 
 # initialize model (example — adapt to your stack)
-model = init_chat_model(model_provider='google_genai', model='gemini-2.5-flash', api_key=OPENAI_API_KEY)
+model = get_llm_model()
 
 def final_interview_pipeline(interview_id: str):
     try:
@@ -124,7 +123,14 @@ def final_interview_pipeline(interview_id: str):
             "updatedAt": datetime.now(),
         }
 
-        report=report_collection.insert_one(report_doc)
+        report = report_collection.update_one(
+            {"interviewId": ObjectId(interview_id)},
+            {
+                "$set": report_doc,
+                "$setOnInsert": {"createdAt": datetime.now()}
+            },
+            upsert=True
+        )
 
         if not report.acknowledged or not report.inserted_id:
             print("❌ report document creation failed")

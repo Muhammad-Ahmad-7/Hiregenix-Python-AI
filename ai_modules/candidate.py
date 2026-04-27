@@ -1,6 +1,4 @@
 from typing import List
-from langchain.chat_models.base import init_chat_model
-from config.env import OPENAI_API_KEY
 from langchain.prompts import ChatPromptTemplate
 from prompts.candidate import PROFILE_DESCRIPTION_PROMPT
 from langchain.output_parsers import PydanticOutputParser
@@ -8,6 +6,7 @@ from pydantic import BaseModel
 from config.db import candidate_collection
 from pymongo import ReturnDocument
 from bson import ObjectId
+from utils.llm_call import get_llm_model
 from utils.qdrant import connection_qdrant, create_qdrant_collection
 from utils.embeddings import get_gemini_embedding, get_huggingface_embedding
 from qdrant_client.models import PointStruct
@@ -23,11 +22,13 @@ parser = PydanticOutputParser(pydantic_object=ParsedDescription)
 
 def generate_candidate_profile_ai_description(candidate_id: str, skills: List[str], bio: str):
     print("Generating AI Description")
-    model = init_chat_model(
-        model_provider='google_genai',
-        model='gemini-2.5-flash',
-        api_key=OPENAI_API_KEY
-    )
+    # model = init_chat_model(
+    #     model_provider='google_genai',
+    #     model='gemini-2.5-flash',
+    #     api_key=OPENAI_API_KEY
+    # )
+    
+    model = get_llm_model()
     print(f"received skills {skills} and bio {bio}")
 
     # Create the prompt template

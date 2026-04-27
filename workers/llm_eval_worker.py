@@ -99,6 +99,7 @@ def callback(ch, method, properties, body):
         if not result:
             logger.info("Acknowledge the task because question does not exist")
             ch.basic_ack(delivery_tag=method.delivery_tag)
+            return
         
         logger.info("Task %s llm evaluation completed successfully now pushing to final interview evaluation queue", task_id)
         

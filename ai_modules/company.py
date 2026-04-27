@@ -3,7 +3,6 @@ from bson import ObjectId
 from pydantic import BaseModel
 from langchain.output_parsers import PydanticOutputParser
 from prompts.company import JOB_POSTING_DESCRIPTION_PROMPT
-from langchain.chat_models.base import init_chat_model
 from config.env import OPENAI_API_KEY
 from langchain.prompts import ChatPromptTemplate
 from utils.qdrant import connection_qdrant, create_qdrant_collection
@@ -20,7 +19,7 @@ from dotenv import load_dotenv
 from qdrant_client import QdrantClient
 import uuid
 from pymongo import ReturnDocument
-
+from utils.llm_call import get_llm_model
 
 
 
@@ -49,13 +48,13 @@ def generate_job_post_ai_description(job_id):
         requirements = job['requirements']
         
         print("Generating AI Description")
-        model = init_chat_model(
-            model_provider='google_genai',
-            model='gemini-2.5-flash',
-            api_key=OPENAI_API_KEY
-        )
+        # model = init_chat_model(
+        #     model_provider='google_genai',
+        #     model='gemini-2.5-flash',
+        #     api_key=OPENAI_API_KEY
+        # )
         
-        
+        model = get_llm_model()
         # Create the prompt template
         prompt_template = ChatPromptTemplate.from_messages([
             ("system", JOB_POSTING_DESCRIPTION_PROMPT),
