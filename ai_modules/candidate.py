@@ -28,7 +28,7 @@ def generate_candidate_profile_ai_description(candidate_id: str, skills: List[st
     #     api_key=OPENAI_API_KEY
     # )
     
-    model = get_llm_model()
+    model = get_llm_model("openai/gpt-oss-20b")
     print(f"received skills {skills} and bio {bio}")
 
     # Create the prompt template

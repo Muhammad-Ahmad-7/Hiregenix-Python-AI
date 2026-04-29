@@ -37,7 +37,7 @@ def generate_email_content(
         #     api_key=OPENAI_API_KEY,
         # )
         
-        model = get_llm_model()
+        model = get_llm_model("openai/gpt-oss-20b")
 
         # Bind the Pydantic schema so the model returns structured output
         structured_model = model.with_structured_output(EmailContent)

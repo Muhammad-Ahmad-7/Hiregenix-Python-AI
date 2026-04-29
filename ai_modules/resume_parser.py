@@ -17,7 +17,7 @@ from utils.llm_call import get_llm_model
 # initialize model (example — adapt to your stack)
 # model = init_chat_model(model_provider='google_genai', model='gemini-2.5-flash', api_key=OPENAI_API_KEY)
 
-model = get_llm_model()  # Replace with your actual model initialization function
+model = get_llm_model("grok/gpt-oss-20b")  # Replace with your actual model initialization function
 
 class StateSchema(TypedDict):
     resume_url: str

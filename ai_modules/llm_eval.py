@@ -128,7 +128,7 @@ parser = PydanticOutputParser(pydantic_object=InterviewEvaluation)
 
 fixing_parser = OutputFixingParser.from_llm(
     parser=parser,
-    llm=get_llm_model()  # inject your LLM here when initializing
+    llm=get_llm_model("grok/gpt-oss-20b")  # inject your LLM here when initializing
 )
 
 
@@ -201,7 +201,7 @@ JSON:
 
 
 # initialize model (example — adapt to your stack)
-model = get_llm_model()
+model = get_llm_model("grok/gpt-oss-20b")
 
 
 def llm_eval_pipeline(question_result_id: str):

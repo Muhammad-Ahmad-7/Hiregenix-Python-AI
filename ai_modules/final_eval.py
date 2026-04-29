@@ -42,8 +42,7 @@ parser = PydanticOutputParser(pydantic_object=FinalInterviewReport)
 
 
 # initialize model (example — adapt to your stack)
-model = get_llm_model()
-
+model = get_llm_model("grok/llama-70b")
 def final_interview_pipeline(interview_id: str):
     try:
         interview_doc = interview_collection.find_one({"_id": ObjectId(interview_id)})
@@ -96,6 +95,8 @@ def final_interview_pipeline(interview_id: str):
         
         # Create report document with the final_result got from the llm
         
+        now = datetime.now()
+
         report_doc = {
             "interviewId": ObjectId(interview_id),
             "contentScore": final_result['overallScores']['contentScore'],
@@ -103,42 +104,37 @@ def final_interview_pipeline(interview_id: str):
             "communicationScore": final_result['overallScores']['communicationScore'],
             "confidenceScore": final_result['overallScores']['confidenceScore'],
             "overallScore": final_result['overallScores']['overallScore'],
-            
             "overallAnswerQuality": final_result['overallAnswerQuality'],
             "overallInterviewScore": final_result['overallInterviewScore'],
-            
             "topStrengths": final_result['topStrengths'],
-            
             "topWeaknesses": final_result['topWeaknesses'],
-            
             "commonMissingConcepts": final_result['commonMissingConcepts'],
-            
             "overallImprovementSuggestions": final_result['overallImprovementSuggestions'],
-            
             "integrityConcern": final_result['integrity']['integrityConcern'],
             "integrityNotes": final_result['integrity']['integrityNotes'],
-            
             "interviewSummary": final_result['interviewSummary'],
-            "createdAt": datetime.now(),
-            "updatedAt": datetime.now(),
         }
 
-        report = report_collection.update_one(
+        result = report_collection.update_one(
             {"interviewId": ObjectId(interview_id)},
             {
-                "$set": report_doc,
-                "$setOnInsert": {"createdAt": datetime.now()}
+                "$set": {
+                    **report_doc,
+                    "updatedAt": now
+                },
+                "$setOnInsert": {
+                    "createdAt": now
+                }
             },
             upsert=True
         )
 
-        if not report.acknowledged or not report.inserted_id:
-            print("❌ report document creation failed")
-            return False
-
-        print(f"report document created {report.inserted_id} {report.acknowledged}")
-        
-        return report.inserted_id
+        if result.upserted_id:
+            print(f"✅ Report created: {result.upserted_id}")
+            return result.upserted_id
+        else:
+            print("♻️ Report updated (no new insert)")
+            return interview_id
 
     except Exception as e:
         print(f"❌ Error processing final interview evaluation {interview_id}: {e}")
