@@ -3,7 +3,6 @@ import tempfile
 import traceback
 from bson import ObjectId
 import requests
-import pika
 
 from pymongo import ReturnDocument
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -40,7 +39,7 @@ def _download_pdf(url: str) -> str:
 def _extract_text(pdf_path: str) -> str:
     reader = PdfReader(pdf_path)
     parts = []
-    for i, page in enumerate(reader.pages):
+    for page in reader.pages:
         try:
             txt = page.extract_text() or ""
         except Exception:
@@ -48,6 +47,21 @@ def _extract_text(pdf_path: str) -> str:
         if txt.strip():
             parts.append(txt)
     return "\n\n".join(parts)
+
+
+def _reset_collection(qdrant, collection_name: str) -> None:
+    """
+    Drop the collection entirely (if it exists) then recreate it clean.
+    This is the only reliable way to wipe all old embeddings for a company.
+    """
+    try:
+        qdrant.delete_collection(collection_name=collection_name)
+        logger.info("Dropped existing collection=%s", collection_name)
+    except Exception:
+        logger.info("Collection=%s did not exist, creating fresh", collection_name)
+
+    create_qdrant_collection(qdrant, collection_name)
+    logger.info("Recreated collection=%s", collection_name)
 
 
 def callback(ch, method, properties, body):
@@ -70,7 +84,9 @@ def callback(ch, method, properties, body):
         payload = task.get("payload", {}) or {}
         company_id = payload.get("companyId")
         pdf_url = payload.get("pdfUrl")
-        collection_name = payload.get("collectionName") or (f"company_kb_{company_id}" if company_id else None)
+        collection_name = payload.get("collectionName") or (
+            f"company_kb_{company_id}" if company_id else None
+        )
 
         if not company_id or not pdf_url or not collection_name:
             raise Exception("Missing companyId/pdfUrl/collectionName in task payload")
@@ -86,7 +102,9 @@ def callback(ch, method, properties, body):
             raise Exception("No chunks generated from PDF text")
 
         qdrant = connection_qdrant()
-        create_qdrant_collection(qdrant, collection_name)
+
+        # ── Drop old embeddings for this company entirely, then recreate ──
+        _reset_collection(qdrant, collection_name)
 
         points = []
         for idx, chunk in enumerate(chunks):
@@ -124,7 +142,9 @@ def callback(ch, method, properties, body):
         )
 
         ch.basic_ack(delivery_tag=method.delivery_tag)
-        logger.info("KB embeddings completed | task_id=%s | chunks=%s", task_id, len(chunks))
+        logger.info(
+            "KB embeddings completed | task_id=%s | chunks=%s", task_id, len(chunks)
+        )
 
     except Exception as e:
         logger.error("Task crashed | task_id=%s | err=%s", task_id, str(e))
@@ -139,7 +159,6 @@ def callback(ch, method, properties, body):
         if retry_count >= 3:
             ch.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
         else:
-            # simple requeue for retry (no delay queue wired for this worker yet)
             task_collection.update_one(
                 {"_id": ObjectId(task_id)},
                 {"$set": {"status": "pending", "error": None}},
@@ -161,4 +180,3 @@ except KeyboardInterrupt:
     logger.info("Worker stopped manually")
     channel.stop_consuming()
     connection.close()
-
