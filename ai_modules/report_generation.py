@@ -306,7 +306,7 @@ def report_generation_pipeline(interview_id, candidate_id):
         
         interview_collection.find_one_and_update(
             {"_id": ObjectId(interview_id)},
-            {"$set": {"status": "completed", "updatedAt": datetime.datetime.now()}},
+            {"$set": {"status": "completed", "updatedAt": datetime.datetime.now(), "reportId": report_doc["_id"]}},
         )
         
         if not doc:
