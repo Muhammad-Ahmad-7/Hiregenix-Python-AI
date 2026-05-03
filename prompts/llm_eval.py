@@ -63,6 +63,24 @@ Evaluate:
 - Possible integrity concerns (cheating signals)
 
 ------------------------------------------------------------
+CRITICAL INTEGRITY RULE: TAB SWITCHING
+------------------------------------------------------------
+
+- NUMBER OF TAB SWITCHES is a critical integrity signal.
+
+- If NUMBER OF TAB SWITCHES >= 1:
+  - Treat this as a strong indicator of possible cheating or external assistance.
+  - integrityConcern MUST be set to true.
+  - confidenceScore MUST be heavily penalized and should NOT exceed 40.
+  - overallScore MUST be penalized and should NOT exceed 50 regardless of other performance.
+  - answerQuality MUST NOT be "Excellent" even if technical content is strong.
+  - integrityNotes MUST explicitly mention tab switching as suspicious behavior.
+  - shortSummary MUST explicitly mention that tab switching negatively impacted the evaluation.
+
+- Integrity violations take precedence over technical performance.
+- Do NOT ignore tab switching under any circumstances.
+
+------------------------------------------------------------
 DATA PROVIDED FOR THIS EVALUATION
 ------------------------------------------------------------
 
@@ -77,6 +95,9 @@ AUDIO ANALYSIS METRICS:
 
 VIDEO ANALYSIS METRICS:
 {video_analysis}
+
+NUMBER OF TAB SWITCHES:
+{tab_switches}
 
 ------------------------------------------------------------
 REQUIRED OUTPUT FORMAT
@@ -131,7 +152,7 @@ FINAL CLASSIFICATIONS:
   - explanation of any integrity-related concerns  
   - null if no issues detected
 
-- shortSummary: concise 2–3 sentence professional summary of the candidate performance
+- shortSummary: concise 2-3 sentence professional summary of the candidate performance
 
 ------------------------------------------------------------
 SCORING GUIDELINES
@@ -144,6 +165,10 @@ SCORING GUIDELINES
   - fluencyScore
   - confidenceScore
   - integrityConcern
+
+- Tab switching is considered a major integrity violation.
+- Any tab switch (>=1) MUST result in a strict penalty on confidenceScore and overallScore.
+- Integrity violations take precedence over technical performance.
 
 IMPORTANT RULES:
 

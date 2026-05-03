@@ -83,7 +83,7 @@ def callback(ch, method, properties, body):
             logger.info("Acknowledged message for non-pending task | task_id=%s", task_id)
             return
 
-        logger.debug(
+        logger.info(
             "Task fetched | task_id=%s | user_id=%s",
             task_id,
             task.get("userId")
