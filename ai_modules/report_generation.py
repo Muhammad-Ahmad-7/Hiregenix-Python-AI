@@ -1,5 +1,8 @@
-from config.db import report_collection, question_result_collection, candidate_collection, interview_collection
+from config.db import report_collection, question_result_collection, candidate_collection, interview_collection, user_collection
 from bson import ObjectId
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle,
@@ -15,6 +18,7 @@ from bson import ObjectId
 import datetime
 
 from utils.cloudinary_upload import upload_report_to_cloudinary
+from config.env import EMAIL_HOST, EMAIL_PORT, EMAIL_USER, EMAIL_PASS
 
 
 # -------------------------------------------------
@@ -64,6 +68,71 @@ def recalculate_job_ranks(job_id):
             {"_id": interview_id},
             {"$set": {"rank": index, "updatedAt": datetime.datetime.now()}}
         )
+
+
+def build_interview_completed_email(candidate_name):
+    subject = "Your interview report is ready"
+    body = (
+        f"Dear {candidate_name},\n\n"
+        "Thank you for completing your interview. Your interview report has now been generated.\n\n"
+        "Please log in to your HireGenix dashboard to view your interview report and feedback.\n\n"
+        "If you have any questions, feel free to reply to this email."
+    )
+
+    html_body = f"""
+    <html>
+    <body style="font-family:Arial,sans-serif;background-color:#f4f4f4;padding:20px;">
+        <table width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+                <td align="center">
+                    <table width="600" style="background-color:#ffffff;padding:30px;border-radius:8px;">
+                        <tr>
+                            <td>
+                                <h2 style="color:#333;margin-bottom:20px;">Your interview report is ready</h2>
+                                <p style="color:#555;line-height:1.8;margin:0 0 16px 0;">Dear {candidate_name},</p>
+                                <p style="color:#555;line-height:1.8;margin:0 0 16px 0;">Thank you for completing your interview. Your interview report has now been generated.</p>
+                                <p style="color:#555;line-height:1.8;margin:0 0 16px 0;">Please log in to your HireGenix dashboard to view your interview report and feedback.</p>
+                                <p style="color:#555;line-height:1.8;margin:0 0 16px 0;">If you have any questions, feel free to reply to this email.</p>
+                                <hr style="margin-top:30px;">
+                                <p style="font-size:12px;color:#999;">This is an automated email. Please do not reply directly.</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+    </html>
+    """
+
+    return subject, body, html_body
+
+
+def send_interview_completed_email(email, candidate_name):
+    if not EMAIL_HOST or not EMAIL_USER or not EMAIL_PASS:
+        print("Email configuration is missing; skipping interview completion email.")
+        return False
+
+    subject, text_body, html_body = build_interview_completed_email(candidate_name)
+
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = subject
+    msg["From"] = EMAIL_USER
+    msg["To"] = email
+
+    msg.attach(MIMEText(text_body, "plain"))
+    msg.attach(MIMEText(html_body, "html"))
+
+    try:
+        with smtplib.SMTP(EMAIL_HOST, EMAIL_PORT) as server:
+            server.starttls()
+            server.login(EMAIL_USER, EMAIL_PASS)
+            server.sendmail(EMAIL_USER, email, msg.as_string())
+        print(f"Interview completion email sent to {email}")
+        return True
+    except Exception as e:
+        print(f"Failed to send interview completion email: {e}")
+        return False
 
 
 def generate_interview_report(candidate_info, report_doc, question_results, filename="Interview_Report.pdf"):
@@ -337,6 +406,16 @@ def report_generation_pipeline(interview_id, candidate_id):
 
         if interview_doc and interview_doc.get("jobId"):
             recalculate_job_ranks(interview_doc["jobId"])
+
+        user_id = candidate_doc.get("userId") or candidate_doc.get("user_id")
+        if user_id:
+            user_doc = user_collection.find_one({"_id": ObjectId(user_id)})
+            if user_doc and user_doc.get("email"):
+                send_interview_completed_email(user_doc["email"], candidate_doc.get("fullName", "Candidate"))
+            else:
+                print("User email not found; skipping interview completion email.")
+        else:
+            print("Candidate userId not found; skipping interview completion email.")
         
         
         if not doc:
