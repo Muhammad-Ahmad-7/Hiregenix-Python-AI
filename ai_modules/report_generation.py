@@ -41,6 +41,31 @@ class ProgressBar(Flowable):
 # -------------------------------------------------
 # REPORT GENERATOR FUNCTION
 # -------------------------------------------------
+def recalculate_job_ranks(job_id):
+    interviews = list(interview_collection.find({"jobId": ObjectId(job_id)}))
+    if not interviews:
+        return
+
+    interview_ids = [i.get("_id") for i in interviews if i.get("_id")]
+    reports = list(report_collection.find({"interviewId": {"$in": interview_ids}}))
+    report_scores = {r.get("interviewId"): r.get("overallInterviewScore") for r in reports}
+
+    scored = []
+    for interview in interviews:
+        interview_id = interview.get("_id")
+        score = report_scores.get(interview_id)
+        if isinstance(score, (int, float)):
+            scored.append((interview_id, float(score)))
+
+    scored.sort(key=lambda item: item[1], reverse=True)
+
+    for index, (interview_id, _) in enumerate(scored, start=1):
+        interview_collection.update_one(
+            {"_id": interview_id},
+            {"$set": {"rank": index, "updatedAt": datetime.datetime.now()}}
+        )
+
+
 def generate_interview_report(candidate_info, report_doc, question_results, filename="Interview_Report.pdf"):
     """
     Generates a PDF report for a candidate interview.
@@ -304,10 +329,15 @@ def report_generation_pipeline(interview_id, candidate_id):
             return_document=True
         )
         
-        interview_collection.find_one_and_update(
+        interview_doc = interview_collection.find_one_and_update(
             {"_id": ObjectId(interview_id)},
             {"$set": {"status": "completed", "updatedAt": datetime.datetime.now(), "reportId": report_doc["_id"]}},
+            return_document=True
         )
+
+        if interview_doc and interview_doc.get("jobId"):
+            recalculate_job_ranks(interview_doc["jobId"])
+        
         
         if not doc:
             print(f"Failed to update report document with PDF URL for Interview ID: {interview_id}")
