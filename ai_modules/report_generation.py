@@ -188,6 +188,15 @@ def generate_interview_report(candidate_info, report_doc, question_results, file
         textColor=colors.HexColor("#475569")
     )
 
+    warning_style = ParagraphStyle(
+        "WarningStyle",
+        parent=styles["Normal"],
+        fontSize=10,
+        textColor=colors.HexColor("#B91C1C"),
+        spaceBefore=6,
+        spaceAfter=6
+    )
+
     normal_style = styles["Normal"]
 
     # -------------------------------------------------
@@ -302,10 +311,28 @@ def generate_interview_report(candidate_info, report_doc, question_results, file
     # -------------------------------------------------
     elements.append(Paragraph("Question-Level Evaluation", section_style))
 
-    for q in question_results:
+    for index, q in enumerate(question_results, start=1):
         elements.append(Spacer(1, 0.15*inch))
-        elements.append(Paragraph(f"<h3><b>{q.get('questionId', '')} {q.get('questionText', '')}</b></h3>", normal_style))
+        elements.append(Paragraph(f"<h3><b>Question {index}:</b> {q.get('questionText', '')}</h3>", normal_style))
         elements.append(Spacer(1, 0.1*inch))
+
+        candidate_answer = q.get("candidateAnswer")
+        stt_text = (q.get("sttData") or {}).get("text")
+        if not (candidate_answer and str(candidate_answer).strip()) and not (stt_text and str(stt_text).strip()):
+            warning_table = Table(
+                [[Paragraph("<b>Warning:</b> Candidate did not answer this question.", warning_style)]],
+                colWidths=[5.7 * inch]
+            )
+            warning_table.setStyle([
+                ("BACKGROUND", (0, 0), (-1, -1), colors.HexColor("#FEF2F2")),
+                ("BOX", (0, 0), (-1, -1), 0.6, colors.HexColor("#FECACA")),
+                ("LEFTPADDING", (0, 0), (-1, -1), 10),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 10),
+                ("TOPPADDING", (0, 0), (-1, -1), 6),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+            ])
+            elements.append(warning_table)
+            elements.append(Spacer(1, 0.1*inch))
 
         # Scores from LLM Analysis if available
         if q.get("lLMAnalysis") == None:
