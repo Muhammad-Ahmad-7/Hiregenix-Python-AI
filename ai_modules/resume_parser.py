@@ -132,6 +132,11 @@ def store_parsed_data(state: StateSchema) -> StateSchema:
     
     print("RESUME DICT BEFORE INSERT:", resume_dict)
     
+    # Look if the previous resume exists for the candidate then delete it before inserting the new one
+    existing_resume = resume_collection.find_one({"candidateId": ObjectId(state['candidate_id'])})
+    if existing_resume:
+        resume_collection.delete_one({"_id": existing_resume['_id']})
+        print(f"DELETED EXISTING RESUME WITH ID: {existing_resume['_id']} FOR CANDIDATE {state['candidate_id']}")
     result = resume_collection.insert_one(resume_dict)
     print(f"STORING PARSED DATA COMPLETED - Inserted ID: {result.inserted_id}")
     
