@@ -2,78 +2,45 @@ import os
 import json
 import pika
 import traceback
-from config.db import task_collection, question_result_collection
+from ai_modules.send_rejection_email import send_rejection_email
+from utils.constant import SEND_REJECTION_EMAIL_QUEUE, SEND_REJECTION_EMAIL_DELAY_QUEUE
+from config.db import task_collection
+from ai_modules.final_eval import final_interview_pipeline
 from bson import ObjectId
-from dotenv import load_dotenv
-from ai_modules.video_analysis import video_analysis_pipeline
-from utils.constant import VIDEO_ANALYSIS_QUEUE,LLM_EVALUATION_QUEUE, VIDEO_ANALYSIS_DELAY_QUEUE
-from datetime import datetime
-from pymongo import ReturnDocument
-import logging
-from utils.logger_config import setup_logging
 from utils.rabbitmq import connect_rabbitmq, initialize_queues
+from utils.logger_config import setup_logging
+import logging
+from pymongo import ReturnDocument
 
-
-setup_logging("logger/video_analysis_worker.log")
+setup_logging("logger/send_rejection_email_worker.log")
 logger = logging.getLogger(__name__)
-
-
-load_dotenv()
-
-RABBITMQ_URL = os.getenv("RABBITMQ_URL")
 
 # --- Setup RabbitMQ Connection ---
 channel, connection = connect_rabbitmq()
 
 # Initializing the queues and exchange
 
-channel = initialize_queues(channel=channel)
+try:
+    initialize_queues(channel)
+except Exception as e:
+    logger.error(f"Failed to initialize RabbitMQ queues: {e}")
+    connection.close()
+    exit(1)
+
 
 
 channel.confirm_delivery()
 
-
-
-def create_and_push_llm_evaluation_task_to_queue(question_result_id: str, candidate_id: str) -> ObjectId:
-    """Create a new audio analysis task document and push it to the audio analysis queue."""
-    try:
-        doc = {
-            "userId": candidate_id,
-            "type": "llm_evaluation",
-            "status": "pending",
-            "payload": {
-                "questionResultId": question_result_id,
-            },
-        }
-        result = task_collection.insert_one(doc)
-        if not result.acknowledged or not result.inserted_id:
-            logger.warning("Task creation failed")
-            return False
-        logger.info("Task created successfully with ID: %s", result.inserted_id)
-        body = str(result.inserted_id).encode()
-        channel.basic_publish(
-            exchange='',
-            routing_key=LLM_EVALUATION_QUEUE,
-            body=body,
-            properties=pika.BasicProperties(
-                delivery_mode=pika.DeliveryMode.Persistent,
-            ),
-            mandatory=True  # raise on unroutable
-        )
-        logger.info("Enqueued llm evaluation task %s for question result %s", result.inserted_id, question_result_id)
-        return True
-    except Exception as e:
-        logger.exception("Error creating and pushing llm evaluation task")
-        return False
-
+# --- Main Callback ---
 def callback(ch, method, properties, body):
     task_id = body.decode()
     logger.info("Task received | task_id=%s", task_id)
     
     if not ObjectId.is_valid(task_id):
+        logger.info("Invalid task id")
         ch.basic_ack(delivery_tag=method.delivery_tag)
         return
-    
+
     try:
         # Fetch task
         task = task_collection.find_one_and_update({"_id": ObjectId(task_id), "status": "pending"}, {"$set": {"status": "processing"}})
@@ -87,47 +54,28 @@ def callback(ch, method, properties, body):
             logger.info("Acknowledged message for non-pending task | task_id=%s", task_id)
             return
 
-        logger.debug(
+        logger.info(
             "Task fetched | task_id=%s | user_id=%s",
             task_id,
             task.get("userId")
         )
-        candidate_id=task['userId']
-    
-        # fetching the question result id for fetching the question result document
-        question_result_id = task["payload"]["questionResultId"]
-
-        result = video_analysis_pipeline(connection=connection, question_result_id=question_result_id)
+        
+        # print(task)
+        
+        email=task['payload']['email']
+        company_email=task['payload']['companyEmail']
+        company_name=task['payload']['companyName']
+        candidate_name=task['payload']['candidateName']
+        logo_url=task['payload']['logoUrl']
+        # print(email, query)
+        
+        result = send_rejection_email(email, company_email, company_name, candidate_name, logo_url, logger)
+        
         if not result:
-            logger.info("Acknowledge the task because question does not exist")
-            ch.basic_ack(delivery_tag=method.delivery_tag)
+            logger.info("Failed to send rejection email | task_id=%s", task_id)
+            raise Exception("send_rejection_email function returned False")
         
-        logger.info("Task %s video analysis completed successfully now pushing to LLM evaluation queue", task_id)
-        
-        #TODO: Now push to the llm queue
-        
-        result = question_result_collection.find_one_and_update(
-            {
-                "_id": ObjectId(question_result_id),
-                "status": "PROCESSING",
-                "stages.audioAnalyzed": True,
-                "stages.videoAnalyzed": True,
-                "llmEnqueued": False,
-            },
-            {
-                "$set": {
-                    "llmEnqueued": True,
-                    "llmStartedAt": datetime.utcnow(),
-                }
-            },
-            return_document=ReturnDocument.AFTER
-        )
-        
-        if result:
-            # create a task and push it in the llm queue
-            create_and_push_llm_evaluation_task_to_queue(question_result_id, candidate_id)
-        else:
-            logger.info("Skipping LLM enqueue - conditions not met")
+        logger.info("Task %s send rejection email completed successfully", task_id)
         
         # --- Mark Task as Completed ---
         task_collection.update_one(
@@ -137,7 +85,7 @@ def callback(ch, method, properties, body):
         logger.info("Task completed | task_id=%s", task_id)
         # Acknowledge successful message
         ch.basic_ack(delivery_tag=method.delivery_tag)
-    
+
     except Exception as e:
         logger.exception("Task crashed | task_id=%s", task_id)
         # Mark task as failed and store error message
@@ -164,7 +112,7 @@ def callback(ch, method, properties, body):
             try:
                 ch.basic_publish(
                     exchange='',
-                    routing_key=VIDEO_ANALYSIS_DELAY_QUEUE,
+                    routing_key=SEND_REJECTION_EMAIL_DELAY_QUEUE,
                     body=body,
                     properties=pika.BasicProperties(delivery_mode=pika.DeliveryMode.Persistent)
                 )
@@ -176,18 +124,19 @@ def callback(ch, method, properties, body):
 
 
 
+
 # --- Start Consuming Messages ---
 channel.basic_qos(prefetch_count=1)  # Fair dispatch
 channel.basic_consume(
-    queue=VIDEO_ANALYSIS_QUEUE,
+    queue=SEND_REJECTION_EMAIL_QUEUE,
     on_message_callback=callback,
     auto_ack=False  # Manual ack ensures reliability
 )
 
-logger.info("Worker started and waiting for video analysis jobs...")
 try:
+    logger.info("Worker started and waiting for send rejection email jobs...")
     channel.start_consuming()
 except KeyboardInterrupt:
-    logger.info("Worker stopped manually")
+    print("👋 Worker stopped manually")
     channel.stop_consuming()
     connection.close()

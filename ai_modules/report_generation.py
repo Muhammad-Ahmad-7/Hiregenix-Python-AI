@@ -1,5 +1,8 @@
-from config.db import report_collection, question_result_collection, candidate_collection, interview_collection
+from config.db import report_collection, question_result_collection, candidate_collection, interview_collection, user_collection
 from bson import ObjectId
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle,
@@ -15,6 +18,7 @@ from bson import ObjectId
 import datetime
 
 from utils.cloudinary_upload import upload_report_to_cloudinary
+from config.env import EMAIL_HOST, EMAIL_PORT, EMAIL_USER, EMAIL_PASS
 
 
 # -------------------------------------------------
@@ -41,11 +45,101 @@ class ProgressBar(Flowable):
 # -------------------------------------------------
 # REPORT GENERATOR FUNCTION
 # -------------------------------------------------
-def generate_interview_report(candidate_info, interview_data, question_results, filename="Interview_Report.pdf"):
+def recalculate_job_ranks(job_id):
+    interviews = list(interview_collection.find({"jobId": ObjectId(job_id)}))
+    if not interviews:
+        return
+
+    interview_ids = [i.get("_id") for i in interviews if i.get("_id")]
+    reports = list(report_collection.find({"interviewId": {"$in": interview_ids}}))
+    report_scores = {r.get("interviewId"): r.get("overallInterviewScore") for r in reports}
+
+    scored = []
+    for interview in interviews:
+        interview_id = interview.get("_id")
+        score = report_scores.get(interview_id)
+        if isinstance(score, (int, float)):
+            scored.append((interview_id, float(score)))
+
+    scored.sort(key=lambda item: item[1], reverse=True)
+
+    for index, (interview_id, _) in enumerate(scored, start=1):
+        interview_collection.update_one(
+            {"_id": interview_id},
+            {"$set": {"rank": index, "updatedAt": datetime.datetime.now()}}
+        )
+
+
+def build_interview_completed_email(candidate_name):
+    subject = "Your interview report is ready"
+    body = (
+        f"Dear {candidate_name},\n\n"
+        "Thank you for completing your interview. Your interview report has now been generated.\n\n"
+        "Please log in to your HireGenix dashboard to view your interview report and feedback.\n\n"
+        "If you have any questions, feel free to reply to this email."
+    )
+
+    html_body = f"""
+    <html>
+    <body style="font-family:Arial,sans-serif;background-color:#f4f4f4;padding:20px;">
+        <table width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+                <td align="center">
+                    <table width="600" style="background-color:#ffffff;padding:30px;border-radius:8px;">
+                        <tr>
+                            <td>
+                                <h2 style="color:#333;margin-bottom:20px;">Your interview report is ready</h2>
+                                <p style="color:#555;line-height:1.8;margin:0 0 16px 0;">Dear {candidate_name},</p>
+                                <p style="color:#555;line-height:1.8;margin:0 0 16px 0;">Thank you for completing your interview. Your interview report has now been generated.</p>
+                                <p style="color:#555;line-height:1.8;margin:0 0 16px 0;">Please log in to your HireGenix dashboard to view your interview report and feedback.</p>
+                                <p style="color:#555;line-height:1.8;margin:0 0 16px 0;">If you have any questions, feel free to reply to this email.</p>
+                                <hr style="margin-top:30px;">
+                                <p style="font-size:12px;color:#999;">This is an automated email. Please do not reply directly.</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+    </html>
+    """
+
+    return subject, body, html_body
+
+
+def send_interview_completed_email(email, candidate_name):
+    if not EMAIL_HOST or not EMAIL_USER or not EMAIL_PASS:
+        print("Email configuration is missing; skipping interview completion email.")
+        return False
+
+    subject, text_body, html_body = build_interview_completed_email(candidate_name)
+
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = subject
+    msg["From"] = EMAIL_USER
+    msg["To"] = email
+
+    msg.attach(MIMEText(text_body, "plain"))
+    msg.attach(MIMEText(html_body, "html"))
+
+    try:
+        with smtplib.SMTP(EMAIL_HOST, EMAIL_PORT) as server:
+            server.starttls()
+            server.login(EMAIL_USER, EMAIL_PASS)
+            server.sendmail(EMAIL_USER, email, msg.as_string())
+        print(f"Interview completion email sent to {email}")
+        return True
+    except Exception as e:
+        print(f"Failed to send interview completion email: {e}")
+        return False
+
+
+def generate_interview_report(candidate_info, report_doc, question_results, filename="Interview_Report.pdf"):
     """
     Generates a PDF report for a candidate interview.
 
-    :param interview_data: dict, overall interview data
+    :param report_doc: dict, overall interview data
     :param question_results: list of dict, question-level analysis
     :param filename: str, output PDF filename
     """
@@ -65,17 +159,41 @@ def generate_interview_report(candidate_info, interview_data, question_results, 
     title_style = ParagraphStyle(
         "TitleStyle",
         parent=styles["Heading1"],
-        fontSize=20,
-        textColor=colors.HexColor("#111827"),
-        spaceAfter=6
+        fontSize=22,
+        textColor=colors.HexColor("#0F172A"),
+        spaceAfter=4
+    )
+
+    subtitle_style = ParagraphStyle(
+        "SubtitleStyle",
+        parent=styles["Normal"],
+        fontSize=10,
+        textColor=colors.HexColor("#64748B"),
+        spaceAfter=10
     )
 
     section_style = ParagraphStyle(
         "SectionStyle",
         parent=styles["Heading2"],
         fontSize=13,
-        textColor=colors.HexColor("#1D4ED8"),
+        textColor=colors.HexColor("#1E40AF"),
         spaceBefore=12,
+        spaceAfter=6
+    )
+
+    label_style = ParagraphStyle(
+        "LabelStyle",
+        parent=styles["Normal"],
+        fontSize=9,
+        textColor=colors.HexColor("#475569")
+    )
+
+    warning_style = ParagraphStyle(
+        "WarningStyle",
+        parent=styles["Normal"],
+        fontSize=10,
+        textColor=colors.HexColor("#B91C1C"),
+        spaceBefore=6,
         spaceAfter=6
     )
 
@@ -84,18 +202,20 @@ def generate_interview_report(candidate_info, interview_data, question_results, 
     # -------------------------------------------------
     # HEADER
     # -------------------------------------------------
-    elements.append(Paragraph("<b>HireGenix</b> AI Hiring Intelligence Report", title_style))
-    elements.append(Spacer(1, 0.25 * inch))
-    elements.append(HRFlowable(width="100%", thickness=1, color=colors.HexColor("#D1D5DB")))
-    elements.append(Spacer(1, 0.25 * inch))
+    elements.append(Paragraph("<b>HireGenix</b> Premium AI Interview Report", title_style))
+    elements.append(Paragraph("Generated by HireGenix Intelligence Suite", subtitle_style))
+    elements.append(HRFlowable(width="100%", thickness=1.2, color=colors.HexColor("#CBD5F5")))
+    elements.append(Spacer(1, 0.22 * inch))
 
     elements.append(Paragraph("Candidate Information", section_style))
-    candidate_table = Table([[k.capitalize() + ":", v] for k, v in candidate_info.items()], colWidths=[2.2*inch, 3.3*inch])
+    candidate_table = Table([[Paragraph(f"<b>{k.capitalize()}:</b>", label_style), v] for k, v in candidate_info.items()], colWidths=[2.2*inch, 3.3*inch])
     candidate_table.setStyle([
-        ("BACKGROUND", (0, 0), (-1, -1), colors.HexColor("#F9FAFB")),
-        ("GRID", (0, 0), (-1, -1), 0.25, colors.HexColor("#E5E7EB")),
+        ("BACKGROUND", (0, 0), (-1, -1), colors.HexColor("#F8FAFC")),
+        ("GRID", (0, 0), (-1, -1), 0.25, colors.HexColor("#E2E8F0")),
         ("LEFTPADDING", (0, 0), (-1, -1), 8),
         ("RIGHTPADDING", (0, 0), (-1, -1), 8),
+        ("TOPPADDING", (0, 0), (-1, -1), 6),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
     ])
     elements.append(candidate_table)
     elements.append(Spacer(1, 0.3*inch))
@@ -114,11 +234,11 @@ def generate_interview_report(candidate_info, interview_data, question_results, 
         ]
 
     score_data = [
-        make_score_row("Overall Score", interview_data.get("overallInterviewScore", 0))
+        make_score_row("Overall Score", report_doc.get("overallInterviewScore", 0))
     ]
     for key, label in [("contentScore","Content"),("communicationScore","Communication"),
                        ("fluencyScore","Fluency"),("confidenceScore","Confidence")]:
-        score_data.append(make_score_row(label, interview_data.get(key, 0)))
+        score_data.append(make_score_row(label, report_doc.get(key, 0)))
 
     score_table = Table(score_data, colWidths=[1.5*inch, 0.6*inch, 2.7*inch])
     score_table.setStyle([
@@ -132,22 +252,56 @@ def generate_interview_report(candidate_info, interview_data, question_results, 
 
     # Strengths
     elements.append(Paragraph("Key Strengths", section_style))
-    elements.append(ListFlowable([ListItem(Paragraph(s, normal_style)) for s in interview_data.get("topStrengths", [])], bulletType='bullet'))
+    elements.append(ListFlowable([ListItem(Paragraph(s, normal_style)) for s in report_doc.get("topStrengths", [])], bulletType='bullet'))
     elements.append(Spacer(1, 0.15*inch))
 
     # Weaknesses
     elements.append(Paragraph("Risk Indicators", section_style))
-    elements.append(ListFlowable([ListItem(Paragraph(w, normal_style)) for w in interview_data.get("topWeaknesses", [])], bulletType='bullet'))
+    elements.append(ListFlowable([ListItem(Paragraph(w, normal_style)) for w in report_doc.get("topWeaknesses", [])], bulletType='bullet'))
     elements.append(Spacer(1, 0.2*inch))
 
     # Common Missing Concepts
     elements.append(Paragraph("Common Missing Concepts", section_style))
-    elements.append(ListFlowable([ListItem(Paragraph(m, normal_style)) for m in interview_data.get("commonMissingConcepts", [])], bulletType='bullet'))
+    elements.append(ListFlowable([ListItem(Paragraph(m, normal_style)) for m in report_doc.get("commonMissingConcepts", [])], bulletType='bullet'))
     elements.append(Spacer(1, 0.2*inch))
 
     # Interview Summary
     elements.append(Paragraph("Interview Summary", section_style))
-    elements.append(Paragraph(interview_data.get("interviewSummary", ""), normal_style))
+    elements.append(Paragraph(report_doc.get("interviewSummary", ""), normal_style))
+    elements.append(Spacer(1, 0.2*inch))
+
+    # Integrity Review
+    def is_integrity_flagged(value):
+        if isinstance(value, bool):
+            return value
+        if value is None:
+            return False
+        if isinstance(value, (int, float)):
+            return value > 0
+        value_text = str(value).strip().lower()
+        return value_text in {"yes", "true", "1", "flagged", "concern", "high", "medium"}
+
+    integrity_value = report_doc.get("integrityConcern", None)
+    integrity_concern = integrity_value if integrity_value is not None else "Not Assessed"
+    integrity_notes = report_doc.get("integrityNotes", "No integrity notes provided.")
+    integrity_flagged = is_integrity_flagged(integrity_value)
+    elements.append(Paragraph("Integrity Review", section_style))
+    integrity_color = colors.HexColor("#B91C1C") if integrity_flagged else colors.HexColor("#0F766E")
+    integrity_badge = Paragraph(f"<b>Integrity Concern:</b> <font color='{integrity_color}'>{integrity_concern}</font>", normal_style)
+    integrity_table = Table(
+        [[integrity_badge], [Paragraph(f"<b>Notes:</b> {integrity_notes}", normal_style)]],
+        colWidths=[5.7 * inch]
+    )
+    integrity_table.setStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#FEF2F2") if integrity_flagged else colors.HexColor("#ECFDF5")),
+        ("BACKGROUND", (0, 1), (-1, 1), colors.HexColor("#FFF7ED")),
+        ("BOX", (0, 0), (-1, -1), 0.6, colors.HexColor("#E2E8F0")),
+        ("LEFTPADDING", (0, 0), (-1, -1), 10),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 10),
+        ("TOPPADDING", (0, 0), (-1, -1), 8),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+    ])
+    elements.append(integrity_table)
     elements.append(Spacer(1, 0.3*inch))
     elements.append(HRFlowable(width="100%", thickness=1, color=colors.HexColor("#D1D5DB")))
     elements.append(Spacer(1, 0.25*inch))
@@ -157,10 +311,28 @@ def generate_interview_report(candidate_info, interview_data, question_results, 
     # -------------------------------------------------
     elements.append(Paragraph("Question-Level Evaluation", section_style))
 
-    for q in question_results:
+    for index, q in enumerate(question_results, start=1):
         elements.append(Spacer(1, 0.15*inch))
-        elements.append(Paragraph(f"<h3><b>{q.get('questionId', '')} {q.get('questionText', '')}</b></h3>", normal_style))
+        elements.append(Paragraph(f"<h3><b>Question {index}:</b> {q.get('questionText', '')}</h3>", normal_style))
         elements.append(Spacer(1, 0.1*inch))
+
+        candidate_answer = q.get("candidateAnswer")
+        stt_text = (q.get("sttData") or {}).get("text")
+        if not (candidate_answer and str(candidate_answer).strip()) and not (stt_text and str(stt_text).strip()):
+            warning_table = Table(
+                [[Paragraph("<b>Warning:</b> Candidate did not answer this question.", warning_style)]],
+                colWidths=[5.7 * inch]
+            )
+            warning_table.setStyle([
+                ("BACKGROUND", (0, 0), (-1, -1), colors.HexColor("#FEF2F2")),
+                ("BOX", (0, 0), (-1, -1), 0.6, colors.HexColor("#FECACA")),
+                ("LEFTPADDING", (0, 0), (-1, -1), 10),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 10),
+                ("TOPPADDING", (0, 0), (-1, -1), 6),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+            ])
+            elements.append(warning_table)
+            elements.append(Spacer(1, 0.1*inch))
 
         # Scores from LLM Analysis if available
         if q.get("lLMAnalysis") == None:
@@ -253,10 +425,25 @@ def report_generation_pipeline(interview_id, candidate_id):
             return_document=True
         )
         
-        interview_collection.find_one_and_update(
+        interview_doc = interview_collection.find_one_and_update(
             {"_id": ObjectId(interview_id)},
-            {"$set": {"status": "completed", "updatedAt": datetime.datetime.now()}},
+            {"$set": {"status": "completed", "updatedAt": datetime.datetime.now(), "reportId": report_doc["_id"]}},
+            return_document=True
         )
+
+        if interview_doc and interview_doc.get("jobId"):
+            recalculate_job_ranks(interview_doc["jobId"])
+
+        user_id = candidate_doc.get("userId") or candidate_doc.get("user_id")
+        if user_id:
+            user_doc = user_collection.find_one({"_id": ObjectId(user_id)})
+            if user_doc and user_doc.get("email"):
+                send_interview_completed_email(user_doc["email"], candidate_doc.get("fullName", "Candidate"))
+            else:
+                print("User email not found; skipping interview completion email.")
+        else:
+            print("Candidate userId not found; skipping interview completion email.")
+        
         
         if not doc:
             print(f"Failed to update report document with PDF URL for Interview ID: {interview_id}")

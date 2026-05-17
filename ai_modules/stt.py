@@ -44,7 +44,8 @@ def speech_to_text_pipeline(question_result_id: str) -> bool:
         # Extracting audio from the video
         extracted_audio_path = extract_audio_from_video(video_url, audio_path)
         if not extracted_audio_path:
-            return False
+            print("❌ Audio extraction failed")
+            raise RuntimeError("Audio extraction failed")
         print(f"✅ Audio extracted at: {extracted_audio_path}")
 
         audio_url = upload_to_cloudinary(extracted_audio_path)
@@ -70,7 +71,7 @@ def speech_to_text_pipeline(question_result_id: str) -> bool:
 
     except Exception as e:
         print(f"❌ Error processing question result {question_result_id}: {e}")
-        return False
+        raise e
     
     finally:
         if video_path and os.path.exists(video_path):
@@ -92,7 +93,7 @@ def extract_audio_from_video(video_url: str, output_audio_path: str) -> bool:
         return output_audio_path
     except subprocess.CalledProcessError as e:
         print(f"❌ Error extracting audio: {e}")
-        return False
+        raise Exception(f"Audio extraction failed: {e.stderr.decode()}")
 
 
 def extract_stt(audio_path: str) -> dict: # Changed return type hint

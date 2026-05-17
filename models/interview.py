@@ -68,6 +68,8 @@ class Interview(BaseModel):
     
     totalQuestions: int = Field(default=10)
     completedQuestions: int = Field(default=0)
+    reportId: Optional[PyObjectId] = None  # FK to FinalInterviewReport
+    rank: Optional[int] = None  # Candidate's rank for the job based on interview performance
     
     createdAt: Optional[datetime] = Field(default_factory=datetime.utcnow)
     updatedAt: Optional[datetime] = Field(default_factory=datetime.utcnow)

@@ -12,9 +12,12 @@ from models.resume import ResumeModel, ParsedDataModel, ExperienceModel, Educati
 from datetime import datetime
 from bson import ObjectId
 
-# initialize model (example — adapt to your stack)
-model = init_chat_model(model_provider='google_genai', model='gemini-2.5-flash', api_key=OPENAI_API_KEY)
+from utils.llm_call import get_llm_model
 
+# initialize model (example — adapt to your stack)
+# model = init_chat_model(model_provider='google_genai', model='gemini-2.5-flash', api_key=OPENAI_API_KEY)
+
+model = get_llm_model("grok/gpt-oss-120b")  # Replace with your actual model initialization function
 
 class StateSchema(TypedDict):
     resume_url: str
@@ -129,6 +132,11 @@ def store_parsed_data(state: StateSchema) -> StateSchema:
     
     print("RESUME DICT BEFORE INSERT:", resume_dict)
     
+    # Look if the previous resume exists for the candidate then delete it before inserting the new one
+    existing_resume = resume_collection.find_one({"candidateId": ObjectId(state['candidate_id'])})
+    if existing_resume:
+        resume_collection.delete_one({"_id": existing_resume['_id']})
+        print(f"DELETED EXISTING RESUME WITH ID: {existing_resume['_id']} FOR CANDIDATE {state['candidate_id']}")
     result = resume_collection.insert_one(resume_dict)
     print(f"STORING PARSED DATA COMPLETED - Inserted ID: {result.inserted_id}")
     
