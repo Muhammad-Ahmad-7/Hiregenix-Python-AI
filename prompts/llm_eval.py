@@ -10,6 +10,7 @@ You will be given the following inputs:
 2. The candidate's transcribed answer (speech-to-text output)
 3. Audio analysis metrics
 4. Video analysis metrics
+5. Verification summary (face verification / integrity signals)
 
 Your job is to analyze all provided information and produce a structured, objective, and professional evaluation strictly based on evidence.
 
@@ -62,6 +63,15 @@ Evaluate:
 - Gaze distraction
 - Possible integrity concerns (cheating signals)
 
+You must also use the verification summary to detect integrity risks and adjust
+confidence and overall scoring accordingly.
+
+If verificationSummary.riskLevel is "high":
+- integrityConcern MUST be true
+- confidenceScore should be heavily penalized
+- overallScore should be penalized
+- integrityNotes MUST mention verification risk signals
+
 ------------------------------------------------------------
 CRITICAL INTEGRITY RULE: TAB SWITCHING
 ------------------------------------------------------------
@@ -95,6 +105,9 @@ AUDIO ANALYSIS METRICS:
 
 VIDEO ANALYSIS METRICS:
 {video_analysis}
+
+VERIFICATION SUMMARY:
+{verification_summary}
 
 NUMBER OF TAB SWITCHES:
 {tab_switches}

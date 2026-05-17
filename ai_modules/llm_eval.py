@@ -216,7 +216,7 @@ def llm_eval_pipeline(question_result_id: str):
         
         prompt_template = ChatPromptTemplate.from_messages([
         ("system", INTERVIEW_EVALUATION_PROMPT),
-        ("human", "Please perform the interview evaluation for me : {question_text} {transcript_text} {audio_analysis} {video_analysis} {tab_switches}"),
+        ("human", "Please perform the interview evaluation for me : {question_text} {transcript_text} {audio_analysis} {video_analysis} {verification_summary} {tab_switches}"),
         ])
 
         prompt = prompt_template.format(
@@ -224,6 +224,7 @@ def llm_eval_pipeline(question_result_id: str):
             transcript_text=question_result['sttData']['text'],
             audio_analysis=question_result['audioAnalysis'],
             video_analysis=question_result['videoAnalysis'],
+            verification_summary=question_result.get("verificationSummary"),
             tab_switches=question_result['numberOfTabSwitch'],
             format_instructions=parser.get_format_instructions()
         )

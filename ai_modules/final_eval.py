@@ -124,6 +124,8 @@ def final_interview_pipeline(interview_id: str):
                     "scores": doc['lLMAnalysis']['scores'] if doc['lLMAnalysis']['scores'] else {},
                     "fluencyAssessment": doc['lLMAnalysis']['fluencyAssessment'] if doc['lLMAnalysis']['fluencyAssessment'] else {},
                     "insights": doc['lLMAnalysis']['insights'] if doc['lLMAnalysis']['insights'] else {},
+                    "answerQuality": doc['lLMAnalysis'].get("answerQuality"),
+                    "integrity": doc['lLMAnalysis'].get("integrity"),
                     "shortSummary": doc['lLMAnalysis']['shortSummary'] if doc['lLMAnalysis']['shortSummary'] else {},
                     "questionText": doc['questionText'] if doc['questionText'] else {},
                 })
