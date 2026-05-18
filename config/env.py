@@ -6,6 +6,7 @@ load_dotenv()
 RABBITMQ_URL = os.getenv("RABBITMQ_URL")
 DATABASE_URL = os.getenv("MONGODB_URI")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+GROK_API_KEY = os.getenv("GROK_API_KEY")
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 

@@ -42,7 +42,7 @@ parser = PydanticOutputParser(pydantic_object=FinalInterviewReport)
 
 
 # initialize model (example — adapt to your stack)
-model = get_llm_model("grok/llama-70b")
+model = get_llm_model("gemini/gemini-2.5-flash")
 
 
 ANSWER_QUALITY_WEIGHTS = {
