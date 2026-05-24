@@ -201,7 +201,7 @@ JSON:
 
 
 # initialize model (example — adapt to your stack)
-model = get_llm_model("grok/gpt-oss-20b")
+model = get_llm_model("grok/gpt-oss-120b")
 
 
 def llm_eval_pipeline(question_result_id: str):

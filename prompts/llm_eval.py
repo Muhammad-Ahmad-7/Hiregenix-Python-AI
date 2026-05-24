@@ -66,7 +66,7 @@ Evaluate:
 You must also use the verification summary to detect integrity risks and adjust
 confidence and overall scoring accordingly.
 
-If verificationSummary.riskLevel is "high":
+If verificationSummary.riskLevel is "high" or "medium", this should be treated as a significant integrity concern:
 - integrityConcern MUST be true
 - confidenceScore should be heavily penalized
 - overallScore should be penalized
