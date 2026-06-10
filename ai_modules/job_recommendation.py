@@ -95,5 +95,3 @@ def run_recommendation_pipeline(candidate_id):
     except Exception as e:
         print(f"❌ Error in recommendation pipeline: {e}")
         return False
-
-# run_recommendation_pipeline("68ec6abe3bf821388b49ee41")
