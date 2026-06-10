@@ -54,7 +54,7 @@ def generate_job_post_ai_description(job_id):
         #     api_key=OPENAI_API_KEY
         # )
         
-        model = get_llm_model("openai/gpt-oss-20b")
+        model = get_llm_model("grok/gpt-oss-20b")
         # Create the prompt template
         prompt_template = ChatPromptTemplate.from_messages([
             ("system", JOB_POSTING_DESCRIPTION_PROMPT),
