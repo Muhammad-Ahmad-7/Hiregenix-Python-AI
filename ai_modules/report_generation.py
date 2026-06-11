@@ -70,70 +70,215 @@ def recalculate_job_ranks(job_id):
         )
 
 
+# def build_interview_completed_email(candidate_name):
+#     subject = "Your interview report is ready"
+#     body = (
+#         f"Dear {candidate_name},\n\n"
+#         "Thank you for completing your interview. Your interview report has now been generated.\n\n"
+#         "Please log in to your HireGenix dashboard to view your interview report and feedback.\n\n"
+#         "If you have any questions, feel free to reply to this email."
+#     )
+
+#     html_body = f"""
+#     <html>
+#     <body style="font-family:Arial,sans-serif;background-color:#f4f4f4;padding:20px;">
+#         <table width="100%" cellpadding="0" cellspacing="0">
+#             <tr>
+#                 <td align="center">
+#                     <table width="600" style="background-color:#ffffff;padding:30px;border-radius:8px;">
+#                         <tr>
+#                             <td>
+#                                 <h2 style="color:#333;margin-bottom:20px;">Your interview report is ready</h2>
+#                                 <p style="color:#555;line-height:1.8;margin:0 0 16px 0;">Dear {candidate_name},</p>
+#                                 <p style="color:#555;line-height:1.8;margin:0 0 16px 0;">Thank you for completing your interview. Your interview report has now been generated.</p>
+#                                 <p style="color:#555;line-height:1.8;margin:0 0 16px 0;">Please log in to your HireGenix dashboard to view your interview report and feedback.</p>
+#                                 <p style="color:#555;line-height:1.8;margin:0 0 16px 0;">If you have any questions, feel free to reply to this email.</p>
+#                                 <hr style="margin-top:30px;">
+#                                 <p style="font-size:12px;color:#999;">This is an automated email. Please do not reply directly.</p>
+#                             </td>
+#                         </tr>
+#                     </table>
+#                 </td>
+#             </tr>
+#         </table>
+#     </body>
+#     </html>
+#     """
+
+#     return subject, body, html_body
+
+
+# def send_interview_completed_email(email, candidate_name):
+#     if not EMAIL_HOST or not EMAIL_USER or not EMAIL_PASS:
+#         print("Email configuration is missing; skipping interview completion email.")
+#         return False
+
+#     subject, text_body, html_body = build_interview_completed_email(candidate_name)
+
+#     msg = MIMEMultipart("alternative")
+#     msg["Subject"] = subject
+#     msg["From"] = EMAIL_USER
+#     msg["To"] = email
+
+#     msg.attach(MIMEText(text_body, "plain"))
+#     msg.attach(MIMEText(html_body, "html"))
+
+#     try:
+#         with smtplib.SMTP(EMAIL_HOST, EMAIL_PORT) as server:
+#             server.starttls()
+#             server.login(EMAIL_USER, EMAIL_PASS)
+#             server.sendmail(EMAIL_USER, email, msg.as_string())
+#         print(f"Interview completion email sent to {email}")
+#         return True
+#     except Exception as e:
+#         print(f"Failed to send interview completion email: {e}")
+#         return False
+
+
+import os
+import requests
+from html import escape
+
+RESEND_API_KEY = os.getenv("RESEND_API_KEY")
+EMAIL_FROM = os.getenv("EMAIL_FROM", "HireGenix <noreply@send.mail.hiregenix.dev>")
+
+
 def build_interview_completed_email(candidate_name):
+    safe_candidate_name = escape(candidate_name or "there")
+
     subject = "Your interview report is ready"
+
     body = (
         f"Dear {candidate_name},\n\n"
         "Thank you for completing your interview. Your interview report has now been generated.\n\n"
         "Please log in to your HireGenix dashboard to view your interview report and feedback.\n\n"
-        "If you have any questions, feel free to reply to this email."
+        "If you have any questions, feel free to contact the HireGenix support team.\n\n"
+        "Regards,\n"
+        "HireGenix Team"
     )
 
     html_body = f"""
-    <html>
-    <body style="font-family:Arial,sans-serif;background-color:#f4f4f4;padding:20px;">
-        <table width="100%" cellpadding="0" cellspacing="0">
-            <tr>
-                <td align="center">
-                    <table width="600" style="background-color:#ffffff;padding:30px;border-radius:8px;">
-                        <tr>
-                            <td>
-                                <h2 style="color:#333;margin-bottom:20px;">Your interview report is ready</h2>
-                                <p style="color:#555;line-height:1.8;margin:0 0 16px 0;">Dear {candidate_name},</p>
-                                <p style="color:#555;line-height:1.8;margin:0 0 16px 0;">Thank you for completing your interview. Your interview report has now been generated.</p>
-                                <p style="color:#555;line-height:1.8;margin:0 0 16px 0;">Please log in to your HireGenix dashboard to view your interview report and feedback.</p>
-                                <p style="color:#555;line-height:1.8;margin:0 0 16px 0;">If you have any questions, feel free to reply to this email.</p>
-                                <hr style="margin-top:30px;">
-                                <p style="font-size:12px;color:#999;">This is an automated email. Please do not reply directly.</p>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Interview Report Is Ready</title>
+</head>
+
+<body style="margin:0;padding:0;background-color:#f4f7fb;font-family:Arial,sans-serif;color:#1f2937;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f7fb;padding:40px 20px;">
+    <tr>
+      <td align="center">
+
+        <table width="100%" cellpadding="0" cellspacing="0"
+          style="max-width:600px;background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid #e5e7eb;">
+
+          <tr>
+            <td style="background:linear-gradient(135deg,#0f172a,#1e3a8a);padding:36px 30px;text-align:center;">
+              <h1 style="margin:0;font-size:30px;color:#ffffff;font-weight:700;">
+                HireGenix
+              </h1>
+              <p style="margin-top:10px;font-size:15px;color:#cbd5e1;">
+                AI-Powered Recruitment Platform
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:40px 35px;">
+
+              <h2 style="margin:0 0 20px;font-size:25px;color:#111827;">
+                Your interview report is ready
+              </h2>
+
+              <p style="font-size:16px;line-height:28px;margin:0 0 18px;color:#374151;">
+                Dear {safe_candidate_name},
+              </p>
+
+              <p style="font-size:16px;line-height:28px;margin:0 0 18px;color:#4b5563;">
+                Thank you for completing your interview. Your interview report has now been generated successfully.
+              </p>
+
+              <p style="font-size:16px;line-height:28px;margin:0 0 28px;color:#4b5563;">
+                Please log in to your HireGenix dashboard to view your interview report, feedback, and evaluation details.
+              </p>
+
+              <div style="padding:18px;background:#f9fafb;border-radius:10px;border:1px solid #e5e7eb;">
+                <p style="margin:0;font-size:14px;line-height:24px;color:#6b7280;">
+                  This is an automated notification from HireGenix. If you need help, contact the hiring company or platform support.
+                </p>
+              </div>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:30px;background:#f9fafb;border-top:1px solid #e5e7eb;text-align:center;">
+              <p style="margin:0;font-size:14px;color:#6b7280;">
+                © 2026 HireGenix. All rights reserved.
+              </p>
+              <p style="margin:8px 0 0;font-size:13px;color:#9ca3af;">
+                Smarter Hiring. Faster Interviews. Better Matches.
+              </p>
+            </td>
+          </tr>
+
         </table>
-    </body>
-    </html>
-    """
+
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+"""
 
     return subject, body, html_body
 
 
 def send_interview_completed_email(email, candidate_name):
-    if not EMAIL_HOST or not EMAIL_USER or not EMAIL_PASS:
-        print("Email configuration is missing; skipping interview completion email.")
+    if not RESEND_API_KEY:
+        print("RESEND_API_KEY is missing; skipping interview completion email.")
+        return False
+
+    if not EMAIL_FROM:
+        print("EMAIL_FROM is missing; skipping interview completion email.")
         return False
 
     subject, text_body, html_body = build_interview_completed_email(candidate_name)
 
-    msg = MIMEMultipart("alternative")
-    msg["Subject"] = subject
-    msg["From"] = EMAIL_USER
-    msg["To"] = email
+    payload = {
+        "from": EMAIL_FROM,
+        "to": [email],
+        "subject": subject,
+        "text": text_body,
+        "html": html_body,
+    }
 
-    msg.attach(MIMEText(text_body, "plain"))
-    msg.attach(MIMEText(html_body, "html"))
+    headers = {
+        "Authorization": f"Bearer {RESEND_API_KEY}",
+        "Content-Type": "application/json",
+    }
 
     try:
-        with smtplib.SMTP(EMAIL_HOST, EMAIL_PORT) as server:
-            server.starttls()
-            server.login(EMAIL_USER, EMAIL_PASS)
-            server.sendmail(EMAIL_USER, email, msg.as_string())
-        print(f"Interview completion email sent to {email}")
+        response = requests.post(
+            "https://api.resend.com/emails",
+            json=payload,
+            headers=headers,
+            timeout=15,
+        )
+
+        if response.status_code >= 400:
+            print(f"Failed to send interview completion email: {response.status_code} {response.text}")
+            return False
+
+        data = response.json()
+        print(f"Interview completion email sent to {email}. Resend ID: {data.get('id')}")
         return True
-    except Exception as e:
+
+    except requests.RequestException as e:
         print(f"Failed to send interview completion email: {e}")
         return False
-
 
 def generate_interview_report(candidate_info, report_doc, question_results, filename="Interview_Report.pdf"):
     """
