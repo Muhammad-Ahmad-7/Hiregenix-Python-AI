@@ -1,3 +1,5 @@
+import traceback
+
 import pika
 from utils.constant import RESUME_ANALYSIS_QUEUE, RESUME_ANALYSIS_DELAY_QUEUE
 from config.db import task_collection
@@ -8,6 +10,7 @@ from utils.logger_config import setup_logging
 import logging
 from utils.rabbitmq import connect_rabbitmq, initialize_queues
 from pymongo import ReturnDocument
+from utils.constant import CANDIDATE_PROFILE_EMBEDDINGS_QUEUE
 
 setup_logging("logger/resume_parsing_worker.log")
 logger = logging.getLogger(__name__)
@@ -20,6 +23,50 @@ channel, connection = connect_rabbitmq()
 channel = initialize_queues(channel=channel)
 
 channel.confirm_delivery()
+
+
+def create_candidate_profile_embeddings_task(candidate_id: str) -> ObjectId:
+    """Create a new candidate profile embeddings task document and return its _id."""
+    doc = {
+        "userId": candidate_id,
+        "type": "candidate_profile_embeddings",
+        "status": "pending",
+        "payload": {
+            "candidateId": candidate_id,
+        },
+    }
+    result = task_collection.insert_one(doc)
+    logger.info("Created candidate profile embeddings task for candidate %s with ID: %s", candidate_id, result.inserted_id)
+    if not result.acknowledged or not result.inserted_id:
+        logger.warning("Candidate profile embeddings task creation failed for candidate %s", candidate_id)
+        return None
+    return result.inserted_id
+
+def create_and_push_candidate_profile_embeddings_task_to_queue(candidate_id: str) -> bool:
+    """Create a new candidate profile embeddings task document and push it to the candidate profile embeddings queue."""
+    try:
+        rec_task_id = create_candidate_profile_embeddings_task(candidate_id=candidate_id)
+        if not rec_task_id:
+            logger.warning("Candidate profile embeddings task not created in DB for candidate %s", candidate_id)
+            return False
+        body = str(rec_task_id).encode()
+        channel.basic_publish(
+            exchange='',
+            routing_key=CANDIDATE_PROFILE_EMBEDDINGS_QUEUE,
+            body=body,
+            properties=pika.BasicProperties(
+                delivery_mode=pika.DeliveryMode.Persistent,
+            ),
+            mandatory=True  # raise on unroutable
+        )
+        logger.info("Enqueued candidate profile embeddings task %s for candidate %s", rec_task_id, candidate_id)
+        return True
+    except Exception as e:
+        logger.error("Error creating/publishing candidate profile embeddings task for candidate %s: %s", candidate_id, str(e))
+        traceback.print_exc()
+        return False
+
+
 
 def callback(ch, method, properties, body):
     task_id = body.decode()
@@ -58,6 +105,8 @@ def callback(ch, method, properties, body):
         })
         
         logger.info("Resume parsing completed for task_id=%s", task_id)
+        logger.info("Creating and pushing candidate profile embeddings task to queue for candidate %s", str(task['userId']))
+        create_and_push_candidate_profile_embeddings_task_to_queue(candidate_id=str(task['userId']))
         # Mark task as completed
         task_collection.update_one({"_id": ObjectId(task_id)}, {"$set": {"status": "completed"}})
         logger.info("Task completed | task_id=%s", task_id)
