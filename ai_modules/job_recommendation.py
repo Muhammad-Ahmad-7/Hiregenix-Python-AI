@@ -25,7 +25,7 @@ def run_recommendation_pipeline(candidate_id):
         candidate_vector = candidate_point.vector
         # print(f"Candidate Vector: {candidate_vector}")
         
-        result = client.query_points(collection_name="job", limit=2, query=candidate_vector)
+        result = client.query_points(collection_name="job", limit=10, query=candidate_vector)
         
         recommended_jobs=[]
         

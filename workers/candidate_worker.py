@@ -6,7 +6,7 @@ import traceback
 from pymongo import ReturnDocument
 from utils.constant import CANDIDATE_PROFILE_EMBEDDINGS_DELAY_QUEUE, CANDIDATE_PROFILE_EMBEDDINGS_QUEUE, JOB_RECOMMENDATION_QUEUE
 from ai_modules.candidate import generate_candidate_profile_ai_description
-from config.db import candidate_collection, task_collection
+from config.db import candidate_collection, task_collection, resume_collection
 from bson import ObjectId
 from dotenv import load_dotenv
 from utils.logger_config import setup_logging
@@ -106,8 +106,14 @@ def callback(ch, method, properties, body):
             return
 
         logger.info("Processing candidate profile embedding for candidate %s", candidate_id)
+        # get resume data of candidate
+        resume = resume_collection.find_one({"candidateId": ObjectId(candidate_id)})
+        if not resume:
+            logger.warning("Resume not found for candidate %s", candidate_id)
+            ch.basic_ack(delivery_tag=method.delivery_tag)
+            return
 
-        skills = candidate.get("skills", [])
+        skills = resume.get("parsedData", {}).get("skills", []) if resume else []
         bio = candidate.get("bio", "")
 
         # --- Generate Description ---
