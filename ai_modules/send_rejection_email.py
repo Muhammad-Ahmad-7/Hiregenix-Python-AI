@@ -32,7 +32,7 @@ def generate_rejection_email_content(
     logger,
 ) -> RejectionEmailContent:
     try:
-        model = get_llm_model("openai/gpt-oss-20b")
+        model = get_llm_model("grok/gpt-oss-20b")
         structured_model = model.with_structured_output(RejectionEmailContent)
 
         prompt = ChatPromptTemplate.from_template(
