@@ -1,13 +1,15 @@
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+import os
+import requests
 
 from langchain.prompts import ChatPromptTemplate
 from langchain.chat_models.base import init_chat_model
 from pydantic import BaseModel, Field
 
-from config.env import OPENAI_API_KEY, EMAIL_HOST, EMAIL_PORT, EMAIL_USER, EMAIL_PASS
+from config.env import OPENAI_API_KEY
 from utils.llm_call import get_llm_model
+
+RESEND_API_KEY = os.getenv("RESEND_API_KEY")
+EMAIL_FROM = os.getenv("EMAIL_FROM", "HireGenix <noreply@send.mail.hiregenix.dev>")
 
 
 # ── Pydantic schema for structured LLM output ──────────────────────────────────
@@ -182,6 +184,14 @@ def send_hiring_email(
     try:
         logger.info(f"Preparing hiring email for {email}")
 
+        if not RESEND_API_KEY:
+            logger.error("RESEND_API_KEY is missing; skipping hiring email.")
+            return False
+
+        if not EMAIL_FROM:
+            logger.error("EMAIL_FROM is missing; skipping hiring email.")
+            return False
+
         # 1. Generate structured content via LLM
         try:
             email_content: EmailContent = generate_email_content(
@@ -197,6 +207,7 @@ def send_hiring_email(
                 query=query,
                 candidate_name=candidate_name,
                 company_name=company_name,
+                company_email=company_email,
                 contact_number=contact_number,
             )
 
@@ -207,22 +218,39 @@ def send_hiring_email(
             logo_url=logo_url,
         )
 
-        # 3. Build MIME message using LLM-generated subject
-        msg = MIMEMultipart("alternative")
-        msg["Subject"] = email_content.subject   # ← from LLM, not hardcoded
-        msg["From"] = EMAIL_USER
-        msg["To"] = email
+        # 3. Send via Resend
+        payload = {
+            "from": EMAIL_FROM,
+            "to": [email],
+            "subject": email_content.subject,
+            "text": email_content.body,
+            "html": html_content,
+        }
 
-        msg.attach(MIMEText(html_content, "html"))
+        headers = {
+            "Authorization": f"Bearer {RESEND_API_KEY}",
+            "Content-Type": "application/json",
+        }
 
-        # 4. Send via SMTP
-        with smtplib.SMTP(EMAIL_HOST, EMAIL_PORT) as server:
-            server.starttls()
-            server.login(EMAIL_USER, EMAIL_PASS)
-            server.sendmail(EMAIL_USER, email, msg.as_string())
+        response = requests.post(
+            "https://api.resend.com/emails",
+            json=payload,
+            headers=headers,
+            timeout=15,
+        )
 
-        logger.info(f"Email successfully sent to {email}")
+        if response.status_code >= 400:
+            logger.error(f"Failed to send hiring email: {response.status_code} {response.text}")
+            return False
+
+        data = response.json()
+
+        logger.info(f"Email successfully sent to {email}. Resend ID: {data.get('id')}")
         return True
+
+    except requests.RequestException as e:
+        logger.error(f"Error sending hiring email: {e}")
+        return False
 
     except Exception as e:
         logger.error(f"Error sending hiring email: {e}")
