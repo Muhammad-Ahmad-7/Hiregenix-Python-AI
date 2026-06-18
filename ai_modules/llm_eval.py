@@ -203,6 +203,75 @@ JSON:
 # initialize model (example — adapt to your stack)
 model = get_llm_model("grok/gpt-oss-120b")
 
+DIMENSION_WEIGHTS = {
+    "contentScore": 0.50,
+    "communicationScore": 0.20,
+    "fluencyScore": 0.15,
+    "confidenceScore": 0.15,
+}
+
+TAB_SWITCH_CONFIDENCE_CAP = 40
+TAB_SWITCH_OVERALL_CAP = 50
+INTEGRITY_QUESTION_OVERALL_CAP = 60
+
+
+def is_integrity_flagged(value):
+    if isinstance(value, bool):
+        return value
+    if value is None:
+        return False
+    if isinstance(value, (int, float)):
+        return value > 0
+    value_text = str(value).strip().lower()
+    return value_text in {"yes", "true", "1", "flagged", "concern", "high", "medium"}
+
+
+def clamp_score(value):
+    if not isinstance(value, (int, float)):
+        return 0
+    return max(0, min(100, int(round(float(value)))))
+
+
+def compute_weighted_overall_score(scores):
+    weighted_total = 0.0
+    weighted_denominator = 0.0
+
+    for field, weight in DIMENSION_WEIGHTS.items():
+        value = scores.get(field)
+        if isinstance(value, (int, float)):
+            weighted_total += float(value) * weight
+            weighted_denominator += weight
+
+    return int(round(weighted_total / weighted_denominator)) if weighted_denominator else 0
+
+
+def apply_numeric_scoring_rules(evaluation, tab_switches=0):
+    scores = evaluation.setdefault("scores", {})
+    for field in DIMENSION_WEIGHTS:
+        scores[field] = clamp_score(scores.get(field))
+
+    tab_switch_count = int(tab_switches or 0)
+    integrity = evaluation.setdefault("integrity", {})
+
+    if tab_switch_count >= 1:
+        scores["confidenceScore"] = min(scores["confidenceScore"], TAB_SWITCH_CONFIDENCE_CAP)
+        integrity["integrityConcern"] = True
+        tab_note = f"Tab switching detected ({tab_switch_count} time(s)), which is treated as a strong integrity concern."
+        existing_notes = integrity.get("integrityNotes")
+        integrity["integrityNotes"] = f"{existing_notes} {tab_note}".strip() if existing_notes else tab_note
+        if evaluation.get("answerQuality") == AnswerQualityEnum.EXCELLENT.value:
+            evaluation["answerQuality"] = AnswerQualityEnum.GOOD.value
+
+    scores["overallScore"] = compute_weighted_overall_score(scores)
+
+    if is_integrity_flagged(integrity.get("integrityConcern")):
+        scores["overallScore"] = min(scores["overallScore"], INTEGRITY_QUESTION_OVERALL_CAP)
+
+    if tab_switch_count >= 1:
+        scores["overallScore"] = min(scores["overallScore"], TAB_SWITCH_OVERALL_CAP)
+
+    return evaluation
+
 
 def llm_eval_pipeline(question_result_id: str):
     try:
@@ -232,6 +301,10 @@ def llm_eval_pipeline(question_result_id: str):
         result = model.invoke(prompt)
         parsed_output = parser.parse(result.content)
         final_result = parsed_output.model_dump()
+        final_result = apply_numeric_scoring_rules(
+            final_result,
+            question_result.get('numberOfTabSwitch', 0)
+        )
         
         # DB question result document updated with the llm evaluation result and stages.llmEvaluated = true, stages.done = true and status = completed
         question_result_collection.update_one(
